@@ -158,6 +158,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ReviewerController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +212,9 @@
     <Content Include="app\views\invoice\invoices.html" />
     <Content Include="app\views\invoice\invoicesController.js" />
     <Content Include="app\views\invoice\invoiceView.html" />
+    <Content Include="app\views\review\productreview.html" />
+    <Content Include="app\views\review\review.html" />
+    <Content Include="app\views\review\reviewController.js" />
     <Content Include="app\views\student\studentAdd.html" />
     <Content Include="app\views\student\studentAddController.js" />
     <Content Include="app\views\student\students.html" />

@@ -81,6 +81,7 @@
     <Compile Include="ProductServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReviewerServices.cs" />
+    <Compile Include="ReviewServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

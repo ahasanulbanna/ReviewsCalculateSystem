@@ -15,7 +15,7 @@ namespace ReviewsCalculateSystem.Models.Models
         public int? NumberOfReviewCollect { get; set; }
         public DateTime? ReviewStartDate { get; set; }
         public DateTime? ReviewEndDate { get; set; }
-        public virtual ICollection<ReviewProduct> ReviewProducts { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
 
     }
 }

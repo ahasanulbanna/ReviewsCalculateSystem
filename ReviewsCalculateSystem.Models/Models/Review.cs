@@ -14,7 +14,8 @@ namespace ReviewsCalculateSystem.Models.Models
         public string SwapmeetReviewLink { get; set; }
         public string OwnReviewLink { get; set; }
         public bool ReviewStatus { get; set; }
-        public virtual ICollection<ReviewProduct>ReviewProducts { get; set; }
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
         public int ReviewerId { get; set; }
         public virtual Reviewer Reviewer { get; set; }
     }

@@ -28,7 +28,6 @@ namespace ReviewsCalculateSystem.Models
         public DbSet<Reviewer> Reviewers { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Product>Products { get; set; }
-        public DbSet<ReviewProduct> ReviewProducts { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<ReviewerTaskAsign> ReviewerTaskAsigns { get; set; }
     }

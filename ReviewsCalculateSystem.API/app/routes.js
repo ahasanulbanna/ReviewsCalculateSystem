@@ -136,6 +136,24 @@
                     controllerAs: 'vm',
                     title: 'Invoice'
                 }
+            },
+           //-------------Review---------          
+            {
+                url: '/review',
+                config: {
+                    templateUrl: 'app/views/review/review.html',
+                    controller: 'reviewController',
+                    controllerAs: 'vm',
+                    title: 'Review'
+                }
+            }, {
+                url: '/productreview',
+                config: {
+                    templateUrl: 'app/views/review/productreview.html',
+                    //controller: 'reviewController',
+                    //controllerAs: 'vm',
+                    title: 'Review'
+                }
             }
 
         ];

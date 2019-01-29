@@ -9,29 +9,31 @@ using System.Web.Mvc;
 
 namespace ReviewsCalculateSystem.Services
 {
-    public class ProductServices : IProductServices
+    public class ReviewServices : IReviewServices
     {
         private readonly ReviewDbContext db;
-        public ProductServices()
+        public ReviewServices()
         {
             db = new ReviewDbContext();
         }
-
-        public JsonResult AddProduct(Product product)
+        public JsonResult SubmitProductReview(Product productReview)
         {
-            product.Reviews = null;
-            db.Products.Add(product);
-            db.SaveChanges();
+           db.Reviews.AddRange(productReview.Reviews);
+           db.SaveChanges();
             return new JsonResult
             {
-                Data = new { Result = "IsOk" },
+                Data = new
+                {
+                    Result = "IsOk"
+                },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
-        }    
+           
+           
+        }
     }
-    public interface IProductServices
+    public interface IReviewServices
     {
-        JsonResult AddProduct(Product product);
-     
+        JsonResult SubmitProductReview(Product productReview);
     }
 }
