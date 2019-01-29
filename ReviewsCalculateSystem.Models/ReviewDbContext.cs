@@ -8,11 +8,21 @@ using System.Threading.Tasks;
 
 namespace ReviewsCalculateSystem.Models
 {
-    public class ReviewDbContext:DbContext
+    public class ReviewDbContext : DbContext
     {
-        public ReviewDbContext():base("Con")
+        public ReviewDbContext() : base("name=Con")
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReviewDbContext, ReviewsCalculateSystem.Models.Migrations.Configuration>("Con"));
+
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {         
+
+        }
+        private void FixEfProviderServicesProblem()
         {
 
+            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Reviewer> Reviewers { get; set; }

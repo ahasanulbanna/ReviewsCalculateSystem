@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewsCalculateSystem.API"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewsCalculateSystem.Models", "ReviewsCalculateSystem.Models\ReviewsCalculateSystem.Models.csproj", "{135804AF-9FDA-46D4-AF72-F4A25CC0CB02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewsCalculateSystem.Common", "ReviewsCalculateSystem.Common\ReviewsCalculateSystem.Common.csproj", "{1B29C585-B747-4B2F-9DBF-52B0BD6435DF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewsCalculateSystem.Services", "ReviewsCalculateSystem.Services\ReviewsCalculateSystem.Services.csproj", "{D117210C-73CD-4E8F-AE99-86AF3A117C77}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{135804AF-9FDA-46D4-AF72-F4A25CC0CB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{135804AF-9FDA-46D4-AF72-F4A25CC0CB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{135804AF-9FDA-46D4-AF72-F4A25CC0CB02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B29C585-B747-4B2F-9DBF-52B0BD6435DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B29C585-B747-4B2F-9DBF-52B0BD6435DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B29C585-B747-4B2F-9DBF-52B0BD6435DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B29C585-B747-4B2F-9DBF-52B0BD6435DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D117210C-73CD-4E8F-AE99-86AF3A117C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D117210C-73CD-4E8F-AE99-86AF3A117C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D117210C-73CD-4E8F-AE99-86AF3A117C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
