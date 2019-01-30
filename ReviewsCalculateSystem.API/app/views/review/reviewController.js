@@ -12,6 +12,7 @@
         var vm = this;
         vm.invoices = [];
         vm.addReview = addReview;
+        vm.addProductReview = addProductReview;
         vm.updateInvoice = updateInvoice;
         vm.invoiceView = invoiceView;
         vm.pageChanged = pageChanged;
@@ -44,6 +45,11 @@
 
         function addReview() {
             var url = "/productreview";
+            location.path(url);
+        }
+
+        function addProductReview() {
+            var url = "/productreviewadd";
             location.path(url);
         }
 

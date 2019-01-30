@@ -212,7 +212,10 @@
     <Content Include="app\views\invoice\invoices.html" />
     <Content Include="app\views\invoice\invoicesController.js" />
     <Content Include="app\views\invoice\invoiceView.html" />
+    <Content Include="app\views\review\product.html" />
+    <Content Include="app\views\review\productAdd.html" />
     <Content Include="app\views\review\productreview.html" />
+    <Content Include="app\views\review\productreviewadd.html" />
     <Content Include="app\views\review\review.html" />
     <Content Include="app\views\review\reviewController.js" />
     <Content Include="app\views\student\studentAdd.html" />

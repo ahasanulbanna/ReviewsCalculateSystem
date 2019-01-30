@@ -150,14 +150,40 @@
                 url: '/productreview',
                 config: {
                     templateUrl: 'app/views/review/productreview.html',
+                    controller: 'reviewController',
+                    controllerAs: 'vm',
+                    title: 'Review'
+                }
+            }, {
+                url: '/productreviewadd',
+                config: {
+                    templateUrl: 'app/views/review/productreviewadd.html',
+                    //controller: 'reviewController',
+                    //controllerAs: 'vm',
+                    title: 'Review'
+                }
+            }, {
+                url: '/products',
+                config: {
+                    templateUrl: 'app/views/review/product.html',
+                    //controller: 'reviewController',
+                    //controllerAs: 'vm',
+                    title: 'Review'
+                }
+            }, {
+                url: '/add-product',
+                config: {
+                    templateUrl: 'app/views/review/productAdd.html',
                     //controller: 'reviewController',
                     //controllerAs: 'vm',
                     title: 'Review'
                 }
             }
 
+            
+
         ];
     }
 
-
+    
 })();
