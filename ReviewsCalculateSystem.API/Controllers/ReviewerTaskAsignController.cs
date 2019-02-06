@@ -29,7 +29,14 @@ namespace ReviewsCalculateSystem.API.Controllers
         [Route("getAsingTaskById/{Id}")]
         public IHttpActionResult getAsingTaskById(int Id)
         {
-            return Ok(services.getAsingTaskById(Id).Data);
+            return Ok(services.getAllAsingTaskById(Id).Data);
+        }
+
+        [HttpGet]
+        [Route("getCurrentAsingTaskById/{Id}")]
+        public IHttpActionResult getCurrentAsingTaskById(int Id)
+        {
+            return Ok(services.getCurrentAsingTaskById(Id).Data);
         }
     }
 }
