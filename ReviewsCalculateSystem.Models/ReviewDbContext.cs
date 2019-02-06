@@ -14,7 +14,8 @@ namespace ReviewsCalculateSystem.Models
         public ReviewDbContext() : base("name=Con")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReviewDbContext, ReviewsCalculateSystem.Models.Migrations.Configuration>("Con"));
-
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

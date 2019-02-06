@@ -29,9 +29,20 @@ namespace ReviewsCalculateSystem.Services
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
+
+        public JsonResult GetAllAdminList()
+        {
+            return new JsonResult
+            {
+                Data = db.Admins.ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+
+        }
     }
     public interface IAdminServices
     {
         JsonResult CreateAdmin(Admin admin);
+        JsonResult GetAllAdminList();
     }
 }

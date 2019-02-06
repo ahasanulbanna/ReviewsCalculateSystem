@@ -28,9 +28,18 @@ namespace ReviewsCalculateSystem.Services
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
+
+        public JsonResult GetAllReviewer()
+        {
+            return new JsonResult
+            { Data = db.Reviewers.ToList(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+         
+
+        }
     }
     public interface IReviewerServices
     {
         JsonResult CreateReviewer(Reviewer reviewer);
+        JsonResult GetAllReviewer();
     }
 }

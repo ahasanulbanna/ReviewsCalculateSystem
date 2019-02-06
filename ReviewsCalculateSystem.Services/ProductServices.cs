@@ -20,6 +20,7 @@ namespace ReviewsCalculateSystem.Services
         public JsonResult AddProduct(Product product)
         {
             product.Reviews = null;
+            product.CurrentStatus = true;
             db.Products.Add(product);
             db.SaveChanges();
             return new JsonResult
@@ -27,11 +28,43 @@ namespace ReviewsCalculateSystem.Services
                 Data = new { Result = "IsOk" },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
-        }    
+        }
+
+        public JsonResult GetAllCurrentProductList()
+        {
+            var getCurrentProducts = db.Products.Where(x => x.CurrentStatus == true).Select(x => x).ToList();
+            return new JsonResult
+            {
+                Data = getCurrentProducts,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        public JsonResult GetAllProductList()
+        {
+            return new JsonResult
+            {
+                Data = db.Products.ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        public JsonResult GetProductById(int Id)
+        {
+            return new JsonResult
+            {
+                Data = db.Reviews.Where(x => x.ProductId == Id).Select(x => x).FirstOrDefault(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+
+            };
+        }
     }
     public interface IProductServices
     {
         JsonResult AddProduct(Product product);
+        JsonResult GetAllProductList();
+        JsonResult GetAllCurrentProductList();
+        JsonResult GetProductById(int Id);
      
     }
 }

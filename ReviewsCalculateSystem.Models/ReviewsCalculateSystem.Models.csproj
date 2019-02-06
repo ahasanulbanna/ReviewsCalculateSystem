@@ -64,6 +64,18 @@
     <Compile Include="Migrations\201901300533545_UPDATE_PRODUCT_MODEL.Designer.cs">
       <DependentUpon>201901300533545_UPDATE_PRODUCT_MODEL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902051124516_UPDATE_ReviewerTaskAsign_MODEL.cs" />
+    <Compile Include="Migrations\201902051124516_UPDATE_ReviewerTaskAsign_MODEL.Designer.cs">
+      <DependentUpon>201902051124516_UPDATE_ReviewerTaskAsign_MODEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902060717023_UPDATE_REVIEWER_MODEL.cs" />
+    <Compile Include="Migrations\201902060717023_UPDATE_REVIEWER_MODEL.Designer.cs">
+      <DependentUpon>201902060717023_UPDATE_REVIEWER_MODEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902060953552_UPDATE_REVIEWER1_MODEL.cs" />
+    <Compile Include="Migrations\201902060953552_UPDATE_REVIEWER1_MODEL.Designer.cs">
+      <DependentUpon>201902060953552_UPDATE_REVIEWER1_MODEL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -90,6 +102,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901300533545_UPDATE_PRODUCT_MODEL.resx">
       <DependentUpon>201901300533545_UPDATE_PRODUCT_MODEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051124516_UPDATE_ReviewerTaskAsign_MODEL.resx">
+      <DependentUpon>201902051124516_UPDATE_ReviewerTaskAsign_MODEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902060717023_UPDATE_REVIEWER_MODEL.resx">
+      <DependentUpon>201902060717023_UPDATE_REVIEWER_MODEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902060953552_UPDATE_REVIEWER1_MODEL.resx">
+      <DependentUpon>201902060953552_UPDATE_REVIEWER1_MODEL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

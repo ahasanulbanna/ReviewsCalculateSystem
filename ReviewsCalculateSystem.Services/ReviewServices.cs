@@ -16,10 +16,27 @@ namespace ReviewsCalculateSystem.Services
         {
             db = new ReviewDbContext();
         }
-        public JsonResult SubmitProductReview(Product productReview)
+
+        public JsonResult GetReviewByProductId(int Id)
         {
-           db.Reviews.AddRange(productReview.Reviews);
-           db.SaveChanges();
+            return new JsonResult
+            {
+                Data = db.Reviews.Where(x => x.ProductId == Id).Select(x =>new { x.Product,x.SwapmeetFbProfileLink,x.SwapmeetProductLink}).ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        public JsonResult SubmitProductReview(Review productReview)
+        {
+            var getProduct = db.Products.Where(x => x.ProductId == productReview.ProductId).FirstOrDefault();
+            db.Reviews.Add(productReview);
+            if (getProduct.NumberOfReviewCollect == null)
+            {
+                getProduct.NumberOfReviewCollect = 0;
+            }
+            getProduct.NumberOfReviewCollect=1+ getProduct.NumberOfReviewCollect;
+            db.Entry(getProduct).CurrentValues.SetValues(getProduct);
+            db.SaveChanges();
             return new JsonResult
             {
                 Data = new
@@ -34,6 +51,7 @@ namespace ReviewsCalculateSystem.Services
     }
     public interface IReviewServices
     {
-        JsonResult SubmitProductReview(Product productReview);
+        JsonResult SubmitProductReview(Review productReview);
+        JsonResult GetReviewByProductId(int Id);
     }
 }

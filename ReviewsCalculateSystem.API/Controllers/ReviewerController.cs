@@ -14,9 +14,16 @@ namespace ReviewsCalculateSystem.API.Controllers
         }
         [HttpPost]
         [Route("CreateReviewer")]
-        public IHttpActionResult CreateReviewer(Reviewer reviewer)
+        public IHttpActionResult CreateReviewer([FromBody]Reviewer reviewer)
         {
-            return Ok(services.CreateReviewer(reviewer).Data);
+             return Ok(services.CreateReviewer(reviewer).Data);
         }
+        [HttpGet]
+        [Route("GetAllReviewer")]
+        public IHttpActionResult GetAllReviewer()
+        {
+            return Ok(services.GetAllReviewer().Data);
+        }
+
     }
 }

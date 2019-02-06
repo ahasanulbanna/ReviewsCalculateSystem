@@ -24,5 +24,12 @@ namespace ReviewsCalculateSystem.API.Controllers
         {
             return Ok(service.CreateAdmin(admin).Data);
         }
+
+        [HttpGet]
+        [Route("GetAllAdminListGetAllAdminList")]
+        public IHttpActionResult GetAllAdminList()
+        {
+            return Ok(service.GetAllAdminList().Data);
+        }
     }
 }

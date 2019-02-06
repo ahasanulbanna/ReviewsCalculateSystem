@@ -9,7 +9,7 @@ namespace ReviewsCalculateSystem.Models.Models
     public class ReviewerTaskAsign
     {
         public int ReviewerTaskAsignId { get; set; }
-        public int NumberOfReviewCollect { get; set; }
+        public int? NumberOfReviewCollect { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
         public int ReviewerId { get; set; }
@@ -17,5 +17,6 @@ namespace ReviewsCalculateSystem.Models.Models
         public double PerReviewCost { get; set; }
         public int AdminId { get; set; }
         public virtual Admin Admin { get; set; }
+        public bool isComplete { get; set; }
     }
 }
