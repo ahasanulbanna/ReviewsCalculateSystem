@@ -189,6 +189,7 @@
     <Content Include="app\services\invoiceService.js" />
     <Content Include="app\services\notificationService.js" />
     <Content Include="app\services\requestCounterService.js" />
+    <Content Include="app\services\reviewerasigntaskService.js" />
     <Content Include="app\services\studentService.js" />
     <Content Include="app\templates\confirmModal.html" />
     <Content Include="app\templates\datepicker-template.html" />
@@ -214,10 +215,13 @@
     <Content Include="app\views\invoice\invoices.html" />
     <Content Include="app\views\invoice\invoicesController.js" />
     <Content Include="app\views\invoice\invoiceView.html" />
+    <Content Include="app\views\reviewerAsignTask\productreviewaddController.js" />
+    <Content Include="app\views\reviewerAsignTask\reviewerasigntask.html" />
+    <Content Include="app\views\reviewerAsignTask\reviewerasigntaskController.js" />
     <Content Include="app\views\review\product.html" />
     <Content Include="app\views\review\productAdd.html" />
     <Content Include="app\views\review\productreview.html" />
-    <Content Include="app\views\review\productreviewadd.html" />
+    <Content Include="app\views\reviewerAsignTask\productreviewadd.html" />
     <Content Include="app\views\review\review.html" />
     <Content Include="app\views\review\reviewController.js" />
     <Content Include="app\views\student\studentAdd.html" />

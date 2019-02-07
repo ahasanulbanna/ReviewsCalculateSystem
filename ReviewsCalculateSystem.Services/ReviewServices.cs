@@ -28,14 +28,22 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult SubmitProductReview(Review productReview)
         {
+            /*
+             * when submit the review,
+               update Products & ReviewerTaskAsigns table's property NumberOfReviewCollect
+            */
             var getProduct = db.Products.Where(x => x.ProductId == productReview.ProductId).FirstOrDefault();
+            var getCollectReview = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == productReview.ReviewerId && x.ProductId==productReview.ProductId).FirstOrDefault();
             db.Reviews.Add(productReview);
-            if (getProduct.NumberOfReviewCollect == null)
+            if (getProduct.NumberOfReviewCollect == null && getCollectReview.NumberOfReviewCollect==null)
             {
                 getProduct.NumberOfReviewCollect = 0;
+                getCollectReview.NumberOfReviewCollect = 0;
             }
             getProduct.NumberOfReviewCollect=1+ getProduct.NumberOfReviewCollect;
+            getCollectReview.NumberOfReviewCollect = 1 + getCollectReview.NumberOfReviewCollect;
             db.Entry(getProduct).CurrentValues.SetValues(getProduct);
+            db.Entry(getCollectReview).CurrentValues.SetValues(getCollectReview);
             db.SaveChanges();
             return new JsonResult
             {

@@ -19,7 +19,7 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult getAllAsingTaskById(int Id)
         {
-            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == Id).Select(x =>new {x.Product,x.NumberOfReviewCollect,x.ReviewerId }).ToList();
+            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == Id).Select(x =>new {x.Product,x.NumberOfReviewCollect,x.ReviewCollectMargin }).ToList();
             return new JsonResult
             {
                 Data = asignTask,
@@ -29,10 +29,20 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult getCurrentAsingTaskById(int Id)
         {
-            var currentAsignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == Id && x.isComplete==false).Select(x => new { x.Product, x.NumberOfReviewCollect, x.ReviewerId }).ToList();
+            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == Id && x.isComplete == false).Select(x => new { x.Product, x.NumberOfReviewCollect, x.ReviewCollectMargin }).ToList();
             return new JsonResult
             {
-                Data = currentAsignTask,
+                Data = asignTask,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        public JsonResult reviewerReviewForEachProductById(int reviewerId, int productId)
+        {
+            var productReviewInfo = db.ReviewerTaskAsigns.Where(x=>x.ReviewerId==reviewerId && x.ProductId==productId).Select(x =>new { x.Product,x.ReviewCollectMargin,x.NumberOfReviewCollect }).FirstOrDefault();
+            return new JsonResult
+            {
+                Data = productReviewInfo,
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -56,6 +66,8 @@ namespace ReviewsCalculateSystem.Services
         JsonResult taskAsign(ReviewerTaskAsign reviewerTaskAsign);
         JsonResult getAllAsingTaskById(int Id);
         JsonResult getCurrentAsingTaskById(int Id);
+        JsonResult reviewerReviewForEachProductById(int reviewerId, int productId);
+
     }
 
 

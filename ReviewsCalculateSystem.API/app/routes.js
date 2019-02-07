@@ -154,14 +154,7 @@
                     controllerAs: 'vm',
                     title: 'Review'
                 }
-            }, {
-                url: '/productreviewadd',
-                config: {
-                    templateUrl: 'app/views/review/productreviewadd.html',
-                    //controller: 'reviewController',
-                    //controllerAs: 'vm',
-                    title: 'Review'
-                }
+            
             }, {
                 url: '/products',
                 config: {
@@ -178,8 +171,23 @@
                     //controllerAs: 'vm',
                     title: 'Review'
                 }
+            }, {
+                url: '/reviewer-asign-task',
+                config: {
+                    templateUrl: 'app/views/reviewerAsignTask/reviewerasigntask.html',
+                    controller: 'reviewerasigntaskController',
+                    controllerAs: 'vm',
+                    title: 'Reviewer Asign Task'
+                }
+            }, {
+                url: '/product-review-add/:reviewerId/:productId',
+                config: {
+                    templateUrl: 'app/views/reviewerAsignTask/productreviewadd.html',
+                    controller: 'productreviewaddController',
+                    controllerAs: 'vm',
+                    title: 'Review'
+                }
             }
-
             
 
         ];

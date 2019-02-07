@@ -26,8 +26,8 @@ namespace ReviewsCalculateSystem.API.Controllers
         }
 
         [HttpGet]
-        [Route("getAsingTaskById/{Id}")]
-        public IHttpActionResult getAsingTaskById(int Id)
+        [Route("getAllAsingTaskById/{Id}")]
+        public IHttpActionResult getAllAsingTaskById(int Id)
         {
             return Ok(services.getAllAsingTaskById(Id).Data);
         }
@@ -37,6 +37,13 @@ namespace ReviewsCalculateSystem.API.Controllers
         public IHttpActionResult getCurrentAsingTaskById(int Id)
         {
             return Ok(services.getCurrentAsingTaskById(Id).Data);
+        }
+
+        [HttpGet]
+        [Route("reviewerReviewForEachProductById")]
+        public IHttpActionResult reviewerReviewForEachProductById(int reviewerId, int productId)
+        {
+            return Ok(services.reviewerReviewForEachProductById(reviewerId, productId).Data);
         }
     }
 }
