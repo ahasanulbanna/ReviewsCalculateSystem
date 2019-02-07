@@ -13,7 +13,7 @@ namespace ReviewsCalculateSystem.Models.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201902051124516_UPDATE_ReviewerTaskAsign_MODEL"; }
+            get { return "201902070453214_UPDATE_ReviewerTaskAsign_MODEL"; }
         }
         
         string IMigrationMetadata.Source

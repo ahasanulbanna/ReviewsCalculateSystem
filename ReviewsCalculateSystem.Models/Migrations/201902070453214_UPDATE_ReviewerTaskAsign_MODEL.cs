@@ -7,12 +7,12 @@ namespace ReviewsCalculateSystem.Models.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.ReviewerTaskAsigns", "isComplete", c => c.Boolean(nullable: false));
+            AddColumn("dbo.ReviewerTaskAsigns", "ReviewCollectMargin", c => c.Int());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.ReviewerTaskAsigns", "isComplete");
+            DropColumn("dbo.ReviewerTaskAsigns", "ReviewCollectMargin");
         }
     }
 }

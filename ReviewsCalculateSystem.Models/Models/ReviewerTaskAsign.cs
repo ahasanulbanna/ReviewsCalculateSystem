@@ -10,6 +10,7 @@ namespace ReviewsCalculateSystem.Models.Models
     {
         public int ReviewerTaskAsignId { get; set; }
         public int? NumberOfReviewCollect { get; set; }
+        public int? ReviewCollectMargin { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
         public int ReviewerId { get; set; }

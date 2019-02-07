@@ -48,10 +48,43 @@ namespace ReviewsCalculateSystem.Services
            
            
         }
+
+        public JsonResult ReviewHistoryForEachProduct(int Id)
+        {
+            var totalReview = db.Reviews.Where(x => x.ProductId == Id).Count();
+            var liveReview = db.Reviews.Where(x => x.ProductId == Id && x.ReviewStatus==true).Count();
+            var workingReviewer = db.ReviewerTaskAsigns.Where(x => x.ProductId == Id).Select(x=>x.Reviewer).ToList();
+            List<Custom> workingReviewerReviewEachProduct = new List<Custom>();
+            foreach (var review in workingReviewer)
+            {
+                var eachProductReviewerReview = db.Reviews.Where(x => x.ProductId == Id && x.ReviewerId == review.ReviewerId).Count();
+                workingReviewerReviewEachProduct.Add(new Custom(review.Name,eachProductReviewerReview));
+            }
+
+            return new JsonResult
+            {
+                Data =new { totalReview, liveReview, workingReviewerReviewEachProduct },
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
     }
+
+    public class Custom
+    {
+        public Custom(string name, int eachProductReviewerReview)
+        {
+            Name = name;
+            CollectReview = eachProductReviewerReview;
+        }
+
+        public string Name { get; set; }
+        public int CollectReview { get; set; }
+    }
+
     public interface IReviewServices
     {
         JsonResult SubmitProductReview(Review productReview);
         JsonResult GetReviewByProductId(int Id);
+        JsonResult ReviewHistoryForEachProduct(int Id);
     }
 }

@@ -48,33 +48,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201901280449521_First_Migration.cs" />
-    <Compile Include="Migrations\201901280449521_First_Migration.Designer.cs">
-      <DependentUpon>201901280449521_First_Migration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201901280458255_Update_ReviewrTaskAsign_Model.cs" />
     <Compile Include="Migrations\201901280458255_Update_ReviewrTaskAsign_Model.Designer.cs">
       <DependentUpon>201901280458255_Update_ReviewrTaskAsign_Model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901291012343_Upadate_Model_Relationship.cs" />
-    <Compile Include="Migrations\201901291012343_Upadate_Model_Relationship.Designer.cs">
-      <DependentUpon>201901291012343_Upadate_Model_Relationship.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201901300533545_UPDATE_PRODUCT_MODEL.cs" />
     <Compile Include="Migrations\201901300533545_UPDATE_PRODUCT_MODEL.Designer.cs">
       <DependentUpon>201901300533545_UPDATE_PRODUCT_MODEL.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902051124516_UPDATE_ReviewerTaskAsign_MODEL.cs" />
-    <Compile Include="Migrations\201902051124516_UPDATE_ReviewerTaskAsign_MODEL.Designer.cs">
-      <DependentUpon>201902051124516_UPDATE_ReviewerTaskAsign_MODEL.cs</DependentUpon>
+    <Compile Include="Migrations\201902070407562_UPDATE_MODEL.cs" />
+    <Compile Include="Migrations\201902070407562_UPDATE_MODEL.Designer.cs">
+      <DependentUpon>201902070407562_UPDATE_MODEL.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902060717023_UPDATE_REVIEWER_MODEL.cs" />
-    <Compile Include="Migrations\201902060717023_UPDATE_REVIEWER_MODEL.Designer.cs">
-      <DependentUpon>201902060717023_UPDATE_REVIEWER_MODEL.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902060953552_UPDATE_REVIEWER1_MODEL.cs" />
-    <Compile Include="Migrations\201902060953552_UPDATE_REVIEWER1_MODEL.Designer.cs">
-      <DependentUpon>201902060953552_UPDATE_REVIEWER1_MODEL.cs</DependentUpon>
+    <Compile Include="Migrations\201902070453214_UPDATE_ReviewerTaskAsign_MODEL.cs" />
+    <Compile Include="Migrations\201902070453214_UPDATE_ReviewerTaskAsign_MODEL.Designer.cs">
+      <DependentUpon>201902070453214_UPDATE_ReviewerTaskAsign_MODEL.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -91,26 +79,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901280449521_First_Migration.resx">
-      <DependentUpon>201901280449521_First_Migration.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901280458255_Update_ReviewrTaskAsign_Model.resx">
       <DependentUpon>201901280458255_Update_ReviewrTaskAsign_Model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901291012343_Upadate_Model_Relationship.resx">
-      <DependentUpon>201901291012343_Upadate_Model_Relationship.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901300533545_UPDATE_PRODUCT_MODEL.resx">
       <DependentUpon>201901300533545_UPDATE_PRODUCT_MODEL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902051124516_UPDATE_ReviewerTaskAsign_MODEL.resx">
-      <DependentUpon>201902051124516_UPDATE_ReviewerTaskAsign_MODEL.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902070407562_UPDATE_MODEL.resx">
+      <DependentUpon>201902070407562_UPDATE_MODEL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902060717023_UPDATE_REVIEWER_MODEL.resx">
-      <DependentUpon>201902060717023_UPDATE_REVIEWER_MODEL.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902060953552_UPDATE_REVIEWER1_MODEL.resx">
-      <DependentUpon>201902060953552_UPDATE_REVIEWER1_MODEL.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902070453214_UPDATE_ReviewerTaskAsign_MODEL.resx">
+      <DependentUpon>201902070453214_UPDATE_ReviewerTaskAsign_MODEL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

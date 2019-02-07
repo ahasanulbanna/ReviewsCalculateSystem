@@ -30,5 +30,11 @@ namespace ReviewsCalculateSystem.API.Controllers
         {
             return Ok(services.GetReviewByProductId(Id).Data);
         }
+        [HttpGet]
+        [Route("ReviewHistoryForEachProduct/{Id}")]
+        public IHttpActionResult ReviewHistoryForEachProduct(int Id)
+        {
+            return Ok(services.ReviewHistoryForEachProduct(Id).Data);
+        }
     }
 }
