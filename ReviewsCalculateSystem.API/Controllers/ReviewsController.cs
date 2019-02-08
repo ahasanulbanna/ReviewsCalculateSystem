@@ -36,5 +36,13 @@ namespace ReviewsCalculateSystem.API.Controllers
         {
             return Ok(services.ReviewHistoryForEachProduct(Id).Data);
         }
+
+        [HttpPost]
+        [Route("AdminReviewUpdateByChecking")]
+        public IHttpActionResult AdminReviewUpdateByChecking(List<Review> reviewList)
+        {
+            return Ok(services.AdminReviewUpdateByChecking(reviewList).Data);
+        }
+
     }
 }

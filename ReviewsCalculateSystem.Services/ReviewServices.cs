@@ -21,7 +21,7 @@ namespace ReviewsCalculateSystem.Services
         {
             return new JsonResult
             {
-                Data = db.Reviews.Where(x => x.ProductId == Id).Select(x =>new { x.Product,x.SwapmeetFbProfileLink,x.SwapmeetProductLink}).ToList(),
+                Data = db.Reviews.Where(x => x.ProductId == Id).Select(x =>x).ToList(),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -75,6 +75,21 @@ namespace ReviewsCalculateSystem.Services
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
+
+        public JsonResult AdminReviewUpdateByChecking(List<Review> reviewList)
+        {
+            foreach (var review in reviewList)
+            {
+                var dbreview = db.Reviews.Find(review.ReviewId);
+                db.Entry(dbreview).CurrentValues.SetValues(review.ReviewStatus);
+                db.SaveChanges();
+            }
+            return new JsonResult
+            {
+                Data = "IsOk",
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
     }
 
     public class Custom
@@ -94,5 +109,6 @@ namespace ReviewsCalculateSystem.Services
         JsonResult SubmitProductReview(Review productReview);
         JsonResult GetReviewByProductId(int Id);
         JsonResult ReviewHistoryForEachProduct(int Id);
+        JsonResult AdminReviewUpdateByChecking(List<Review> reviewList);
     }
 }
