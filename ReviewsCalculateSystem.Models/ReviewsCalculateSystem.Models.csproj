@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201902070453214_UPDATE_ReviewerTaskAsign_MODEL.Designer.cs">
       <DependentUpon>201902070453214_UPDATE_ReviewerTaskAsign_MODEL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902100851260_UPDATE_REVIEWER_MODEL.cs" />
+    <Compile Include="Migrations\201902100851260_UPDATE_REVIEWER_MODEL.Designer.cs">
+      <DependentUpon>201902100851260_UPDATE_REVIEWER_MODEL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902070453214_UPDATE_ReviewerTaskAsign_MODEL.resx">
       <DependentUpon>201902070453214_UPDATE_ReviewerTaskAsign_MODEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902100851260_UPDATE_REVIEWER_MODEL.resx">
+      <DependentUpon>201902100851260_UPDATE_REVIEWER_MODEL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

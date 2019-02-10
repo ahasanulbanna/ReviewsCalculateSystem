@@ -17,9 +17,9 @@ namespace ReviewsCalculateSystem.Services
             db = new ReviewDbContext();
         }
 
-        public JsonResult getAllAsingTaskById(int Id)
+        public JsonResult getAllAsingTaskById(int reviewerId)
         {
-            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == Id).Select(x =>new {x.Product,x.NumberOfReviewCollect,x.ReviewCollectMargin }).ToList();
+            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId).Select(x =>new {x.Product,x.NumberOfReviewCollect,x.ReviewCollectMargin }).ToList();
             return new JsonResult
             {
                 Data = asignTask,
@@ -27,9 +27,9 @@ namespace ReviewsCalculateSystem.Services
             };
         }
 
-        public JsonResult getCurrentAsingTaskById(int Id)
+        public JsonResult getCurrentAsingTaskById(int reviewerId)
         {
-            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == Id && x.isComplete == false).Select(x => new { x.Product, x.NumberOfReviewCollect, x.ReviewCollectMargin }).ToList();
+            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId && x.isComplete == false).Select(x => new { x.Product, x.NumberOfReviewCollect, x.ReviewCollectMargin }).ToList();
             return new JsonResult
             {
                 Data = asignTask,
@@ -64,8 +64,8 @@ namespace ReviewsCalculateSystem.Services
     public interface ITaskAsignServices
     {
         JsonResult taskAsign(ReviewerTaskAsign reviewerTaskAsign);
-        JsonResult getAllAsingTaskById(int Id);
-        JsonResult getCurrentAsingTaskById(int Id);
+        JsonResult getAllAsingTaskById(int reviewerId);
+        JsonResult getCurrentAsingTaskById(int reviewerId);
         JsonResult reviewerReviewForEachProductById(int reviewerId, int productId);
 
     }

@@ -20,6 +20,10 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult CreateReviewer(Reviewer reviewer)
         {
+            /*
+             * Reviewer submit their personal information and waiting for admin confirmation to started journey as reviewer
+             */
+            
             db.Reviewers.Add(reviewer);
             db.SaveChanges();
             return new JsonResult
@@ -31,6 +35,9 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult GetAllReviewer()
         {
+            /*
+             * Reviewr list who are working on now
+             */
             return new JsonResult
             { Data = db.Reviewers.ToList(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
          

@@ -17,11 +17,14 @@ namespace ReviewsCalculateSystem.Services
             db = new ReviewDbContext();
         }
 
-        public JsonResult GetReviewByProductId(int Id)
+        public JsonResult GetReviewByProductId(int productId)
         {
+            /*
+             * Review list for specefic product             
+             */
             return new JsonResult
             {
-                Data = db.Reviews.Where(x => x.ProductId == Id).Select(x =>x).ToList(),
+                Data = db.Reviews.Where(x => x.ProductId == productId).Select(x =>x).ToList(),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -29,8 +32,8 @@ namespace ReviewsCalculateSystem.Services
         public JsonResult SubmitProductReview(Review productReview)
         {
             /*
-             * when submit the review,
-               update Products & ReviewerTaskAsigns table's property NumberOfReviewCollect
+             * When submit the review,
+               update NumberOfReviewCollect propety of Products & ReviewerTaskAsigns table's 
             */
             var getProduct = db.Products.Where(x => x.ProductId == productReview.ProductId).FirstOrDefault();
             var getCollectReview = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == productReview.ReviewerId && x.ProductId==productReview.ProductId).FirstOrDefault();
@@ -57,15 +60,20 @@ namespace ReviewsCalculateSystem.Services
            
         }
 
-        public JsonResult ReviewHistoryForEachProduct(int Id)
+        public JsonResult ReviewHistoryForEachProduct(int productId)
         {
-            var totalReview = db.Reviews.Where(x => x.ProductId == Id).Count();
-            var liveReview = db.Reviews.Where(x => x.ProductId == Id && x.ReviewStatus==true).Count();
-            var workingReviewer = db.ReviewerTaskAsigns.Where(x => x.ProductId == Id).Select(x=>x.Reviewer).ToList();
+            /*         
+             *Calculate total review collect for this product
+             *Calculate live review 
+             *Who are working this product?
+             */
+            var totalReview = db.Reviews.Where(x => x.ProductId == productId).Count();
+            var liveReview = db.Reviews.Where(x => x.ProductId == productId && x.ReviewStatus==true).Count();
+            var workingReviewer = db.ReviewerTaskAsigns.Where(x => x.ProductId == productId).Select(x=>x.Reviewer).ToList();
             List<Custom> workingReviewerReviewEachProduct = new List<Custom>();
             foreach (var review in workingReviewer)
             {
-                var eachProductReviewerReview = db.Reviews.Where(x => x.ProductId == Id && x.ReviewerId == review.ReviewerId).Count();
+                var eachProductReviewerReview = db.Reviews.Where(x => x.ProductId == productId && x.ReviewerId == review.ReviewerId).Count();
                 workingReviewerReviewEachProduct.Add(new Custom(review.Name,eachProductReviewerReview));
             }
 
@@ -78,6 +86,10 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult AdminReviewUpdateByChecking(List<Review> reviewList)
         {
+            /*
+             * Admin check review which are live on for specefic product
+             * Only update ReviewStatus property of Reviews table
+             */
             foreach (var review in reviewList)
             {
                 var dbreview = db.Reviews.Find(review.ReviewId);
@@ -94,6 +106,9 @@ namespace ReviewsCalculateSystem.Services
 
     public class Custom
     {
+        /*
+         * Use on ReviewHistoryForEachProduct for who are working which product and collect how much review
+         */
         public Custom(string name, int eachProductReviewerReview)
         {
             Name = name;
@@ -107,8 +122,8 @@ namespace ReviewsCalculateSystem.Services
     public interface IReviewServices
     {
         JsonResult SubmitProductReview(Review productReview);
-        JsonResult GetReviewByProductId(int Id);
-        JsonResult ReviewHistoryForEachProduct(int Id);
+        JsonResult GetReviewByProductId(int productId);
+        JsonResult ReviewHistoryForEachProduct(int productId);
         JsonResult AdminReviewUpdateByChecking(List<Review> reviewList);
     }
 }

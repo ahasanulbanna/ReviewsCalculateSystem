@@ -16,14 +16,14 @@ namespace ReviewsCalculateSystem.Services
             db = new ReviewDbContext();
         }
 
-        public JsonRequestBehavior Advance(int Id)
+        public JsonResult Advance(int reviewerId)
         {
             throw new NotImplementedException();
         }
 
-        public JsonResult unpaidReviewCalculateByReviewerId(int Id)
+        public JsonResult unpaidReviewCalculateByReviewerId(int reviewerId)
         {
-            var workingProduct = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == Id && x.isComplete==false).Select(x => x).ToList();
+            var workingProduct = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId && x.isComplete==false).Select(x => x).ToList();
             var total = 0.00;
             foreach (var product in workingProduct)
             {
@@ -54,9 +54,9 @@ namespace ReviewsCalculateSystem.Services
 
     public interface IPaymentServices
     {
-        JsonResult unpaidReviewCalculateByReviewerId(int Id);
+        JsonResult unpaidReviewCalculateByReviewerId(int reviewerId);
         JsonResult unpaidReviewForEachProductById(int reviewerId, int productId);
-        JsonRequestBehavior Advance(int Id);
+        JsonResult Advance(int reviewerId);
     }
 
 

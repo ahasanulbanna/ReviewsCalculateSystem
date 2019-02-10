@@ -156,6 +156,17 @@
                 }
             
             }, {
+                url: '/product-review-add/:reviewerId/:productId',
+                config: {
+                    templateUrl: 'app/views/reviewerAsignTask/productreviewadd.html',
+                    controller: 'productreviewaddController',
+                    controllerAs: 'vm',
+                    title: 'Review'
+                }
+            },
+
+            //-------------Product---------
+            {
                 url: '/products',
                 config: {
                     templateUrl: 'app/views/review/product.html',
@@ -171,7 +182,9 @@
                     //controllerAs: 'vm',
                     title: 'Review'
                 }
-            }, {
+            },
+            //-------------Review Asign Task---------
+            {
                 url: '/reviewer-asign-task',
                 config: {
                     templateUrl: 'app/views/reviewerAsignTask/reviewerasigntask.html',
@@ -179,16 +192,17 @@
                     controllerAs: 'vm',
                     title: 'Reviewer Asign Task'
                 }
-            }, {
-                url: '/product-review-add/:reviewerId/:productId',
+            },
+            //-------------Reviewer---------
+            {
+                url: '/reviewer-registration',
                 config: {
-                    templateUrl: 'app/views/reviewerAsignTask/productreviewadd.html',
-                    controller: 'productreviewaddController',
-                    controllerAs: 'vm',
-                    title: 'Review'
+                    templateUrl: 'app/views/reviewer/reviewer-registration-form.html',
+                    //controller: 'reviewerasigntaskController',
+                    //controllerAs: 'vm',
+                    title: 'Reviewer'
                 }
             }
-            
 
         ];
     }

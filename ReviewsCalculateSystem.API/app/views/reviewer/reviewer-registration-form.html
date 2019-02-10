@@ -1,0 +1,76 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <header class="page-header">
+                        <h2 class="warning page-header-item">Reviewer Registration Form</h2>
+                    </header>
+                    <form name="vm.invoiceForm">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="name" class="custom-label"> Name</label>
+                                    <input type="text" id="name" class="form-control custom-form-control" ng-model="vm.invoice.name" name="name" ng-maxlength="50" required />
+                                    <p ng-show="vm.invoiceForm.name.$error.required" class="help-block errormsg">Name Type is required</p>
+                                    <p ng-show="vm.invoiceForm.name.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email" class="custom-label">Email</label>
+                                    <input type="email" id="departmentCode" class="form-control custom-form-control"
+                                           ng-model="vm.invoice.email"
+                                           ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]*\.([a-z]{2,4})$/"
+                                           name="email"
+                                           ng-maxlength="50"
+                                           required />
+                                    <p ng-show="vm.invoiceForm.email.$error.required" class="help-block errormsg">Email is required</p>
+                                    <p ng-show="vm.invoiceForm.email.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
+                                    <p ng-show="vm.invoiceForm.email.$error.pattern" class="help-block errormsg">Wrong email address</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="invoiceNo" class="custom-label">Address</label>
+                                    <textarea rows="3" type="text" id="invoiceNo" class="form-control custom-form-control" ng-model="vm.invoice.invoiceNo" name="invoiceNo" ng-maxlength="16" required />
+                                    <p ng-show="vm.invoiceForm.invoiceNo.$error.required" class="help-block errormsg">Invoice No. is required</p>
+                                    <p ng-show="vm.invoiceForm.invoiceNo.$error.maxlength" class="help-block errormsg">Maximum Character 16</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="phone" class="custom-label">Phone</label>
+                                    <input type="text" id="phone" class="form-control custom-form-control" ng-model="vm.invoice.phone" name="phone" ng-maxlength="16" required />
+                                    <p ng-show="vm.invoiceForm.phone.$error.required" class="help-block errormsg">Phone  is required</p>
+                                    <p ng-show="vm.invoiceForm.phone.$error.maxlength" class="help-block errormsg">Maximum Character 16</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="phone" class="custom-label">If you have Amazon account, Please put the number how much you have(Optional)</label>
+                                    <input type="text" id="phone" class="form-control custom-form-control" ng-model="vm.invoice.phone" name="phone" ng-maxlength="16" required />
+                                    <p ng-show="vm.invoiceForm.phone.$error.required" class="help-block errormsg">Phone  is required</p>
+                                    <p ng-show="vm.invoiceForm.phone.$error.maxlength" class="help-block errormsg">Maximum Character 16</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.invoiceForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> Registrar</button>
+                            <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
