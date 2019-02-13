@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http.Controllers;
@@ -17,7 +15,7 @@ namespace ReviewsCalculateSystem.API
             }
             else
             {
-                actionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
+                actionContext.Response = new HttpResponseMessage(HttpStatusCode.Forbidden);
             }
             
         }

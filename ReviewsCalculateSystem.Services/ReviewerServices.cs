@@ -17,6 +17,27 @@ namespace ReviewsCalculateSystem.Services
             db = new ReviewDbContext();
         }
 
+        public JsonResult AcceptReviewerRequest(int Id)
+        {
+            var reviewer = db.Reviewers.Where(x => x.ReviewerId == Id).SingleOrDefault();
+            if (reviewer != null)
+            {
+                reviewer.AdminApprove = true;
+                db.Entry(reviewer).CurrentValues.SetValues(reviewer);
+                db.SaveChanges();
+                return new JsonResult
+                {
+                    Data = "IsOk",
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
+            }
+            return new JsonResult
+            {
+                Data = "NotOk",
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+
+        }
 
         public JsonResult CreateReviewer(Reviewer reviewer)
         {
@@ -43,10 +64,22 @@ namespace ReviewsCalculateSystem.Services
          
 
         }
+
+        public JsonResult GetAllReviewerRequest()
+        {
+            return new JsonResult
+            {
+                Data = db.Reviewers.Where(x=>x.AdminApprove==false).Select(x => x).ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
     }
     public interface IReviewerServices
     {
         JsonResult CreateReviewer(Reviewer reviewer);
+        JsonResult AcceptReviewerRequest(int Id);
+        JsonResult GetAllReviewerRequest();
         JsonResult GetAllReviewer();
+
     }
 }

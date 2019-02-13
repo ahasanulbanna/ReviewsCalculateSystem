@@ -1,0 +1,31 @@
+﻿<p>Reviewer Request Page</p>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4" ng-repeat="rr in vm.reviewerRequest">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        {{rr.Name}}
+                    </div>
+                    <div class="panel-body">
+                        <img src="../../../Images/Itolk-trans.png" />
+                        <h7>{{rr.Email}}</h7>
+                        <h7>{{rr.Address}}</h7>
+                        <h7>{{rr.Phone}}</h7>
+                        <h7 ng-if="rr.NumberOfAmazonAccount!=null">{{rr.NumberOfAmazonAccount}}</h7>
+                        <h7 ng-if="rr.NumberOfAmazonAccount===null">No Account</h7>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.requestApprove(rr.ReviewerId)"><span class="glyphicon glyphicon-floppy-disk"></span> Accept</button>
+                        <button type="button" class="btn btn-warning">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+       
+      
+  

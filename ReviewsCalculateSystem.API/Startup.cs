@@ -25,7 +25,7 @@ namespace ReviewsCalculateSystem.API
                 Provider = myProvider
             };
             app.UseOAuthAuthorizationServer(options);
-            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions());
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
         }
