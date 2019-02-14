@@ -216,6 +216,7 @@
     <Content Include="admin\app\services\requestCounterService.js" />
     <Content Include="admin\app\services\reviewerRequestService.js" />
     <Content Include="admin\app\services\studentService.js" />
+    <Content Include="admin\app\services\taskasignService.js" />
     <Content Include="admin\app\templates\confirmModal.html" />
     <Content Include="admin\app\templates\datepicker-template.html" />
     <Content Include="admin\app\templates\datepicker.html" />
@@ -246,6 +247,10 @@
     <Content Include="admin\app\views\student\studentAddController.js" />
     <Content Include="admin\app\views\student\students.html" />
     <Content Include="admin\app\views\student\studentsController.js" />
+    <Content Include="admin\app\views\taskasign\currentproduct.html" />
+    <Content Include="admin\app\views\taskasign\currentproductController.js" />
+    <Content Include="admin\app\views\taskasign\taskasign.html" />
+    <Content Include="admin\app\views\taskasign\taskasignController.js" />
     <Content Include="admin\Content\applicant\login.css" />
     <Content Include="admin\Content\applicant\responsive.css" />
     <Content Include="admin\Content\applicant\site.css" />

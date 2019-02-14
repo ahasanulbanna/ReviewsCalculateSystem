@@ -47,6 +47,25 @@ namespace ReviewsCalculateSystem.Services
             };
         }
 
+        public JsonResult reviewerDetailsInfoList()
+        {
+            var reviewer = db.Reviewers.Select(x => x).ToList();
+            List<ReviewerInfo> reviewerInfo = new List<ReviewerInfo>();
+            foreach (var r in reviewer)
+            {
+               
+                var workingBookCount = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).GroupBy(x => x.ProductId ).Count();
+                var totalReviewMargin =Convert.ToInt16(db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).Sum(x=>x.ReviewCollectMargin));
+                var totalReviewCollect =Convert.ToInt16(db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).Sum(x=>x.NumberOfReviewCollect));
+                reviewerInfo.Add(new ReviewerInfo ( r.Name, r.ReviewerId, workingBookCount,totalReviewCollect,totalReviewMargin ));
+            }
+            return new JsonResult
+            {
+                Data = reviewerInfo,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
         public JsonResult taskAsign(ReviewerTaskAsign reviewerTaskAsign)
         {
             db.ReviewerTaskAsigns.Add(reviewerTaskAsign);
@@ -67,6 +86,26 @@ namespace ReviewsCalculateSystem.Services
         JsonResult getAllAsingTaskById(int reviewerId);
         JsonResult getCurrentAsingTaskById(int reviewerId);
         JsonResult reviewerReviewForEachProductById(int reviewerId, int productId);
+        JsonResult reviewerDetailsInfoList();
+
+    }
+
+    public class ReviewerInfo
+    {      
+        public ReviewerInfo(string name, int reviewerId, int workingBookCount, int totalReviewCollect, int totalReviewMargin)
+        {
+            Name = name;
+            ReviewerId = reviewerId;
+            WorkingBookCount = workingBookCount;
+            TotalReviewCollect = totalReviewCollect;
+            TotalReviewMargin = totalReviewMargin;
+        }
+
+        public string Name { get; set; }
+        public int ReviewerId { get; set; }
+        public int? WorkingBookCount { get; set; }
+        public int? TotalReviewMargin { get; set; }
+        public int TotalReviewCollect { get; set; }
 
     }
 

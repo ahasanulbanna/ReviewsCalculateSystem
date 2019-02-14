@@ -5,7 +5,7 @@
     function reviewerRequestService(dataConstants, apiHttpService) {
         var service = {
             GetAllReviewerRequest: GetAllReviewerRequest,
-            getStudent: getStudent,
+            AcceptReviewerRequest: AcceptReviewerRequest,
             saveStudent: saveStudent,
             updateStudent: updateStudent,
             deleteStudent: deleteStudent
@@ -17,8 +17,8 @@
             return apiHttpService.GET(url);
         }
 
-        function getStudent(studentId) {
-            var url = dataConstants.STUDENT_URL + 'get-student?studentId=' + studentId;
+        function AcceptReviewerRequest(ReviewerId) {
+            var url = dataConstants.REVIEWER_URL + 'AcceptReviewerRequest/' + ReviewerId;
             return apiHttpService.GET(url);
         }
 

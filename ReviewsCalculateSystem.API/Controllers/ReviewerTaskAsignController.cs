@@ -45,5 +45,12 @@ namespace ReviewsCalculateSystem.API.Controllers
         {
             return Ok(services.reviewerReviewForEachProductById(reviewerId, productId).Data);
         }
+        [HttpGet]
+        [Route("reviewerDetailsInfoList")]
+        public IHttpActionResult reviewerDetailsInfoList()
+        {
+            return Ok(services.reviewerDetailsInfoList().Data);
+        }
+        
     }
 }

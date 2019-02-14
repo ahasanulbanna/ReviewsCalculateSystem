@@ -146,8 +146,26 @@
                     controllerAs: 'vm',
                     title: 'Reviewer Request'
                 }
+            },
+            //-------------Task Asign---------
+            {
+                url: '/task-asign',
+                config: {
+                    templateUrl: 'admin/app/views/taskasign/currentproduct.html',
+                    controller: 'currentproductController',
+                    controllerAs: 'vm',
+                    title: 'Task Asign'
+                }
+            },
+            {
+                url: '/task-asign/:ProductId',
+                config: {
+                    templateUrl: 'admin/app/views/taskasign/taskasign.html',
+                    controller: 'taskasignController',
+                    controllerAs: 'vm',
+                    title: 'Task Asign'
+                }
             }
-
         ];
     }
 

@@ -1,6 +1,4 @@
-﻿<p>Reviewer Request Page</p>
-
-
+﻿<h1>Reviewer Request</h1>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4" ng-repeat="rr in vm.reviewerRequest">
@@ -10,16 +8,31 @@
                         {{rr.Name}}
                     </div>
                     <div class="panel-body">
-                        <img src="../../../Images/Itolk-trans.png" />
-                        <h7>{{rr.Email}}</h7>
-                        <h7>{{rr.Address}}</h7>
-                        <h7>{{rr.Phone}}</h7>
-                        <h7 ng-if="rr.NumberOfAmazonAccount!=null">{{rr.NumberOfAmazonAccount}}</h7>
-                        <h7 ng-if="rr.NumberOfAmazonAccount===null">No Account</h7>
+                        <img src="../../../Images/Itolk-trans.png" class="img-circle img-responsive" alt="Reviewer" style="display: block; margin-left: auto; margin-right:auto; width: 50%;"/>                     
+                        <br />
+                        <table class="table no-border table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Account</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{rr.Email}}</td>
+                                    <td>{{rr.Address}}</td>
+                                    <td>{{rr.Phone}}</td>
+                                    <td ng-if="rr.NumberOfAmazonAccount!=null">{{rr.NumberOfAmazonAccount}}</td>
+                                    <td ng-if="rr.NumberOfAmazonAccount===null">Null</td>
+                                </tr>
+                            </tbody>
+                        </table>                    
                     </div>
                     <div class="panel-footer">
-                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.requestApprove(rr.ReviewerId)"><span class="glyphicon glyphicon-floppy-disk"></span> Accept</button>
-                        <button type="button" class="btn btn-warning">Cancel</button>
+                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.requestApprove(rr.ReviewerId)"><span class="glyphicon glyphicon-ok"></span> Accept</button>
+                        <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
                     </div>
                 </div>
             </div>

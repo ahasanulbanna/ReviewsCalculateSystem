@@ -33,10 +33,10 @@ namespace ReviewsCalculateSystem.API.Controllers
         }
 
         [HttpGet]
-        [Route("GetProductById/{Id}")]
-        public IHttpActionResult GetProductById(int Id)
+        [Route("GetProductById/{ProductId}")]
+        public IHttpActionResult GetProductById(int ProductId)
         {
-            return Ok(services.GetProductById(Id).Data);
+            return Ok(services.GetProductById(ProductId).Data);
         }
     }
 }

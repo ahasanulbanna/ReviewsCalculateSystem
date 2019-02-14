@@ -2,16 +2,18 @@
 
     'use strict';
 
-    var controllerId = 'reviewerrequestController';
-    angular.module('app').controller(controllerId, reviewerrequestController);
-    reviewerrequestController.$inject = ['$routeParams', 'reviewerRequestService', 'notificationService', '$location'];
+    var controllerId = 'taskasignController';
+    angular.module('app').controller(controllerId, taskasignController);
+    taskasignController.$inject = ['$routeParams', 'taskasignService', 'notificationService', '$location'];
 
-    function reviewerrequestController($routeParams, reviewerRequestService, notificationService, location) {
+    function taskasignController(routeParams, taskasignService, notificationService, location) {
 
         /* jshint validthis:true */
         var vm = this;
-        vm.reviewerRequest = [];
-        vm.requestApprove = requestApprove;
+        vm.ProductId = 0;
+        vm.productDetails = {};
+        vm.reviewerList = [];
+        vm.taskAsign = taskAsign;
         vm.updateInvoice = updateInvoice;
         vm.deleteInvoice = deleteInvoice;
         vm.invoiceView = invoiceView;
@@ -21,6 +23,7 @@
         vm.onSearch = onSearch;
         vm.pageNumber = 1;
         vm.total = 0;
+        
 
         if (location.search().ps !== undefined && location.search().ps !== null && location.search().ps !== '') {
             vm.pageSize = location.search().ps;
@@ -32,20 +35,32 @@
         if (location.search().q !== undefined && location.search().q !== null && location.search().q !== '') {
             vm.searchText = location.search().q;
         }
+
+
+        if (routeParams.ProductId !== undefined && routeParams.ProductId !== '') {
+            vm.ProductId = routeParams.ProductId;
+        }
+
         init();
         function init() {
-            reviewerRequestService.GetAllReviewerRequest().then(function (data) {
-                vm.reviewerRequest = data;              
+            taskasignService.reviewerDetailsInfoList().then(function (data) {
+                vm.reviewerList = data;
+            },
+                function (errorMessage) {
+                    notificationService.displayError(errorMessage.message);
+                });
+
+            taskasignService.GetProductById(vm.ProductId).then(function (data) {
+                vm.productDetails = data;
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
         }
 
-        function requestApprove(ReviewerId) {
-            reviewerRequestService.AcceptReviewerRequest(ReviewerId).then(function (data) {
-                init();
-            });
+        function taskAsign(cp) {
+            var url = location.url('/task-asign/' + cp.ProductId);
+            location.path(url.$$url);
         }
 
         function updateInvoice(invoice) {

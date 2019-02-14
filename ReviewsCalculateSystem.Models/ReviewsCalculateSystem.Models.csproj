@@ -76,6 +76,14 @@
     <Compile Include="Migrations\201902130833224_UPDATE_REVIEWER_MODEL1.Designer.cs">
       <DependentUpon>201902130833224_UPDATE_REVIEWER_MODEL1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902140836176_UPDATE_REVIEWER_MODEL2.cs" />
+    <Compile Include="Migrations\201902140836176_UPDATE_REVIEWER_MODEL2.Designer.cs">
+      <DependentUpon>201902140836176_UPDATE_REVIEWER_MODEL2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902140909424_UPDATE_REVIEWER_MODEL11.cs" />
+    <Compile Include="Migrations\201902140909424_UPDATE_REVIEWER_MODEL11.Designer.cs">
+      <DependentUpon>201902140909424_UPDATE_REVIEWER_MODEL11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -111,6 +119,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902130833224_UPDATE_REVIEWER_MODEL1.resx">
       <DependentUpon>201902130833224_UPDATE_REVIEWER_MODEL1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902140836176_UPDATE_REVIEWER_MODEL2.resx">
+      <DependentUpon>201902140836176_UPDATE_REVIEWER_MODEL2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902140909424_UPDATE_REVIEWER_MODEL11.resx">
+      <DependentUpon>201902140909424_UPDATE_REVIEWER_MODEL11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

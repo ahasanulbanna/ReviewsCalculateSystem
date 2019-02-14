@@ -2,16 +2,16 @@
 
     'use strict';
 
-    var controllerId = 'reviewerrequestController';
-    angular.module('app').controller(controllerId, reviewerrequestController);
-    reviewerrequestController.$inject = ['$routeParams', 'reviewerRequestService', 'notificationService', '$location'];
+    var controllerId = 'currentproductController';
+    angular.module('app').controller(controllerId, currentproductController);
+    currentproductController.$inject = ['$routeParams', 'taskasignService', 'notificationService', '$location'];
 
-    function reviewerrequestController($routeParams, reviewerRequestService, notificationService, location) {
+    function currentproductController($routeParams, taskasignService, notificationService, location) {
 
         /* jshint validthis:true */
         var vm = this;
-        vm.reviewerRequest = [];
-        vm.requestApprove = requestApprove;
+        vm.currentProductList = [];
+        vm.taskAsign = taskAsign;
         vm.updateInvoice = updateInvoice;
         vm.deleteInvoice = deleteInvoice;
         vm.invoiceView = invoiceView;
@@ -34,18 +34,17 @@
         }
         init();
         function init() {
-            reviewerRequestService.GetAllReviewerRequest().then(function (data) {
-                vm.reviewerRequest = data;              
+            taskasignService.GetAllCurrentProductList().then(function (data) {
+                vm.currentProductList = data;
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
         }
 
-        function requestApprove(ReviewerId) {
-            reviewerRequestService.AcceptReviewerRequest(ReviewerId).then(function (data) {
-                init();
-            });
+        function taskAsign(cp) {
+            var url = location.url('/task-asign/' + cp.ProductId);
+            location.path(url.$$url);
         }
 
         function updateInvoice(invoice) {
