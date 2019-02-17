@@ -4,7 +4,7 @@
 
     function taskasignService(dataConstants, apiHttpService) {
         var service = {
-            GetAllCurrProductList: GetAllCurrentProductList,
+            GetAllCurrentProductList: GetAllCurrentProductList,
             reviewerDetailsInfoList: reviewerDetailsInfoList,
             GetProductById: GetProductById,
             updateStudent: updateStudent,
@@ -17,8 +17,8 @@
             return apiHttpService.GET(url);
         }
 
-        function reviewerDetailsInfoList() {
-            var url = dataConstants.REVIEWERTASKASIGN_URL + 'reviewerDetailsInfoList';
+        function reviewerDetailsInfoList(pageSize, pageNumber, searchText) {
+            var url = dataConstants.REVIEWERTASKASIGN_URL + 'reviewerDetailsInfoList?pageSize=' + pageSize + "&pageNumber=" + pageNumber + "&searchText=" + searchText;
             return apiHttpService.GET(url);
         }
 

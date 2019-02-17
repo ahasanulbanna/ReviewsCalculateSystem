@@ -53,7 +53,7 @@ namespace ReviewsCalculateSystem.Services
         {
             return new JsonResult
             {
-                Data = db.Reviews.Where(x => x.ProductId == Id).Select(x => x).FirstOrDefault(),
+                Data = db.Products.Where(x => x.ProductId == Id).Select(x => x).FirstOrDefault(),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
 
             };

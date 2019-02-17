@@ -1,110 +1,124 @@
 ﻿
 
-<pre>{{vm.reviewerList | json}}</pre>
-<pre>{{vm.productDetails| json}}</pre>
+
 
 <div class="container-fluid">
-    <div class="row ">
+    <div class="row">
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-body">
-                    <div class="page-header">
-                        <button class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addInvoices()"><span class="glyphicon glyphicon-user"></span> Add Product</button>
-                        <div ng-include="'app/templates/search.html'"></div>
-                        <h2 class="warning page-header-item">Product </h2>
-                    </div>
-                    <div class="table-wrapper table-responsive">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>SL NO</th>
-                                    <th>Book Name</th>
-                                    <th>Product ASIN</th>
-                                    <th>Product Link</th>
-                                    <th>Review Need</th>
-                                    <th>Review Collect</th>
-                                    <th>Current Status</th>
-                                    <th class="text-right">Edit</th>
-                                    <th class="text-right">Details</th>
-                                    <th class="text-right">Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Keto Meal Prep</td>
-                                    <td>AS785EW7F</td>
-                                    <td><a href="https://www.amazon.com/Python-Programming-Beginners-Step-Step/dp/1987518977/ref=sr_1_1_sspa?s=digital-text&ie=UTF8&qid=1548844970&sr=1-1-spons&keywords=python&psc=1" target="_blank">Book Link</a></td>
-                                    <td>120</td>
-                                    <td>50</td>
-                                    <td>Active</td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateInvoice(invoice)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
-                                    </td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.invoiceView(invoice)"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" title="Details"></span></a>
-                                    </td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteDepartment(department)"
-                                           ng-confirmation-message="Do you want to delete Department"
-                                           ng-confirmation-title="Delete Department"
-                                           ng-confirmation-yes-text="Yes"
-                                           ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>ASP.NET: Programming Success in a Day</td>
-                                    <td>YER78W7F</td>
-                                    <td><a href="https://www.amazon.com/Python-Programming-Beginners-Step-Step/dp/1987518977/ref=sr_1_1_sspa?s=digital-text&ie=UTF8&qid=1548844970&sr=1-1-spons&keywords=python&psc=1" target="_blank">Book Link</a></td>
-                                    <td>220</td>
-                                    <td>80</td>
-                                    <td>Active</td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateInvoice(invoice)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
-                                    </td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.invoiceView(invoice)"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" title="Details"></span></a>
-                                    </td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteDepartment(department)"
-                                           ng-confirmation-message="Do you want to delete Department"
-                                           ng-confirmation-title="Delete Department"
-                                           ng-confirmation-yes-text="Yes"
-                                           ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Mastering Python Networking</td>
-                                    <td>AS78EKL14</td>
-                                    <td><a href="https://www.amazon.com/Python-Programming-Beginners-Step-Step/dp/1987518977/ref=sr_1_1_sspa?s=digital-text&ie=UTF8&qid=1548844970&sr=1-1-spons&keywords=python&psc=1" target="_blank">Book Link</a></td>
-                                    <td>20</td>
-                                    <td>10</td>
-                                    <td>Active</td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.updateInvoice(invoice)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Edit"></span></a>
-                                    </td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.invoiceView(invoice)"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" title="Details"></span></a>
-                                    </td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteDepartment(department)"
-                                           ng-confirmation-message="Do you want to delete Department"
-                                           ng-confirmation-title="Delete Department"
-                                           ng-confirmation-yes-text="Yes"
-                                           ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="text-left" ng-if="vm.invoices.length > 0">
-                            <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    <header class="page-header">
+                        <!--<h2 class="warning page-header-item">{{vm.title}}</h2>-->
+                        <h2 class="warning page-header-item">Task Distribution</h2>
+                    </header>
+                    <form name="vm.invoiceForm">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="well inline-headers">
+                                    <h2>Book Name</h2>
+                                    <label class="label label-primary">{{vm.productDetails.ProductName}}</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="well inline-headers">
+                                    <h2>Book ASIN</h2>
+                                    <label class="label label-primary">{{vm.productDetails.ProductAsin}}</label>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="well inline-headers">
+                                    <h2>Book Link</h2>
+                                    <a href="{{vm.productDetails.ProductLink}}" target="_blank">Link</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="well inline-headers">
+                                            <h2>Review Collect</h2>
+                                            <label class="label label-success" ng-if="vm.productDetails.NumberOfReviewCollect!=null">{{vm.productDetails.NumberOfReviewCollect}}</label>
+                                            <label class="label label-success" ng-if="vm.productDetails.NumberOfReviewCollect==null">0</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="well inline-headers">
+                                            <h2>Review Needed</h2>
+                                            <label class="label label-success">{{vm.productDetails.NumberOfReviewNeed}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>                  
+
+                    <div class="container">
+                        <div class="page-header">
+                            <h1>Active Reviewer List</h1>
+                        </div>
+                        <div>
+                            <div class="row" ng-repeat="reviewer in vm.reviewerList">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="selectedFruits[]" value="{{reviewer}}" ng-checked="vm.selectedReviewer.indexOf(reviewer) > -1" ng-click="vm.reviewerSelect(reviewer)">
+                                            {{reviewer.Name}}
+                                        </label>
+                                        <label class="label label-success">Working Book: <span style="font-weight: bolder;">{{reviewer.WorkingBookCount}}</span>, Review Margin: <span style="font-weight: bolder;">{{reviewer.TotalReviewMargin}}</span>, Review Collect: <span style="font-weight: bolder;">{{reviewer.TotalReviewCollect}}</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="checkbox-inline">
+                                            <input type="number" name="TotalReviewMargin" ng-model="reviewer.ReviewCollectMargin" placeholder="Review Collect" required>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="checkbox-inline">
+                                            <input type="number" name="TotalReviewMargin" ng-model="reviewer.PerReviewCost" placeholder="Review Price" required>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-left" ng-if="vm.reviewerList.length > 0">
+                                <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                            </div>
+                            <div class="row" ng-if="vm.selectedReviewer.length> 0">
+                                <div class="col-md-10">
+                                    <h4>Selected Reviewer</h4>
+                                    <pre>{{vm.selectedReviewer|json}}</pre>
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>SL NO</th>
+                                                <th>Book Name</th>
+                                                <th>Review Collect Margin</th>
+                                                <th>Per Review Pay</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="sr in  vm.selectedReviewer">
+                                                <td>{{$index+1}}</td>
+                                                <td>{{sr.Name}}</td>
+                                                <td>{{sr.ReviewCollectMargin}}</td>
+                                                <td>{{sr.PerReviewCost}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" class="btn custom-btn btn-info" style="float:right;" ng-click="vm.addNewReview()" ng-disabled="vm.itemForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Task Asign</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
                     </div>
-                </div>
+                </div>                  
             </div>
         </div>
     </div>
 </div>
-

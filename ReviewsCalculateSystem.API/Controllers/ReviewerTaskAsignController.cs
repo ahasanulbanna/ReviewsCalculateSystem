@@ -47,9 +47,9 @@ namespace ReviewsCalculateSystem.API.Controllers
         }
         [HttpGet]
         [Route("reviewerDetailsInfoList")]
-        public IHttpActionResult reviewerDetailsInfoList()
+        public IHttpActionResult reviewerDetailsInfoList(int pageSize, int pageNumber, string searchText)
         {
-            return Ok(services.reviewerDetailsInfoList().Data);
+            return Ok(services.reviewerDetailsInfoList(pageSize,pageNumber,searchText).Data);
         }
         
     }

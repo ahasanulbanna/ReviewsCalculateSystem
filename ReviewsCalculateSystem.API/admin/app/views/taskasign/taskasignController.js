@@ -4,22 +4,24 @@
 
     var controllerId = 'taskasignController';
     angular.module('app').controller(controllerId, taskasignController);
-    taskasignController.$inject = ['$routeParams', 'taskasignService', 'notificationService', '$location'];
+    taskasignController.$inject = ['$routeParams', 'taskasignService', 'notificationService', '$location','$scope'];
 
-    function taskasignController(routeParams, taskasignService, notificationService, location) {
+    function taskasignController(routeParams, taskasignService, notificationService, location, $scope) {
 
         /* jshint validthis:true */
         var vm = this;
         vm.ProductId = 0;
         vm.productDetails = {};
         vm.reviewerList = [];
+        vm.selectedReviewer = [];
+        vm.reviewerSelect = reviewerSelect;
         vm.taskAsign = taskAsign;
         vm.updateInvoice = updateInvoice;
         vm.deleteInvoice = deleteInvoice;
         vm.invoiceView = invoiceView;
         vm.pageChanged = pageChanged;
         vm.searchText = "";
-        vm.pageSize = 10;
+        vm.pageSize = 5;
         vm.onSearch = onSearch;
         vm.pageNumber = 1;
         vm.total = 0;
@@ -43,8 +45,9 @@
 
         init();
         function init() {
-            taskasignService.reviewerDetailsInfoList().then(function (data) {
-                vm.reviewerList = data;
+            taskasignService.reviewerDetailsInfoList(vm.pageSize, vm.pageNumber, vm.searchText).then(function (data) {
+                vm.reviewerList = data.Result;
+                vm.total = data.Total
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
@@ -56,7 +59,38 @@
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
-        }
+        };
+
+        vm.selectedReviewer = [];
+        // selected on a given reviewer by name
+        function reviewerSelect(reviewer) {
+            var idx = vm.selectedReviewer.indexOf(reviewer);
+            // is currently selected
+            if (idx > -1) {
+                vm.selectedReviewer.splice(idx, 1);
+            }
+            // is newly selected
+            else {
+                var tempObj = JSON.parse(JSON.stringify(reviewer));
+                delete tempObj.TotalReviewMargin;
+                delete tempObj.WorkingBookCount;
+                delete tempObj.TotalReviewCollect;               
+                this.selectedReviewer.push(tempObj);
+                vm.selectedReviewer.push(tempObj);
+            }
+         }
+
+
+
+
+
+
+
+
+
+
+
+
 
         function taskAsign(cp) {
             var url = location.url('/task-asign/' + cp.ProductId);
@@ -78,7 +112,7 @@
         }
 
         function pageChanged() {
-            var url = location.url('/invoices');
+            var url = location.url('/task-asign/' + vm.ProductId);
             location.path(url.$$url).search('pn', vm.pageNumber).search('ps', vm.pageSize).search('q', vm.searchText);
         }
 

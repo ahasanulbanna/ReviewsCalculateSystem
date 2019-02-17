@@ -47,9 +47,9 @@ namespace ReviewsCalculateSystem.Services
             };
         }
 
-        public JsonResult reviewerDetailsInfoList()
+        public JsonResult reviewerDetailsInfoList(int pageSize, int pageNumber, string searchText)
         {
-            var reviewer = db.Reviewers.Select(x => x).ToList();
+            var reviewer = db.Reviewers.Where(x=>x.AdminApprove==true).Select(x => x).ToList();
             List<ReviewerInfo> reviewerInfo = new List<ReviewerInfo>();
             foreach (var r in reviewer)
             {
@@ -57,11 +57,13 @@ namespace ReviewsCalculateSystem.Services
                 var workingBookCount = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).GroupBy(x => x.ProductId ).Count();
                 var totalReviewMargin =Convert.ToInt16(db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).Sum(x=>x.ReviewCollectMargin));
                 var totalReviewCollect =Convert.ToInt16(db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).Sum(x=>x.NumberOfReviewCollect));
-                reviewerInfo.Add(new ReviewerInfo ( r.Name, r.ReviewerId, workingBookCount,totalReviewCollect,totalReviewMargin ));
+                reviewerInfo.Add(new ReviewerInfo ( r.Name, r.ReviewerId, workingBookCount,totalReviewCollect,totalReviewMargin ));               
             }
             return new JsonResult
             {
-                Data = reviewerInfo,
+                Data =new {
+                    Result = reviewerInfo.OrderBy(x => x.WorkingBookCount).Skip((pageNumber - 1) * pageSize).Take(pageSize),
+                    Total= reviewerInfo.Count()},
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -86,7 +88,7 @@ namespace ReviewsCalculateSystem.Services
         JsonResult getAllAsingTaskById(int reviewerId);
         JsonResult getCurrentAsingTaskById(int reviewerId);
         JsonResult reviewerReviewForEachProductById(int reviewerId, int productId);
-        JsonResult reviewerDetailsInfoList();
+        JsonResult reviewerDetailsInfoList(int pageSize, int pageNumber, string searchText);
 
     }
 
