@@ -72,10 +72,10 @@
             // is newly selected
             else {
                 var tempObj = JSON.parse(JSON.stringify(reviewer));
-                delete tempObj.TotalReviewMargin;
-                delete tempObj.WorkingBookCount;
-                delete tempObj.TotalReviewCollect;               
-                this.selectedReviewer.push(tempObj);
+                //delete tempObj.TotalReviewMargin;
+                //delete tempObj.WorkingBookCount;
+                //delete tempObj.TotalReviewCollect;               
+                //this.selectedReviewer.push(tempObj);
                 vm.selectedReviewer.push(tempObj);
             }
          }
