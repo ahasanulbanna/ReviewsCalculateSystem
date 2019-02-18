@@ -49,11 +49,15 @@ namespace ReviewsCalculateSystem.Services
             };
         }
 
-        public JsonResult GetProductById(int Id)
+        public JsonResult GetProductById(int productId)
         {
+            var asigningTaskInfo = db.ReviewerTaskAsigns.Where(x => x.ProductId == productId).Select(x =>new { x.Reviewer.Name,x.ReviewCollectMargin,x.NumberOfReviewCollect,x.PerReviewCost } ).ToList();
             return new JsonResult
             {
-                Data = db.Products.Where(x => x.ProductId == Id).Select(x => x).FirstOrDefault(),
+                Data =new {
+                    ProductInfo = db.Products.Where(x => x.ProductId == productId).Select(x => x).FirstOrDefault() ,
+                    asigningTaskInfo
+                },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
 
             };
@@ -64,7 +68,7 @@ namespace ReviewsCalculateSystem.Services
         JsonResult AddProduct(Product product);
         JsonResult GetAllProductList();
         JsonResult GetAllCurrentProductList();
-        JsonResult GetProductById(int Id);
+        JsonResult GetProductById(int productId);
      
     }
 }

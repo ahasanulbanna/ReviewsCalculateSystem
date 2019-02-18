@@ -20,7 +20,7 @@ namespace ReviewsCalculateSystem.API.Controllers
 
         [HttpPost]
         [Route("taskAsign")]
-        public IHttpActionResult staskAsignd(ReviewerTaskAsign model)
+        public IHttpActionResult taskAsignd(List<ReviewerTaskAsign> model)
         {
             return Ok(services.taskAsign(model).Data);
         }

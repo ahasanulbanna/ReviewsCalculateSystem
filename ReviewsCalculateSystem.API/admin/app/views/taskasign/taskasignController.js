@@ -10,8 +10,10 @@
 
         /* jshint validthis:true */
         var vm = this;
+        vm.AdminId = 3;
         vm.ProductId = 0;
         vm.productDetails = {};
+        vm.currentReviewerInfo = [];
         vm.reviewerList = [];
         vm.selectedReviewer = [];
         vm.reviewerSelect = reviewerSelect;
@@ -23,6 +25,7 @@
         vm.searchText = "";
         vm.pageSize = 5;
         vm.onSearch = onSearch;
+        vm.close = close;
         vm.pageNumber = 1;
         vm.total = 0;
         
@@ -53,8 +56,10 @@
                     notificationService.displayError(errorMessage.message);
                 });
 
+
             taskasignService.GetProductById(vm.ProductId).then(function (data) {
-                vm.productDetails = data;
+                vm.productDetails = data.ProductInfo;
+                vm.currentReviewerInfo = data.asigningTaskInfo;
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
@@ -64,6 +69,8 @@
         vm.selectedReviewer = [];
         // selected on a given reviewer by name
         function reviewerSelect(reviewer) {
+            reviewer.AdminId = vm.AdminId;
+            reviewer.ProductId = vm.ProductId
             var idx = vm.selectedReviewer.indexOf(reviewer);
             // is currently selected
             if (idx > -1) {
@@ -71,12 +78,12 @@
             }
             // is newly selected
             else {
-                var tempObj = JSON.parse(JSON.stringify(reviewer));
-                //delete tempObj.TotalReviewMargin;
-                //delete tempObj.WorkingBookCount;
-                //delete tempObj.TotalReviewCollect;               
-                //this.selectedReviewer.push(tempObj);
-                vm.selectedReviewer.push(tempObj);
+                //var tempObj = JSON.parse(JSON.stringify(reviewer));
+                delete reviewer.TotalReviewMargin;
+                delete reviewer.WorkingBookCount;
+                delete reviewer.TotalReviewCollect;               
+                this.selectedReviewer.push(reviewer);
+                //vm.selectedReviewer.push(tempObj);
             }
          }
 
@@ -92,9 +99,10 @@
 
 
 
-        function taskAsign(cp) {
-            var url = location.url('/task-asign/' + cp.ProductId);
-            location.path(url.$$url);
+        function taskAsign() {
+            taskasignService.taskAsign(vm.selectedReviewer).then(function (data) {
+                close();
+            });
         }
 
         function updateInvoice(invoice) {
@@ -106,9 +114,14 @@
             location.path(url.$$url);
         }
         function deleteInvoice(invoice) {
-            invoiceService.deleteInvoice(invoice.invoiceId).then(function (data) {
+            invoiceService.taskAsign(invoice.invoiceId).then(function (data) {
                 init();
             });
+        }
+
+        function close() {
+            var url = "/task-asign";
+            location.path(url);
         }
 
         function pageChanged() {

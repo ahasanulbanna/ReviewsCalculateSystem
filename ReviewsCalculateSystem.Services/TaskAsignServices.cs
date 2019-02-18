@@ -68,9 +68,27 @@ namespace ReviewsCalculateSystem.Services
             };
         }
 
-        public JsonResult taskAsign(ReviewerTaskAsign reviewerTaskAsign)
+        public JsonResult taskAsign(List<ReviewerTaskAsign> reviewerTaskAsign)
         {
-            db.ReviewerTaskAsigns.Add(reviewerTaskAsign);
+            foreach (var reviewer in reviewerTaskAsign)
+            {
+                var currentReviewer = db.ReviewerTaskAsigns.Where(x => x.ProductId == reviewer.ProductId && x.ReviewerId == reviewer.ReviewerId).Select(x => x).FirstOrDefault();
+                if (currentReviewer != null)
+                {
+                    currentReviewer.ReviewCollectMargin = currentReviewer.ReviewCollectMargin + reviewer.ReviewCollectMargin;
+                    db.Entry(currentReviewer).CurrentValues.SetValues(currentReviewer);
+                    /*List Update Ex.
+                     reviewerTaskAsign.First(x => x.ReviewerId == currentReviewer.ReviewerId).ReviewCollectMargin = currentReviewer.ReviewCollectMargin + reviewer.ReviewCollectMargin;
+                    */
+                    reviewerTaskAsign.Remove(reviewer);
+                }              
+                
+            }
+            if (reviewerTaskAsign.Count > 0)
+            {
+                db.ReviewerTaskAsigns.AddRange(reviewerTaskAsign);
+            }
+           
             db.SaveChanges();
             return new JsonResult
             {
@@ -84,7 +102,7 @@ namespace ReviewsCalculateSystem.Services
     }
     public interface ITaskAsignServices
     {
-        JsonResult taskAsign(ReviewerTaskAsign reviewerTaskAsign);
+        JsonResult taskAsign(List<ReviewerTaskAsign> reviewerTaskAsign);
         JsonResult getAllAsingTaskById(int reviewerId);
         JsonResult getCurrentAsingTaskById(int reviewerId);
         JsonResult reviewerReviewForEachProductById(int reviewerId, int productId);

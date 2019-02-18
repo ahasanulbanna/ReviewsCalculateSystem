@@ -1,5 +1,16 @@
 ﻿
-
+<style>
+    .ab {
+        width: 100%;
+        padding: 4px 9px;
+        margin: 1px 0;
+        box-sizing: border-box;
+        border: 3px solid #ccc;
+        -webkit-transition: 0.5s;
+        /* transition: 0.5s; */
+        outline: none;
+    }
+</style>
 
 
 <div class="container-fluid">
@@ -13,24 +24,21 @@
                     </header>
                     <form name="vm.invoiceForm">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-2 col-md-2 col-lg-2">
                                 <div class="well inline-headers">
-                                    <h2>Book Name</h2>
+                                    <h2>Name</h2>
                                     <label class="label label-primary">{{vm.productDetails.ProductName}}</label>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2 col-md-2 col-lg-2">
                                 <div class="well inline-headers">
-                                    <h2>Book ASIN</h2>
+                                    <h2>ASIN</h2>
                                     <label class="label label-primary">{{vm.productDetails.ProductAsin}}</label>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-2 col-md-2 col-lg-2">
                                 <div class="well inline-headers">
-                                    <h2>Book Link</h2>
+                                    <h2>Link</h2>
                                     <a href="{{vm.productDetails.ProductLink}}" target="_blank">Link</a>
                                 </div>
                             </div>
@@ -50,13 +58,23 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="well inline-headers">
+                                    <h2>Current Worker</h2>
+                                    <pre>{{vm.currentReviewerInfo | json}}</pre>
+                                </div>
+                            </div>
+                            
                         </div>
                     </form>                  
 
                     <div class="container">
                         <div class="page-header">
+
                             <h1>Active Reviewer List</h1>
                         </div>
                         <div>
@@ -64,7 +82,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="selectedFruits[]" value="{{reviewer}}" ng-checked="vm.selectedReviewer.indexOf(reviewer) > -1" ng-click="vm.reviewerSelect(reviewer)">
+                                            <input type="checkbox" name="selectedFruits[]" value="{{reviewer}}" ng-disabled="!reviewer.ReviewCollectMargin || !reviewer.PerReviewCost" ng-checked="vm.selectedReviewer.indexOf(reviewer) > -1" ng-click="vm.reviewerSelect(reviewer)">
                                             {{reviewer.Name}}
                                         </label>
                                         <label class="label label-success">Working Book: <span style="font-weight: bolder;">{{reviewer.WorkingBookCount}}</span>, Review Margin: <span style="font-weight: bolder;">{{reviewer.TotalReviewMargin}}</span>, Review Collect: <span style="font-weight: bolder;">{{reviewer.TotalReviewCollect}}</span></label>
@@ -73,14 +91,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="checkbox-inline">
-                                            <input type="number" name="TotalReviewMargin" ng-model="reviewer.ReviewCollectMargin" placeholder="Review Collect" required>
+                                            <input type="number" class="ab" name="TotalReviewMargin" ng-model="reviewer.ReviewCollectMargin" placeholder="Review Collect" required>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="checkbox-inline">
-                                            <input type="number" name="TotalReviewMargin" ng-model="reviewer.PerReviewCost" placeholder="Review Price" required>
+                                            <input type="number" class="ab" name="PerReviewCost" ng-model="reviewer.PerReviewCost" placeholder="Review Price(৳)" required>
                                         </label>
                                     </div>
                                 </div>
@@ -98,7 +116,7 @@
                                                 <th>SL NO</th>
                                                 <th>Book Name</th>
                                                 <th>Review Collect Margin</th>
-                                                <th>Per Review Pay</th>
+                                                <th>Per Review Pay(৳)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -106,11 +124,11 @@
                                                 <td>{{$index+1}}</td>
                                                 <td>{{sr.Name}}</td>
                                                 <td>{{sr.ReviewCollectMargin}}</td>
-                                                <td>{{sr.PerReviewCost}}</td>
+                                                <td>৳ {{sr.PerReviewCost}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <button type="button" class="btn custom-btn btn-info" style="float:right;" ng-click="vm.addNewReview()" ng-disabled="vm.itemForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Task Asign</button>
+                                    <button type="button" class="btn custom-btn btn-info" style="float:right;" ng-click="vm.taskAsign()" ng-disabled="vm.itemForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Task Asign</button>
                                 </div>
                             </div>
 

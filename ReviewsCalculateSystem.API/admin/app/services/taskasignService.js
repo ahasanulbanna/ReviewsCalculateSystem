@@ -7,7 +7,7 @@
             GetAllCurrentProductList: GetAllCurrentProductList,
             reviewerDetailsInfoList: reviewerDetailsInfoList,
             GetProductById: GetProductById,
-            updateStudent: updateStudent,
+            taskAsign: taskAsign,
             deleteStudent: deleteStudent
         };
 
@@ -27,9 +27,9 @@
             return apiHttpService.GET(url);
         }
 
-        function updateStudent(studentId, data) {
-            var url = dataConstants.STUDENT_URL + 'update-student/' + studentId;
-            return apiHttpService.PUT(url, data);
+        function taskAsign(data) {
+            var url = dataConstants.REVIEWERTASKASIGN_URL + 'taskAsign';
+            return apiHttpService.POST(url, data);
         }
 
         function deleteStudent(studentId) {
