@@ -213,6 +213,7 @@
     <Content Include="admin\app\services\departmentService.js" />
     <Content Include="admin\app\services\invoiceService.js" />
     <Content Include="admin\app\services\notificationService.js" />
+    <Content Include="admin\app\services\productService.js" />
     <Content Include="admin\app\services\requestCounterService.js" />
     <Content Include="admin\app\services\reviewerRequestService.js" />
     <Content Include="admin\app\services\studentService.js" />
@@ -241,6 +242,10 @@
     <Content Include="admin\app\views\invoice\invoices.html" />
     <Content Include="admin\app\views\invoice\invoicesController.js" />
     <Content Include="admin\app\views\invoice\invoiceView.html" />
+    <Content Include="admin\app\views\product\product.html" />
+    <Content Include="admin\app\views\product\productAdd.html" />
+    <Content Include="admin\app\views\product\productAddController.js" />
+    <Content Include="admin\app\views\product\productController.js" />
     <Content Include="admin\app\views\reviewerrequest\reviewerrequest.html" />
     <Content Include="admin\app\views\reviewerrequest\reviewerrequestController.js" />
     <Content Include="admin\app\views\student\studentAdd.html" />

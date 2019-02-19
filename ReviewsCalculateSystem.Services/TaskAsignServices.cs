@@ -81,8 +81,11 @@ namespace ReviewsCalculateSystem.Services
                      reviewerTaskAsign.First(x => x.ReviewerId == currentReviewer.ReviewerId).ReviewCollectMargin = currentReviewer.ReviewCollectMargin + reviewer.ReviewCollectMargin;
                     */
                     reviewerTaskAsign.Remove(reviewer);
-                }              
-                
+                }
+                if (reviewerTaskAsign.Count == 0)
+                {
+                    break;
+                }
             }
             if (reviewerTaskAsign.Count > 0)
             {

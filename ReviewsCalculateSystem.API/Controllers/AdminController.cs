@@ -7,6 +7,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Http;
 
 namespace ReviewsCalculateSystem.API.Controllers
@@ -66,6 +69,44 @@ namespace ReviewsCalculateSystem.API.Controllers
                 }
             }
             return Ok("Datatabe backup successfully");
+        }
+
+        [HttpGet]
+        [Route("SendMail")]
+        public IHttpActionResult SendMail()
+        {
+            string mailBodyhtml = KeyGenerator.GetUniqueKey();
+            var msg = new MailMessage("from@gmail.com", "to1@gmail.com", "Hello", mailBodyhtml);
+            msg.To.Add("ahasanulbanna3@gmail.com");
+            msg.IsBodyHtml = true;
+            var smtpClient = new SmtpClient("smtp.gmail.com", 587); //if your from email address is "from@hotmail.com" then host should be "smtp.hotmail.com"**
+            smtpClient.UseDefaultCredentials = true;
+            smtpClient.Credentials = new NetworkCredential("testm0559@gmail.com", "testmail@#123");
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(msg);
+            Console.WriteLine("Email Sended Successfully");
+            return Ok(service.GetAllAdminList().Data);
+        }
+    }
+
+    public class KeyGenerator
+    {
+        public static string GetUniqueKey()
+        {
+            int size = 6;
+            char[] chars =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
+            byte[] data = new byte[size];
+            using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
+            {
+                crypto.GetBytes(data);
+            }
+            StringBuilder result = new StringBuilder(size);
+            foreach (byte b in data)
+            {
+                result.Append(chars[b % (chars.Length)]);
+            }
+            return result.ToString();
         }
     }
 }

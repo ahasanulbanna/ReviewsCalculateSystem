@@ -2,11 +2,11 @@
 
     'use strict';
 
-    var controllerId = 'taskasignController';
-    angular.module('app').controller(controllerId, taskasignController);
-    taskasignController.$inject = ['$routeParams', 'taskasignService', 'notificationService', '$location','$scope'];
+    var controllerId = 'productController';
+    angular.module('app').controller(controllerId, productController);
+    productController.$inject = ['$routeParams', 'productService', 'notificationService', '$location', '$scope'];
 
-    function taskasignController(routeParams, taskasignService, notificationService, location, $scope) {
+    function productController(routeParams, productService, notificationService, location, $scope) {
 
         /* jshint validthis:true */
         var vm = this;
@@ -15,10 +15,9 @@
         vm.totalMargin = 0;
         vm.productDetails = {};
         vm.currentReviewerInfo = [];
-        vm.reviewerList = [];
+        vm.productList = [];
         vm.selectedReviewer = [];
-        vm.reviewerSelect = reviewerSelect;
-        vm.taskAsign = taskAsign;
+        vm.addProduct = addProduct;
         vm.updateInvoice = updateInvoice;
         vm.deleteInvoice = deleteInvoice;
         vm.invoiceView = invoiceView;
@@ -29,7 +28,7 @@
         vm.close = close;
         vm.pageNumber = 1;
         vm.total = 0;
-        
+
 
         if (location.search().ps !== undefined && location.search().ps !== null && location.search().ps !== '') {
             vm.pageSize = location.search().ps;
@@ -49,62 +48,20 @@
 
         init();
         function init() {
-            taskasignService.reviewerDetailsInfoList(vm.pageSize, vm.pageNumber, vm.searchText).then(function (data) {
-                vm.reviewerList = data.Result;
+            productService.GetAllProductList(vm.pageSize, vm.pageNumber, vm.searchText).then(function (data) {
+                vm.productList = data.Result;
                 vm.total = data.Total
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
 
+          
+        };   
 
-            taskasignService.GetProductById(vm.ProductId).then(function (data) {
-                vm.productDetails = data.productInfo;
-                vm.currentReviewerInfo = data.asigningTaskInfo;
-                vm.totalMargin = data.totalMargin;
-            },
-                function (errorMessage) {
-                    notificationService.displayError(errorMessage.message);
-                });
-        };
-
-        vm.selectedReviewer = [];
-        // selected on a given reviewer by name
-        function reviewerSelect(reviewer) {
-            reviewer.AdminId = vm.AdminId;
-            reviewer.ProductId = vm.ProductId
-            var idx = vm.selectedReviewer.indexOf(reviewer);
-            // is currently selected
-            if (idx > -1) {
-                vm.selectedReviewer.splice(idx, 1);
-            }
-            // is newly selected
-            else {
-                //var tempObj = JSON.parse(JSON.stringify(reviewer));
-                delete reviewer.TotalReviewMargin;
-                delete reviewer.WorkingBookCount;
-                delete reviewer.TotalReviewCollect;               
-                this.selectedReviewer.push(reviewer);
-                //vm.selectedReviewer.push(tempObj);
-            }
-         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        function taskAsign() {
-            taskasignService.taskAsign(vm.selectedReviewer).then(function (data) {
-                close();
-            });
+        function addProduct() {
+            var url = location.url('/product-add');
+            location.path(url.$$url);
         }
 
         function updateInvoice(invoice) {

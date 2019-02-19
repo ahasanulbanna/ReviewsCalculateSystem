@@ -147,6 +147,24 @@
                     title: 'Reviewer Request'
                 }
             },
+            //-------------Product---------
+            {
+                url: '/products',
+                config: {
+                    templateUrl: 'admin/app/views/product/product.html',
+                    controller: 'productController',
+                    controllerAs: 'vm',
+                    title: 'Product'
+                }
+            }, {
+                url: '/product-add',
+                config: {
+                    templateUrl: 'admin/app/views/product/productAdd.html',
+                    controller: 'productAddController',
+                    controllerAs: 'vm',
+                    title: 'Product'
+                }
+            },
             //-------------Task Asign---------
             {
                 url: '/task-asign',
