@@ -84,10 +84,19 @@
     <Compile Include="Migrations\201902140909424_UPDATE_REVIEWER_MODEL11.Designer.cs">
       <DependentUpon>201902140909424_UPDATE_REVIEWER_MODEL11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902200049571_ADD_REGISTRATION_MODEL.cs" />
+    <Compile Include="Migrations\201902200049571_ADD_REGISTRATION_MODEL.Designer.cs">
+      <DependentUpon>201902200049571_ADD_REGISTRATION_MODEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902200232157_UPDATE_REGISTRATION_MODEL.cs" />
+    <Compile Include="Migrations\201902200232157_UPDATE_REGISTRATION_MODEL.Designer.cs">
+      <DependentUpon>201902200232157_UPDATE_REGISTRATION_MODEL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Reviewer.cs" />
     <Compile Include="Models\ReviewerTaskAsign.cs" />
@@ -125,6 +134,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902140909424_UPDATE_REVIEWER_MODEL11.resx">
       <DependentUpon>201902140909424_UPDATE_REVIEWER_MODEL11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902200049571_ADD_REGISTRATION_MODEL.resx">
+      <DependentUpon>201902200049571_ADD_REGISTRATION_MODEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902200232157_UPDATE_REGISTRATION_MODEL.resx">
+      <DependentUpon>201902200232157_UPDATE_REGISTRATION_MODEL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

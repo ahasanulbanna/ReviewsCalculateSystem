@@ -18,6 +18,7 @@
         vm.currentReviewerInfo = [];
         vm.productList = [];
         vm.selectedReviewer = [];
+        vm.save = save;
         vm.addProduct = addProduct;
         vm.updateInvoice = updateInvoice;
         vm.deleteInvoice = deleteInvoice;
@@ -49,15 +50,7 @@
 
         init();
         function init() {
-            productService.GetAllProductList(vm.pageSize, vm.pageNumber, vm.searchText).then(function (data) {
-                vm.productList = data.Result;
-                vm.total = data.Total
-            },
-                function (errorMessage) {
-                    notificationService.displayError(errorMessage.message);
-                });
-
-
+           
         };
 
         //================================DateTime Picker Start========================================================
@@ -124,7 +117,13 @@
 
         //================================DateTime Picker End========================================================
 
-
+        function save() {
+            if (vm.ProductId !== 0 && vm.ProductId !== '') {
+                updateInvoice();
+            } else {
+                addProduct();
+            }
+        }
 
         function addProduct() {
             productService.AddProduct(vm.product).then(function (data) {

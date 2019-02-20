@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Http;
 
@@ -10,7 +11,7 @@ namespace ReviewsCalculateSystem.API
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+           
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -20,5 +21,7 @@ namespace ReviewsCalculateSystem.API
                 defaults: new { id = RouteParameter.Optional }
             );
         }
+
+
     }
 }

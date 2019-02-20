@@ -18,9 +18,11 @@ namespace ReviewsCalculateSystem.API.Controllers
     public class AdminController : ApiController
     {
         private readonly IAdminServices service;
+        private readonly IRegistrationService registrationService;
         public AdminController()
         {
             service = new AdminServices();
+            registrationService = new RegistrationService();
         }
 
         [HttpPost]
@@ -71,21 +73,20 @@ namespace ReviewsCalculateSystem.API.Controllers
             return Ok("Datatabe backup successfully");
         }
 
-        [HttpGet]
-        [Route("SendMail")]
-        public IHttpActionResult SendMail()
+        [HttpPost]
+        [Route("UserRegistration")]
+        public IHttpActionResult UserRegistration(Registration model)
         {
-            string mailBodyhtml = KeyGenerator.GetUniqueKey();
-            var msg = new MailMessage("from@gmail.com", "to1@gmail.com", "Hello", mailBodyhtml);
-            msg.To.Add("ahasanulbanna3@gmail.com");
-            msg.IsBodyHtml = true;
-            var smtpClient = new SmtpClient("smtp.gmail.com", 587); //if your from email address is "from@hotmail.com" then host should be "smtp.hotmail.com"**
-            smtpClient.UseDefaultCredentials = true;
-            smtpClient.Credentials = new NetworkCredential("testm0559@gmail.com", "testmail@#123");
-            smtpClient.EnableSsl = true;
-            smtpClient.Send(msg);
-            Console.WriteLine("Email Sended Successfully");
-            return Ok(service.GetAllAdminList().Data);
+           
+            return Ok(registrationService.UserRegistration(model).Data);
+        }
+
+        [HttpGet]
+        [Route("RegistrationConfirm")]
+        public IHttpActionResult RegistrationConfirm(int Id, string Key)
+        {
+          
+            return Ok(registrationService.UserRegistrationConfirm(Id,Key).Data);
         }
     }
 
@@ -93,7 +94,7 @@ namespace ReviewsCalculateSystem.API.Controllers
     {
         public static string GetUniqueKey()
         {
-            int size = 6;
+            int size = 10;
             char[] chars =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
             byte[] data = new byte[size];

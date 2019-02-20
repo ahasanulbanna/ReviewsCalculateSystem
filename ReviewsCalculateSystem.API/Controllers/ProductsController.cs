@@ -1,5 +1,6 @@
 ﻿using ReviewsCalculateSystem.Models.Models;
 using ReviewsCalculateSystem.Services;
+using System;
 using System.Web.Http;
 
 namespace ReviewsCalculateSystem.API.Controllers
@@ -17,6 +18,16 @@ namespace ReviewsCalculateSystem.API.Controllers
         [Route("AddProduct")]
         public IHttpActionResult AddProduct(Product product)
         {
+            DateTime std = DateTime.SpecifyKind(
+                DateTime.Parse(Convert.ToString(product.ReviewStartDate)),
+                DateTimeKind.Utc);
+            DateTime dt1 = std.ToLocalTime();
+            DateTime end = DateTime.SpecifyKind(
+               DateTime.Parse(Convert.ToString(product.ReviewEndDate)),
+               DateTimeKind.Utc);
+            DateTime dt2 = end.ToLocalTime();
+            product.ReviewStartDate = dt1;
+            product.ReviewEndDate = dt2;
             return Ok(services.AddProduct(product).Data);
         }
         [HttpGet]

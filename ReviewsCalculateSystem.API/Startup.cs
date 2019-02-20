@@ -29,5 +29,7 @@ namespace ReviewsCalculateSystem.API
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
         }
+
+
     }
 }

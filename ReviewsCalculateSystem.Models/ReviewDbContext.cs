@@ -32,5 +32,6 @@ namespace ReviewsCalculateSystem.Models
         public DbSet<Product>Products { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<ReviewerTaskAsign> ReviewerTaskAsigns { get; set; }
+        public DbSet<Registration> Registrations { get; set; }
     }
 }

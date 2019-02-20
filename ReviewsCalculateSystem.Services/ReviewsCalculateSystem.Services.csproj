@@ -81,6 +81,7 @@
     <Compile Include="PaymentServices.cs" />
     <Compile Include="ProductServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationService.cs" />
     <Compile Include="ReviewerServices.cs" />
     <Compile Include="ReviewServices.cs" />
     <Compile Include="TaskAsignServices.cs" />
