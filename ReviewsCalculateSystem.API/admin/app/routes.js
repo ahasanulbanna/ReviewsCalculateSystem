@@ -183,6 +183,24 @@
                     controllerAs: 'vm',
                     title: 'Task Asign'
                 }
+            },
+            //-------------Review Check---------
+            {
+                url: '/product-review-check',
+                config: {
+                    templateUrl: 'admin/app/views/reviewcheck/reviewproduct.html',
+                    controller: 'reviewproductController',
+                    controllerAs: 'vm',
+                    title: 'Review Check'
+                }
+            }, {
+                url: '/review-check/Product/:ProductId',
+                config: {
+                    templateUrl: 'admin/app/views/reviewcheck/reviewcheck.html',
+                    controller: 'reviewcheckController',
+                    controllerAs: 'vm',
+                    title: 'Review Check'
+                }
             }
         ];
     }

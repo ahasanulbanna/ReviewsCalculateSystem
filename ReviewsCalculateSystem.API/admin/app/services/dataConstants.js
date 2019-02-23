@@ -11,6 +11,7 @@
          REVIEWER_URL: baseAPIUrl + 'api/reviewer/',
          PRODUCT_URL: baseAPIUrl + 'api/products/',
          REVIEWERTASKASIGN_URL: baseAPIUrl + 'api/ReviewerTaskAsign/',
+         REVIEW_URL: baseAPIUrl +'api/reviews/'
 
 
   });
