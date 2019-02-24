@@ -23,11 +23,11 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult unpaidReviewCalculateByReviewerId(int reviewerId)
         {
-            var workingProduct = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId && x.isComplete==false).Select(x => x).ToList();
+            var workingProduct = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId && x.isComplete == false).Select(x => x).ToList();
             var total = 0.00;
             foreach (var product in workingProduct)
             {
-                var reviewCount = db.Reviews.Where(x =>x.ReviewerId==product.ReviewerId && x.ProductId==product.ProductId && x.isPay==false).Count();
+                var reviewCount = db.Reviews.Where(x => x.ReviewerId == product.ReviewerId && x.ProductId == product.ProductId && x.isPay == false).Count();
                 total = reviewCount * product.PerReviewCost + total;
             }
             return new JsonResult
@@ -35,13 +35,13 @@ namespace ReviewsCalculateSystem.Services
                 Data = total,
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
-             
+
         }
 
         public JsonResult unpaidReviewForEachProductById(int reviewerId, int productId)
         {
             var product = db.ReviewerTaskAsigns.Where(x => x.ProductId == productId).FirstOrDefault();
-            var productReview = db.Reviews.Where(x => x.ReviewerId == reviewerId && x.ProductId == productId && x.isPay==false).Count();
+            var productReview = db.Reviews.Where(x => x.ReviewerId == reviewerId && x.ProductId == productId && x.isPay == false).Count();
             var total = 0.00;
             total = product.PerReviewCost * productReview;
             return new JsonResult

@@ -17,6 +17,7 @@
         vm.currentReviewerInfo = [];
         vm.productList = [];
         vm.selectedReviewer = [];
+        vm.reviewCheck = reviewCheck;
         vm.productReviewCheck = productReviewCheck;
         vm.updateInvoice = updateInvoice;
         vm.deleteInvoice = deleteInvoice;
@@ -48,7 +49,7 @@
         init();
         function init() {
             reviewcheckService.GetReviewByProductId(vm.ProductId).then(function (data) {
-                vm.producReviewtList = data.Result;
+                vm.producReviewtList = data;
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
@@ -56,6 +57,26 @@
 
 
         };
+
+
+        
+        function reviewCheck(review) {
+            var idx = vm.producReviewtList.indexOf(review);
+            vm.producReviewtList[idx] = review;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         function productReviewCheck(ProductId) {
             var url = location.url('/review-check/Product/' + ProductId);

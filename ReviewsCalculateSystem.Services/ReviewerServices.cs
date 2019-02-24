@@ -44,7 +44,7 @@ namespace ReviewsCalculateSystem.Services
             /*
              * Reviewer submit their personal information and waiting for admin confirmation to started journey as reviewer
              */
-            
+
             db.Reviewers.Add(reviewer);
             db.SaveChanges();
             return new JsonResult
@@ -61,7 +61,7 @@ namespace ReviewsCalculateSystem.Services
              */
             return new JsonResult
             { Data = db.Reviewers.ToList(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-         
+
 
         }
 
@@ -69,7 +69,7 @@ namespace ReviewsCalculateSystem.Services
         {
             return new JsonResult
             {
-                Data = db.Reviewers.Where(x=>x.AdminApprove==false).Select(x => x).ToList(),
+                Data = db.Reviewers.Where(x => x.AdminApprove == false).Select(x => x).ToList(),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }

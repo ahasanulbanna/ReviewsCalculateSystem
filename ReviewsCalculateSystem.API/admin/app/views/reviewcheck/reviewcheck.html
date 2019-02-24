@@ -1,2 +1,29 @@
-﻿<p>Review Check Page</p>
-<pre>{{vm.producReviewtList | json}}</pre>
+﻿<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="page-header">
+                        <h2 class="warning page-header-item">Review Check Page</h2>
+                    </div>
+                    <div class="row ">
+                        <div class="row" ng-repeat="reviewer in vm.producReviewtList">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="reviewer.ReviewStatus" ng-checked="reviewer.ReviewStatus==true" ng-click="vm.reviewCheck(reviewer)">
+                                        <a href="reviewer.SwapmeetReviewLink" target="_blank">Review Link</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-left" ng-if="vm.producReviewtList.length > 0">
+                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

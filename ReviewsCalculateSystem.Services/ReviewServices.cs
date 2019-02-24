@@ -24,7 +24,7 @@ namespace ReviewsCalculateSystem.Services
              */
             return new JsonResult
             {
-                Data = db.Reviews.Where(x => x.ProductId == productId).Select(x =>x).ToList(),
+                Data = db.Reviews.Where(x => x.ProductId == productId).Select(x => x).ToList(),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -36,14 +36,14 @@ namespace ReviewsCalculateSystem.Services
                update NumberOfReviewCollect propety of Products & ReviewerTaskAsigns table's 
             */
             var getProduct = db.Products.Where(x => x.ProductId == productReview.ProductId).FirstOrDefault();
-            var getCollectReview = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == productReview.ReviewerId && x.ProductId==productReview.ProductId).FirstOrDefault();
+            var getCollectReview = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == productReview.ReviewerId && x.ProductId == productReview.ProductId).FirstOrDefault();
             db.Reviews.Add(productReview);
-            if (getProduct.NumberOfReviewCollect == null && getCollectReview.NumberOfReviewCollect==null)
+            if (getProduct.NumberOfReviewCollect == null && getCollectReview.NumberOfReviewCollect == null)
             {
                 getProduct.NumberOfReviewCollect = 0;
                 getCollectReview.NumberOfReviewCollect = 0;
             }
-            getProduct.NumberOfReviewCollect=1+ getProduct.NumberOfReviewCollect;
+            getProduct.NumberOfReviewCollect = 1 + getProduct.NumberOfReviewCollect;
             getCollectReview.NumberOfReviewCollect = 1 + getCollectReview.NumberOfReviewCollect;
             db.Entry(getProduct).CurrentValues.SetValues(getProduct);
             db.Entry(getCollectReview).CurrentValues.SetValues(getCollectReview);
@@ -56,8 +56,8 @@ namespace ReviewsCalculateSystem.Services
                 },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
-           
-           
+
+
         }
 
         public JsonResult ReviewHistoryForEachProduct(int productId)
@@ -68,18 +68,18 @@ namespace ReviewsCalculateSystem.Services
              *Who are working this product?
              */
             var totalReview = db.Reviews.Where(x => x.ProductId == productId).Count();
-            var liveReview = db.Reviews.Where(x => x.ProductId == productId && x.ReviewStatus==true).Count();
-            var workingReviewer = db.ReviewerTaskAsigns.Where(x => x.ProductId == productId).Select(x=>x.Reviewer).ToList();
+            var liveReview = db.Reviews.Where(x => x.ProductId == productId && x.ReviewStatus == true).Count();
+            var workingReviewer = db.ReviewerTaskAsigns.Where(x => x.ProductId == productId).Select(x => x.Reviewer).ToList();
             List<Custom> workingReviewerReviewEachProduct = new List<Custom>();
             foreach (var review in workingReviewer)
             {
                 var eachProductReviewerReview = db.Reviews.Where(x => x.ProductId == productId && x.ReviewerId == review.ReviewerId).Count();
-                workingReviewerReviewEachProduct.Add(new Custom(review.Name,eachProductReviewerReview));
+                workingReviewerReviewEachProduct.Add(new Custom(review.Name, eachProductReviewerReview));
             }
 
             return new JsonResult
             {
-                Data =new { totalReview, liveReview, workingReviewerReviewEachProduct },
+                Data = new { totalReview, liveReview, workingReviewerReviewEachProduct },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }

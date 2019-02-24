@@ -19,7 +19,7 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult getAllAsingTaskById(int reviewerId)
         {
-            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId).Select(x =>new {x.Product,x.NumberOfReviewCollect,x.ReviewCollectMargin }).ToList();
+            var asignTask = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId).Select(x => new { x.Product, x.NumberOfReviewCollect, x.ReviewCollectMargin }).ToList();
             return new JsonResult
             {
                 Data = asignTask,
@@ -39,7 +39,7 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult reviewerReviewForEachProductById(int reviewerId, int productId)
         {
-            var productReviewInfo = db.ReviewerTaskAsigns.Where(x=>x.ReviewerId==reviewerId && x.ProductId==productId).Select(x =>new { x.Product,x.ReviewCollectMargin,x.NumberOfReviewCollect }).FirstOrDefault();
+            var productReviewInfo = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId && x.ProductId == productId).Select(x => new { x.Product, x.ReviewCollectMargin, x.NumberOfReviewCollect }).FirstOrDefault();
             return new JsonResult
             {
                 Data = productReviewInfo,
@@ -49,21 +49,23 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult reviewerDetailsInfoList(int pageSize, int pageNumber, string searchText)
         {
-            var reviewer = db.Reviewers.Where(x=>x.AdminApprove==true).Select(x => x).ToList();
+            var reviewer = db.Reviewers.Where(x => x.AdminApprove == true).Select(x => x).ToList();
             List<ReviewerInfo> reviewerInfo = new List<ReviewerInfo>();
             foreach (var r in reviewer)
             {
-               
-                var workingBookCount = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).GroupBy(x => x.ProductId ).Count();
-                var totalReviewMargin =Convert.ToInt16(db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).Sum(x=>x.ReviewCollectMargin));
-                var totalReviewCollect =Convert.ToInt16(db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete==false).Sum(x=>x.NumberOfReviewCollect));
-                reviewerInfo.Add(new ReviewerInfo ( r.Name, r.ReviewerId, workingBookCount,totalReviewCollect,totalReviewMargin ));               
+
+                var workingBookCount = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete == false).GroupBy(x => x.ProductId).Count();
+                var totalReviewMargin = Convert.ToInt16(db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete == false).Sum(x => x.ReviewCollectMargin));
+                var totalReviewCollect = Convert.ToInt16(db.ReviewerTaskAsigns.Where(x => x.ReviewerId == r.ReviewerId && x.isComplete == false).Sum(x => x.NumberOfReviewCollect));
+                reviewerInfo.Add(new ReviewerInfo(r.Name, r.ReviewerId, workingBookCount, totalReviewCollect, totalReviewMargin));
             }
             return new JsonResult
             {
-                Data =new {
+                Data = new
+                {
                     Result = reviewerInfo.OrderBy(x => x.WorkingBookCount).Skip((pageNumber - 1) * pageSize).Take(pageSize),
-                    Total= reviewerInfo.Count()},
+                    Total = reviewerInfo.Count()
+                },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -91,7 +93,7 @@ namespace ReviewsCalculateSystem.Services
             {
                 db.ReviewerTaskAsigns.AddRange(reviewerTaskAsign);
             }
-           
+
             db.SaveChanges();
             return new JsonResult
             {
@@ -114,7 +116,7 @@ namespace ReviewsCalculateSystem.Services
     }
 
     public class ReviewerInfo
-    {      
+    {
         public ReviewerInfo(string name, int reviewerId, int workingBookCount, int totalReviewCollect, int totalReviewMargin)
         {
             Name = name;
