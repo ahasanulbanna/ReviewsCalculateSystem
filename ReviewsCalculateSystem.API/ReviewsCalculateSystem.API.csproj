@@ -1180,6 +1180,8 @@
     <Content Include="app\views\student\studentAddController.js" />
     <Content Include="app\views\student\students.html" />
     <Content Include="app\views\student\studentsController.js" />
+    <Content Include="App_Data\icon-user-default.png" />
+    <Content Include="App_Data\Make-Your-Own-Video-Game-Step-30-Version-2.jpg" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\applicant\login.css" />
     <Content Include="Content\applicant\responsive.css" />
@@ -2115,7 +2117,6 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

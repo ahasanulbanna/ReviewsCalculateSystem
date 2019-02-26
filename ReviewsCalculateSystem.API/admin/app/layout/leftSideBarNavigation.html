@@ -1,5 +1,44 @@
-﻿<section class="sidebar-section" ng-controller="LeftSideBarNavigationController as vm">
-    <div id="sidebar-wrapper">
+﻿<style>
+    .sidebar {
+        position: fixed;
+        left: 250px;
+        top: 45px;
+        height: 95%;
+        width:15%;
+        margin-left: -250px;
+        background: #f3f3f3;
+        /* border-right: 1px solid #e5e5e5; */
+        box-shadow: inset -2px -5px 5px -5px #cccccc;
+        z-index: 1000;
+        -webkit-transition: all 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+        -moz-transition: all 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+        -o-transition: all 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+        transition: all 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+            .sidebar a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            .sidebar a:hover:not(.active) {
+                background-color: #555;
+                color: white;
+            }
+</style>
+
+
+
+
+<section ng-controller="LeftSideBarNavigationController as vm">
+    <div class="sidebar">
         <div>
 
             <a ng-href="admin/#/reviewer-request" style="display:block;">Reviewer Request</a>
