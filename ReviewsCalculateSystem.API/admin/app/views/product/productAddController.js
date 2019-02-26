@@ -71,7 +71,7 @@
         };
 
         $scope.dateOptions = {
-            //dateDisabled: disabled,
+            dateDisabled: disabled,
             formatYear: 'yy',
             maxDate: new Date(2050, 5, 22),
             minDate: new Date(),
@@ -79,11 +79,11 @@
         };
 
         // Disable weekend selection
-        //function disabled(data) {
-        //    var date = data.date,
-        //        mode = data.mode;
-        //    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-        //}
+        function disabled(data) {
+            var date = data.date,
+                mode = data.mode;
+            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+        }
 
         $scope.toggleMin = function () {
             $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();

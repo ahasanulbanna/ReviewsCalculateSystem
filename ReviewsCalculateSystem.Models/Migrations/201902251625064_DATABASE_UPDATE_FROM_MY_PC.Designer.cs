@@ -7,13 +7,13 @@ namespace ReviewsCalculateSystem.Models.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UPDATE_MODEL : IMigrationMetadata
+    public sealed partial class DATABASE_UPDATE_FROM_MY_PC : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UPDATE_MODEL));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DATABASE_UPDATE_FROM_MY_PC));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902070407562_UPDATE_MODEL"; }
+            get { return "201902251625064_DATABASE_UPDATE_FROM_MY_PC"; }
         }
         
         string IMigrationMetadata.Source

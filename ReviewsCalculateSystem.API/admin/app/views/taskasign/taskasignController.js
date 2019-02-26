@@ -51,7 +51,7 @@
         function init() {
             taskasignService.reviewerDetailsInfoList(vm.pageSize, vm.pageNumber, vm.searchText).then(function (data) {
                 vm.reviewerList = data.Result;
-                vm.total = data.Total
+                vm.total = data.Total;
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
