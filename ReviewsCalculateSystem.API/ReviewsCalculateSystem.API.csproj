@@ -213,6 +213,7 @@
     <Content Include="admin\app\services\departmentService.js" />
     <Content Include="admin\app\services\invoiceService.js" />
     <Content Include="admin\app\services\notificationService.js" />
+    <Content Include="admin\app\services\paymentService.js" />
     <Content Include="admin\app\services\productService.js" />
     <Content Include="admin\app\services\requestCounterService.js" />
     <Content Include="admin\app\services\reviewcheckService.js" />
@@ -243,6 +244,10 @@
     <Content Include="admin\app\views\invoice\invoices.html" />
     <Content Include="admin\app\views\invoice\invoicesController.js" />
     <Content Include="admin\app\views\invoice\invoiceView.html" />
+    <Content Include="admin\app\views\payment\payment.html" />
+    <Content Include="admin\app\views\payment\paymentController.js" />
+    <Content Include="admin\app\views\payment\reviewerdetails.html" />
+    <Content Include="admin\app\views\payment\reviewerdetailsController.js" />
     <Content Include="admin\app\views\product\product.html" />
     <Content Include="admin\app\views\product\productAdd.html" />
     <Content Include="admin\app\views\product\productAddController.js" />
@@ -320,6 +325,7 @@
     <Content Include="admin\Images\a2i.png" />
     <Content Include="admin\Images\bg.png" />
     <Content Include="admin\Images\BNSLogo.png" />
+    <Content Include="admin\Images\icon-user-default.png" />
     <Content Include="admin\Images\InfinityLogo.png" />
     <Content Include="admin\Images\Itolk-trans.png" />
     <Content Include="admin\Images\logo.png" />
@@ -1141,6 +1147,7 @@
     <Content Include="app\services\notificationService.js" />
     <Content Include="app\services\requestCounterService.js" />
     <Content Include="app\services\reviewerasigntaskService.js" />
+    <Content Include="app\services\reviewerService.js" />
     <Content Include="app\services\studentService.js" />
     <Content Include="app\templates\confirmModal.html" />
     <Content Include="app\templates\datepicker-template.html" />
@@ -1170,6 +1177,7 @@
     <Content Include="app\views\reviewerAsignTask\reviewerasigntask.html" />
     <Content Include="app\views\reviewerAsignTask\reviewerasigntaskController.js" />
     <Content Include="app\views\reviewer\reviewer-registration-form.html" />
+    <Content Include="app\views\reviewer\reviewerregistrationController.js" />
     <Content Include="app\views\review\product.html" />
     <Content Include="app\views\review\productAdd.html" />
     <Content Include="app\views\review\productreview.html" />

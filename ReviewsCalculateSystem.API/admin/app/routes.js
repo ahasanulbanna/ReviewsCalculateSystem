@@ -201,6 +201,26 @@
                     controllerAs: 'vm',
                     title: 'Review Check'
                 }
+            },
+            //-------------Payment---------
+            {
+                url: '/payment',
+                config: {
+                    templateUrl: 'admin/app/views/payment/payment.html',
+                    controller: 'paymentController',
+                    controllerAs: 'vm',
+                    title: 'Payment'
+                    
+                }
+            },
+            {
+                url: '/reviewer-payment-details/:ReviewerId',
+                config: {
+                    templateUrl: 'admin/app/views/payment/reviewerdetails.html',
+                    controller: 'paymentController',
+                    controllerAs: 'vm',
+                    title: 'Payment'
+                }
             }
         ];
     }

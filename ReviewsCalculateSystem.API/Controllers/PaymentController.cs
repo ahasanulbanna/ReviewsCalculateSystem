@@ -18,6 +18,13 @@ namespace ReviewsCalculateSystem.API.Controllers
         }
 
         [HttpGet]
+        [Route("reviewerPayment")]
+        public IHttpActionResult reviewerPayment()
+        {
+            return Ok(services.reviewerPayment().Data);
+        }
+
+        [HttpGet]
         [Route("unpaidReviewCalculateByReviewerId/{Id}")]
         public IHttpActionResult unpaidReviewCalculateByReviewerId(int Id)
         {

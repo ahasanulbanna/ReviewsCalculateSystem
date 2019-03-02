@@ -1,44 +1,72 @@
-﻿<h1>Reviewer Request</h1>
+﻿
+
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-4" ng-repeat="rr in vm.reviewerRequest">
-            <div class="panel-group">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        {{rr.Name}}
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="page-header">
+                        <button class="btn custom-btn custom-btn-primary pull-right" type="button" data-ng-click="vm.addInvoices()"><span class="glyphicon glyphicon-user"></span> Add Product</button>
+                        <div ng-include="'app/templates/search.html'"></div>
+                        <h2 class="warning page-header-item">Product </h2>
                     </div>
-                    <div class="panel-body">
-                        <img src="../../../Images/Itolk-trans.png" class="img-circle img-responsive" alt="Reviewer" style="display: block; margin-left: auto; margin-right:auto; width: 50%;"/>                     
-                        <br />
-                        <table class="table no-border table-responsive">
+                    <div class="table-wrapper table-responsive">
+                        <table class="table table-hover table-striped">
                             <thead>
                                 <tr>
+                                    <th>SL NO</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>Address</th>
                                     <th>Phone</th>
                                     <th>Account</th>
+                                    <th class="text-right">Accept</th>
+                                    <th class="text-right">Cancel</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="rr in vm.reviewerRequest">
+                                    <td>{{$index+1}}</td>
+                                    <td style="width:7px;">
+                                        <img src="../../../Admin/Images/icon-user-default.png" class="img-circle img-responsive" alt="Reviewer" style="width: 100%;" />
+                                    </td>
+                                    <td>{{rr.Name}}</td>
                                     <td>{{rr.Email}}</td>
                                     <td>{{rr.Address}}</td>
                                     <td>{{rr.Phone}}</td>
                                     <td ng-if="rr.NumberOfAmazonAccount!=null">{{rr.NumberOfAmazonAccount}}</td>
                                     <td ng-if="rr.NumberOfAmazonAccount===null">Null</td>
+                                    <td class="text-right">
+                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.requestApprove(rr.ReviewerId)"><span class="glyphicon glyphicon-ok" aria-hidden="true" title="Accept"></span></a>
+                                    </td>
+                                    <td class="text-right">
+                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.invoiceView(invoice)"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="Cancel"></span></a>
+                                    </td>
                                 </tr>
                             </tbody>
-                        </table>                    
-                    </div>
-                    <div class="panel-footer">
-                        <button type="button" class="btn custom-btn btn-info" ng-click="vm.requestApprove(rr.ReviewerId)"><span class="glyphicon glyphicon-ok"></span> Accept</button>
-                        <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+                        </table>
+                        <div class="text-left" ng-if="vm.invoices.length > 0">
+                            <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-       
-      
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

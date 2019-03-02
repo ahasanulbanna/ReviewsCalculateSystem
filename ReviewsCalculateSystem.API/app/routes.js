@@ -198,8 +198,8 @@
                 url: '/reviewer-registration',
                 config: {
                     templateUrl: 'app/views/reviewer/reviewer-registration-form.html',
-                    //controller: 'reviewerasigntaskController',
-                    //controllerAs: 'vm',
+                    controller: 'reviewerregistrationController',
+                    controllerAs: 'vm',
                     title: 'Reviewer'
                 }
             }
