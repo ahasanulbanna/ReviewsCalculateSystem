@@ -53,6 +53,8 @@ namespace ReviewsCalculateSystem.Services
         public JsonResult GetProductById(int productId)
         {
             var asigningTaskInfo = db.ReviewerTaskAsigns.Where(x => x.ProductId == productId).Select(x => new { x.Reviewer.Name, x.ReviewCollectMargin, x.NumberOfReviewCollect, x.PerReviewCost }).ToList();
+            var productInfo1 = db.Products.Where(x => x.ProductId == productId).Select(x => x).FirstOrDefault();
+
             return new JsonResult
             {
                 Data = new
