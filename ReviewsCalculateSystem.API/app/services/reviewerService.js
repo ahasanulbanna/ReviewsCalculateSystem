@@ -8,10 +8,17 @@
             reviewerReviewAndProductInfoById: reviewerReviewAndProductInfoById,
             saveCourse: saveCourse,
             updateCourse: updateCourse,
-            deleteCourse: deleteCourse
+            deleteCourse: deleteCourse,
+            reviewerLogin: reviewerLogin
         };
 
         return service;
+
+        function reviewerLogin(username, password) {
+            var url = dataConstants.LOGIN;
+            return apiHttpService.LOGIN(url, username, password);
+        }
+
         function CreateReviewer(data) {
             var url = dataConstants.REVIEWER + 'CreateReviewer';
             return apiHttpService.POST(url,data);

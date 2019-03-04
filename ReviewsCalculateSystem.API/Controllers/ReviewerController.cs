@@ -42,6 +42,9 @@ namespace ReviewsCalculateSystem.API.Controllers
             return Ok(services.GetAllReviewer().Data);
         }
 
+
+
+
         [Authorize(Roles = "user")]
         [HttpGet]
         [Route("authenticate")]

@@ -4,16 +4,21 @@
     </div>
     <!--<a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>-->
 </div>
+<work-spinner>
+    <div class="page-splash dissolve-animation">
+        <div data-mp-spinner="{{vm.spinnerOptions}}"></div>
+        <div class="page-splash-message page-splash-message-subtle">{{vm.busyMessage}}</div>
+    </div>
+</work-spinner>
 
-<div class="row">
-    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3" style="width:15%;">
+<div class="row" id="wrapper" ng-class="{'toggled': vm.check}">
+
+    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
         <!-- Left SideBar Navigation -->
         <div ng-include="'admin/app/layout/leftSideBarNavigation.html'"></div>
-
     </div>
-    <div class="col-lg-9 col-sm-9 col-md-9 col-xs-9" style="width:85%; margin-top:45px;">
-        <!-- /Left SideBar Navigation -->
-        <div class="view-animate shuffle-animation" ng-view id="page-content-wrapper">
+    <div class="col-lg-9 col-sm-9 col-md-9 col-xs-9" style="width:100%;">        
+        <div ng-view id="page-content-wrapper" class="view-animate shuffle-animation">
 
         </div>
     </div>
@@ -22,7 +27,6 @@
             <div class="col-xs-12">
                 <p>
                     <span class="footer-right-powered">Powered by </span><span class="footer-right-text">
-
                     </span>
                 </p>
             </div>

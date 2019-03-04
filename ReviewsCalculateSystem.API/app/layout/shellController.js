@@ -2,14 +2,15 @@
     'use strict';
 
     var controllerId = 'ShellController';
-    angular.module('app').controller(controllerId, ['$location', '$rootScope', 'common', 'config', '$routeParams', shell]);
+    angular.module('app').controller(controllerId, ['$location', '$rootScope', '$cookieStore', 'common', 'config', '$routeParams', shell]);
 
-    function shell($location, $rootScope, common,config, $routeParams) {
+    function shell($location, $rootScope, $cookieStore, common, config, $routeParams) {
 
         var vm = this;
 
         vm.check = false;
 
+        $rootScope.globals = $cookieStore.get('globals') || {};
         //vm.showLayout = true;
 
 

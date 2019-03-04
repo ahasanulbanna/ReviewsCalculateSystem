@@ -36,6 +36,7 @@ namespace ReviewsCalculateSystem.API
                 identity.AddClaim(new Claim("UserName", user.Name));
                 identity.AddClaim(new Claim(ClaimTypes.Name, "User Ahasanul Banna"));
                 context.Validated(identity);
+
             }
             else
             {

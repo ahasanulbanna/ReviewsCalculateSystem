@@ -12,7 +12,7 @@
             setRoute(r.url, r.config);
         });
         
-        $routeProvider.otherwise({ redirectTo: '/' });
+        $routeProvider.otherwise({ redirectTo: '/login' });
         function setRoute(url, definition) {
             definition.resolve = angular.extend(definition.resolve || {});
             $routeProvider.when(url, definition);
@@ -22,7 +22,16 @@
     function getRoutes() {
 
         return [
-
+            //-------------Authentication-------
+            {
+                url: '/login',
+                config: {
+                    templateUrl: 'app/views/authentication/views/login.html',
+                    controller: 'LoginController',
+                    //controllerAs: 'vm',
+                    title: 'Login'
+                }
+            },
             //-------------Department-------
             {
                 url: '/departments',

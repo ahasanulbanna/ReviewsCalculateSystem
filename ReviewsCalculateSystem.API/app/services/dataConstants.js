@@ -8,7 +8,8 @@
          STUDENT_URL: baseAPIUrl + 'api/students/',
          INVOICE_URL: baseAPIUrl + 'api/invoices/',
          REVIEWERTASKASIGN_URL: baseAPIUrl + 'api/ReviewerTaskAsign/',
-         REVIEWER: baseAPIUrl + 'api/reviewer/'
+         REVIEWER: baseAPIUrl + 'api/reviewer/',
+         LOGIN: baseAPIUrl +'token'
 
          
 

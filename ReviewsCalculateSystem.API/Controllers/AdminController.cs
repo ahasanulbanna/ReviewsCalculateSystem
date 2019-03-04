@@ -31,6 +31,24 @@ namespace ReviewsCalculateSystem.API.Controllers
         }
 
         [HttpPost]
+        [Route("Login")]
+        public HttpResponseMessage Login(Admin admin)
+        {
+            string role = "Admin";
+            var token = TokenManager.CreateJwtToken(admin.Name, role);
+            return new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ObjectContent<object>(new
+                {
+                    UserName = admin.Name,
+                    Roles = role,
+                    AccessToken = token
+                }, Configuration.Formatters.JsonFormatter)
+            };
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
         [Route("CreateAdmin")]
         public IHttpActionResult CreateAdmin(Admin admin)
         {
