@@ -51,7 +51,7 @@
         init();
         function init() {
            
-        };
+        }
 
         //================================DateTime Picker Start========================================================
 
@@ -71,7 +71,7 @@
         };
 
         $scope.dateOptions = {
-            dateDisabled: disabled,
+            //dateDisabled: disabled,
             formatYear: 'yy',
             maxDate: new Date(2050, 5, 22),
             minDate: new Date(),

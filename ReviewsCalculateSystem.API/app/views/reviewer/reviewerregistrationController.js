@@ -42,7 +42,7 @@
         function save() {
 
             reviewerService.CreateReviewer(vm.reviewer).then(function (data) {
-                notificationService.displaySuccess("Registration" + data);
+                location.path("/login");
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);

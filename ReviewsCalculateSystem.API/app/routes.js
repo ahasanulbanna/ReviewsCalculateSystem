@@ -32,6 +32,15 @@
                     title: 'Login'
                 }
             },
+            {
+                url: '/dashboard',
+                config: {
+                    templateUrl: 'app/views/dashboard/dashboard.html',
+                    controller: 'dashboardController',
+                    controllerAs: 'vm',
+                    title: 'Dashboard'
+                }
+            },
             //-------------Department-------
             {
                 url: '/departments',

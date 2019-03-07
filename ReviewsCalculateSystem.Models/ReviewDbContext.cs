@@ -13,9 +13,9 @@ namespace ReviewsCalculateSystem.Models
     {
         public ReviewDbContext() : base("name=Con")
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReviewDbContext, ReviewsCalculateSystem.Models.Migrations.Configuration>("Con"));
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReviewDbContext, ReviewsCalculateSystem.Models.Migrations.Configuration>("Con"));
             this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
+            //this.Configuration.ProxyCreationEnabled = false;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -23,7 +23,6 @@ namespace ReviewsCalculateSystem.Models
         }
         private void FixEfProviderServicesProblem()
         {
-
             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
         public DbSet<Admin> Admins { get; set; }

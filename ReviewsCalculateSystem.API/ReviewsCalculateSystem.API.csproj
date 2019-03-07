@@ -1167,6 +1167,8 @@
     <Content Include="app\views\course\courseAddController.js" />
     <Content Include="app\views\course\courses.html" />
     <Content Include="app\views\course\coursesController.js" />
+    <Content Include="app\views\dashboard\dashboard.html" />
+    <Content Include="app\views\dashboard\dashboardController.js" />
     <Content Include="app\views\department\departmentAdd.html" />
     <Content Include="app\views\department\departmentAddController.js" />
     <Content Include="app\views\department\departments.html" />

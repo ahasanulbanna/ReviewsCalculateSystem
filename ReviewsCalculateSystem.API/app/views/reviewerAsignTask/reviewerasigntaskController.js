@@ -4,14 +4,13 @@
 
     var controllerId = 'reviewerasigntaskController';
     angular.module('app').controller(controllerId, reviewerasigntaskController);
-    reviewerasigntaskController.$inject = ['$routeParams', 'reviewerasigntaskService', 'notificationService', '$location'];
+    reviewerasigntaskController.$inject = ['$routeParams', 'reviewerasigntaskService', 'notificationService', '$location', '$rootScope'];
 
-    function reviewerasigntaskController($routeParams, reviewerasigntaskService, notificationService, location) {
+    function reviewerasigntaskController($routeParams, reviewerasigntaskService, notificationService, location, $rootScope) {
 
         /* jshint validthis:true */
         var vm = this;
-        vm.Id = 1;
-        vm.reviewerId = 1;
+        vm.loggedIn = {};
         vm.TaskList = [];
         vm.courses = [];
         vm.AddReview = AddReview;
@@ -37,8 +36,9 @@
 
         init();
         function init() {
+            vm.loggedIn = $rootScope.globals.currentUser;
             reviewerasigntaskService.getCurrentAsingTaskById
-                (vm.Id).then(function (data) {
+                (vm.loggedIn.ReviewerId).then(function (data) {
                 vm.TaskList = data;
             },
                 function (errorMessage) {
@@ -47,6 +47,7 @@
         }
 
         function AddReview(productId) {
+            vm.reviewerId = vm.loggedIn.ReviewerId;
             var url = location.url('/product-review-add/' + vm.reviewerId + '/' + productId);
             location.path(url.$$url);
         }

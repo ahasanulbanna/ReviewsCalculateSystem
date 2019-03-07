@@ -4,13 +4,12 @@
 
     var controllerId = 'productreviewaddController';
     angular.module('app').controller(controllerId, productreviewaddController);
-    productreviewaddController.$inject = ['$routeParams', 'reviewerasigntaskService', 'notificationService', '$location'];
+    productreviewaddController.$inject = ['$routeParams', 'reviewerasigntaskService', 'notificationService', '$location','$rootScope'];
 
-    function productreviewaddController(routeParams, reviewerasigntaskService, notificationService, location) {
+    function productreviewaddController(routeParams, reviewerasigntaskService, notificationService, location, $rootScope) {
 
         /* jshint validthis:true */
         var vm = this;
-        vm.reviewerId = 1;
         vm.productId = 0;
         vm.productInfo = [];
         vm.courses = [];
@@ -42,8 +41,9 @@
 
         init();
         function init() {
-            reviewerasigntaskService.reviewerReviewAndProductInfoById(vm.reviewerId, vm.productId).then(function (data) {
-                vm.productInfo = data;
+            vm.loggedIn = $rootScope.globals.currentUser;
+            reviewerasigntaskService.reviewerReviewAndProductInfoById(vm.loggedIn.ReviewerId, vm.productId).then(function (data) {
+                vm.productInfo = data.productReviewInfo;
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);

@@ -20,7 +20,7 @@ namespace ReviewsCalculateSystem.Models.Models
         public int AdminId { get; set; }
         public virtual Admin Admin { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
-        public virtual ICollection<Reviewer> Reviewers { get; set; }
+        public virtual ICollection<ReviewerTaskAsign> ReviewerTaskAsigns { get; set; }
 
     }
 }

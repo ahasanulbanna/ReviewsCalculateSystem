@@ -7,7 +7,7 @@
             getInvoices: getInvoices,
             getInvoice: getInvoice,
             saveInvoice: saveInvoice,
-            updateInvoice: updateInvoice,
+            updateInvoice: updateInvoice
             //deleteDepartment: deleteDepartment
         };
 

@@ -9,7 +9,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +32,7 @@ namespace ReviewsCalculateSystem.API.Controllers
         [HttpPost]
         [Route("Login")]
         public HttpResponseMessage Login(Admin admin)
-        {
+        {         
             string role = "Admin";
             var token = TokenManager.CreateJwtToken(admin.Name, role);
             return new HttpResponseMessage(HttpStatusCode.OK)
@@ -198,7 +197,11 @@ namespace ReviewsCalculateSystem.API.Controllers
             return result.ToString();
         }
     }
-
+    public class TestClass
+    {
+        public string name { get; set; }
+        public int count { get; set; }
+    }
 }
 
 

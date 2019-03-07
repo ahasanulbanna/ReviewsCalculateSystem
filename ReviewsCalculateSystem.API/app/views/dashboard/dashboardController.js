@@ -2,33 +2,29 @@
 
     'use strict';
 
-    var controllerId = 'reviewproductController';
-    angular.module('app').controller(controllerId, reviewproductController);
-    reviewproductController.$inject = ['$routeParams', 'reviewcheckService', 'notificationService', '$location', '$scope'];
+    var controllerId = 'dashboardController';
+    angular.module('app').controller(controllerId, dashboardController);
+    dashboardController.$inject = ['$routeParams', 'reviewerService', 'notificationService', '$location', '$rootScope'];
 
-    function reviewproductController(routeParams, reviewcheckService, notificationService, location, $scope) {
+    function dashboardController($routeParams, reviewerService, notificationService, location, $rootScope) {
 
         /* jshint validthis:true */
         var vm = this;
-        vm.AdminId = 3;
-        vm.ProductId = 0;
-        vm.totalMargin = 0;
-        vm.productDetails = {};
-        vm.currentReviewerInfo = [];
-        vm.productList = [];
-        vm.selectedReviewer = [];
-        vm.productReviewCheck = productReviewCheck;
+        vm.loggedIn = {};
+        vm.reviewer = {};
+        vm.ReviewerRegistrationForm = {};
+        vm.invoices = [];
+        vm.save = save;
+        vm.addReview = addReview;
+        vm.addProductReview = addProductReview;
         vm.updateInvoice = updateInvoice;
-        vm.deleteInvoice = deleteInvoice;
         vm.invoiceView = invoiceView;
         vm.pageChanged = pageChanged;
         vm.searchText = "";
-        vm.pageSize = 5;
+        vm.pageSize = 10;
         vm.onSearch = onSearch;
-        vm.close = close;
         vm.pageNumber = 1;
         vm.total = 0;
-
 
         if (location.search().ps !== undefined && location.search().ps !== null && location.search().ps !== '') {
             vm.pageSize = location.search().ps;
@@ -40,27 +36,27 @@
         if (location.search().q !== undefined && location.search().q !== null && location.search().q !== '') {
             vm.searchText = location.search().q;
         }
-
-        if (routeParams.ProductId !== undefined && routeParams.ProductId !== '') {
-            vm.ProductId = routeParams.ProductId;
+        Init();
+        function Init() {
+            vm.loggedIn = $rootScope.globals.currentUser;
         }
+        function save() {
 
-        init();
-        function init() {
-            reviewcheckService.GetAllProductList(vm.pageSize, vm.pageNumber, vm.searchText).then(function (data) {
-                vm.productList = data.Result;
-                vm.total = data.Total;
+            reviewerService.CreateReviewer(vm.reviewer).then(function (data) {
+                location.path("/login");
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
-
-
+        }
+        function addReview() {
+            var url = "/productreview";
+            location.path(url);
         }
 
-        function productReviewCheck(ProductId) {
-            var url = location.url('/review-check/Product/' + ProductId);
-            location.path(url.$$url);
+        function addProductReview() {
+            var url = "/productreviewadd";
+            location.path(url);
         }
 
         function updateInvoice(invoice) {
@@ -71,19 +67,14 @@
             var url = location.url('/invoice-view/' + invoice.invoiceId);
             location.path(url.$$url);
         }
-        function deleteInvoice(invoice) {
-            invoiceService.taskAsign(invoice.invoiceId).then(function (data) {
-                init();
-            });
-        }
-
-        function close() {
-            var url = "/task-asign";
-            location.path(url);
-        }
+        //function deleteDepartment(department) {
+        //    departmentService.deleteDepartment(department.departmentId).then(function (data) {
+        //        init();
+        //    });
+        //}
 
         function pageChanged() {
-            var url = location.url('/task-asign/' + vm.ProductId);
+            var url = location.url('/invoices');
             location.path(url.$$url).search('pn', vm.pageNumber).search('ps', vm.pageSize).search('q', vm.searchText);
         }
 

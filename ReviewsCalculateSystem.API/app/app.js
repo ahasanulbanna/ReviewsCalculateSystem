@@ -26,10 +26,13 @@
             }
 
             $rootScope.$on('$locationChangeStart', function (event, next, current) {
+
+                var restrictedPage = $.inArray($location.path(), ['/login', '/reviewer-registration']) === -1;
+                var loggedIn = $rootScope.globals.currentUser;
                 // redirect to login page if not logged in
-                if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+                if (restrictedPage && !loggedIn) {
                     $location.path('/login');
-                }
+                }               
             });
         }]);
 

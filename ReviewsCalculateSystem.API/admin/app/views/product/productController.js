@@ -50,14 +50,14 @@
         function init() {
             productService.GetAllProductList(vm.pageSize, vm.pageNumber, vm.searchText).then(function (data) {
                 vm.productList = data.Result;
-                vm.total = data.Total
+                vm.total = data.Total;
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
 
           
-        };   
+        }   
 
         function addProduct() {
             var url = location.url('/product-add');

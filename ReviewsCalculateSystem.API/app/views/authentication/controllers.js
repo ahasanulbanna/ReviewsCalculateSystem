@@ -12,8 +12,8 @@ angular.module('app')
                     $scope.dataLoading = true;
                     reviewerService.reviewerLogin($scope.username, $scope.password).then(function (response) {
                         console.log(response);
-                        AuthenticationService.SetCredentials($scope.username, $scope.password);
-                        $location.path('/reviewer-registration');
+                        AuthenticationService.SetCredentials($scope.username, $scope.password, response);
+                        $location.path('/dashboard');
                     },
                         function (errorMessage) {
                             $scope.dataLoading = false;

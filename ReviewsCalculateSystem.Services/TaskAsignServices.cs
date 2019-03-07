@@ -3,8 +3,6 @@ using ReviewsCalculateSystem.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ReviewsCalculateSystem.Services
@@ -40,9 +38,13 @@ namespace ReviewsCalculateSystem.Services
         public JsonResult reviewerReviewForEachProductById(int reviewerId, int productId)
         {
             var productReviewInfo = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == reviewerId && x.ProductId == productId).Select(x => new { x.Product, x.ReviewCollectMargin, x.NumberOfReviewCollect }).FirstOrDefault();
+            var reviewList = db.Reviews.Where(x => x.ReviewerId == reviewerId && x.ProductId == productId).ToList();
             return new JsonResult
             {
-                Data = productReviewInfo,
+                Data = new{
+                    productReviewInfo,
+                    reviewList
+                },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }

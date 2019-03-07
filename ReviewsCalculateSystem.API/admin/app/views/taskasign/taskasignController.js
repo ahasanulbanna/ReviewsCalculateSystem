@@ -66,13 +66,13 @@
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
-        };
+        }
 
         vm.selectedReviewer = [];
         // selected on a given reviewer by name
         function reviewerSelect(reviewer) {
             reviewer.AdminId = vm.AdminId;
-            reviewer.ProductId = vm.ProductId
+            reviewer.ProductId = vm.ProductId;
             var idx = vm.selectedReviewer.indexOf(reviewer);
             // is currently selected
             if (idx > -1) {

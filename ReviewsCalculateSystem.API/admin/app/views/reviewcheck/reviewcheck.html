@@ -6,15 +6,13 @@
                     <div class="page-header">
                         <h2 class="warning page-header-item">Review Check Page</h2>
                     </div>
-                    <div class="row ">
-                        <div class="row" ng-repeat="reviewer in vm.producReviewtList">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="reviewer.ReviewStatus" ng-checked="reviewer.ReviewStatus==true" ng-click="vm.reviewCheck(reviewer)">
-                                        <a href="reviewer.SwapmeetReviewLink" target="_blank">Review Link</a>
-                                    </label>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-4" ng-repeat="reviewer in vm.producReviewtList">
+                            <div class="form-group">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="reviewer.ReviewStatus" ng-checked="reviewer.ReviewStatus==true" ng-click="vm.reviewCheck(reviewer)">
+                                    <a href="reviewer.SwapmeetReviewLink" target="_blank">Review Link</a>
+                                </label>
                             </div>
                         </div>
                     </div>

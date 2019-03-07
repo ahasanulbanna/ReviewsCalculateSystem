@@ -46,7 +46,7 @@
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
-        };
+        }
 
         function add() {
             if (vm.index >= 0) {
@@ -65,13 +65,13 @@
         function remove(index) {
             vm.invoiceDetails.splice(index, 1);
             vm.invoice.grandTotal = getTotal();
-        };
+        }
         function update(index, invoiceDetail) {
             vm.addButtonText = 'Update';
             vm.invoiceDetail = invoiceDetail;
             vm.index = index;
             vm.invoice.grandTotal = getTotal();
-        };
+        }
 
         function getTotal() {
             vm.invoice.grandTotal = 0;
@@ -137,7 +137,7 @@
         }
 
         function insertInvoice() {
-            vm.invoice.invoiceDetails = vm.invoiceDetails
+            vm.invoice.invoiceDetails = vm.invoiceDetails;
             invoiceService.saveInvoice(vm.invoice).then(function (data) {
                 close();
             },

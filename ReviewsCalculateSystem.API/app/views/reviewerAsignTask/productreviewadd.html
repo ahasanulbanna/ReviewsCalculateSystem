@@ -35,7 +35,8 @@
                                     <div class="col-sm-6">
                                         <div class="well inline-headers">
                                             <h2>Review Collect</h2>
-                                            <label class="label label-success">{{vm.productInfo.NumberOfReviewCollect}}</label>
+                                            <label ng-if="vm.productInfo.NumberOfReviewCollect!=null" class="label label-success">{{vm.productInfo.NumberOfReviewCollect}}</label>
+                                            <label ng-if="vm.productInfo.NumberOfReviewCollect==null" class="label label-success">0</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
