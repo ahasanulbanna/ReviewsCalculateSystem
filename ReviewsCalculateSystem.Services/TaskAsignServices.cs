@@ -41,7 +41,8 @@ namespace ReviewsCalculateSystem.Services
             var reviewList = db.Reviews.Where(x => x.ReviewerId == reviewerId && x.ProductId == productId).ToList();
             return new JsonResult
             {
-                Data = new{
+                Data = new
+                {
                     productReviewInfo,
                     reviewList
                 },
@@ -80,23 +81,16 @@ namespace ReviewsCalculateSystem.Services
                 if (currentReviewer != null)
                 {
                     currentReviewer.ReviewCollectMargin = currentReviewer.ReviewCollectMargin + reviewer.ReviewCollectMargin;
-                    db.Entry(currentReviewer).CurrentValues.SetValues(currentReviewer);
                     /*List Update Ex.
                      reviewerTaskAsign.First(x => x.ReviewerId == currentReviewer.ReviewerId).ReviewCollectMargin = currentReviewer.ReviewCollectMargin + reviewer.ReviewCollectMargin;
                     */
-                    reviewerTaskAsign.Remove(reviewer);
                 }
-                if (reviewerTaskAsign.Count == 0)
+                else
                 {
-                    break;
+                    db.ReviewerTaskAsigns.AddRange(reviewerTaskAsign);
                 }
+                db.SaveChanges();
             }
-            if (reviewerTaskAsign.Count > 0)
-            {
-                db.ReviewerTaskAsigns.AddRange(reviewerTaskAsign);
-            }
-
-            db.SaveChanges();
             return new JsonResult
             {
                 Data = new

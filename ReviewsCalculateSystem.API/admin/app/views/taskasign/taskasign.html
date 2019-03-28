@@ -24,42 +24,26 @@
                     </header>
                     <form name="vm.invoiceForm">
                         <div class="row">
-                            <div class="col-sm-2 col-md-2 col-lg-2">
-                                <div class="well inline-headers">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="well inline-headers" style="height:290px;">
                                     <h2>Name</h2>
                                     <label class="label label-primary">{{vm.productDetails.ProductName}}</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-md-2 col-lg-2">
-                                <div class="well inline-headers">
                                     <h2>ASIN</h2>
                                     <label class="label label-primary">{{vm.productDetails.ProductAsin}}</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-md-2 col-lg-2">
-                                <div class="well inline-headers">
                                     <h2>Link</h2>
                                     <a href="{{vm.productDetails.ProductLink}}" target="_blank">Link</a>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="well inline-headers">
-                                            <h2>Review Collect</h2>
-                                            <label class="label label-success" ng-if="vm.productDetails.NumberOfReviewCollect!=null">{{vm.productDetails.NumberOfReviewCollect}}</label>
-                                            <label class="label label-success" ng-if="vm.productDetails.NumberOfReviewCollect==null">0</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="well inline-headers">
-                                            <h2>Review Needed</h2>
-                                            <label class="label label-success">{{vm.productDetails.NumberOfReviewNeed}}</label>
-                                            <label class="label label-info">Total given review: {{vm.totalMargin}}</label>
-                                        </div>
-                                    </div>
+                                <div class="well inline-headers" style="height:290px;">
+                                    <h2>Review Collect</h2>
+                                    <label class="label label-success" ng-if="vm.productDetails.NumberOfReviewCollect!=null">{{vm.productDetails.NumberOfReviewCollect}}</label>
+                                    <label class="label label-success" ng-if="vm.productDetails.NumberOfReviewCollect==null">0</label>
+                                    <h2>Review Needed</h2>
+                                    <label class="label label-success">{{vm.productDetails.NumberOfReviewNeed}}</label>
+                                    <label class="label label-info">Total given review: {{vm.totalMargin}}</label>
                                 </div>
-                            </div>
+                            </div>                           
                         </div>
 
                         <div class="row">

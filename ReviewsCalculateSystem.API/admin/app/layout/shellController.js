@@ -4,7 +4,7 @@
     var controllerId = 'ShellController';
     angular.module('app').controller(controllerId, ['$location', '$rootScope', 'common', 'config', '$routeParams', shell]);
 
-    function shell($location, $rootScope, common,config, $routeParams) {
+    function shell($location, $rootScope, common, config, $routeParams) {
 
         var vm = this;
 
@@ -29,7 +29,7 @@
             speed: 1.7,
             corners: 1.0,
             trail: 70,
-            color: '#F58A00'
+            color: '#3BBF38'
         };
 
         activate();
