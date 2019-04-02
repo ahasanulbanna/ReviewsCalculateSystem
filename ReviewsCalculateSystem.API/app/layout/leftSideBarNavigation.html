@@ -1,50 +1,16 @@
-﻿<style>
-    .sidebar {
-        position: fixed;
-        left: 250px;
-        top: 45px;
-        height: 95%;
-        width: 15%;
-        margin-left: -250px;
-        background: #f3f3f3;
-        /* border-right: 1px solid #e5e5e5; */
-        box-shadow: inset -2px -5px 5px -5px #cccccc;
-        z-index: 1000;
-        -webkit-transition: all 0.5s cubic-bezier(.68,-0.55,.27,1.55);
-        -moz-transition: all 0.5s cubic-bezier(.68,-0.55,.27,1.55);
-        -o-transition: all 0.5s cubic-bezier(.68,-0.55,.27,1.55);
-        transition: all 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+﻿
+
+<style>
+    li a:hover {
+        background-color: #4281b3 !important;
+        color: white;
     }
-
-        .sidebar a {
-            display: block;
-            color: black;
-            padding: 16px;
-            text-decoration: none;
-        }
-
-            .sidebar a.active {
-                background-color: #4CAF50;
-                color: white;
-            }
-
-            .sidebar a:hover:not(.active) {
-                background-color: #555;
-                color: white;
-            }
 </style>
-
-
-
-<section  ng-controller="LeftSideBarNavigationController as vm">
-    <div class="sidebar">
-        <div>           
-            <a ng-href="/add-product" style="display:block;">New Product Add</a>
-            <a ng-href="index.html#/reviewer-asign-task" style="display:block;">Task</a>
-            <a ng-href="index.html#/reviewer-registration">Reviewer Registration</a>          
-        </div>
-    </div>
-</section>
-
+<div class="col-sm-3 sidenav" ng-controller="LeftSideBarNavigationController as vm">
+    <ul class="nav nav-pills nav-stacked">
+        <li><a ng-href="/add-product">New Product Add</a></li>
+        <li><a ng-href="index.html#/reviewer-asign-task">Task</a></li>
+    </ul>
+</div>
 
 

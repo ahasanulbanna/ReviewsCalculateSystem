@@ -9,90 +9,85 @@
                     </header>
                     <form name="vm.invoiceForm">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="well inline-headers">
-                                    <h2>Book Name</h2>
-                                    <label class="label label-primary">{{vm.productInfo.Product.ProductName}}</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="well inline-headers">
-                                    <h2>Book ASIN</h2>
-                                    <label class="label label-primary">{{vm.productInfo.Product.ProductAsin}}</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="well inline-headers">
-                                    <h2>Book Link</h2>
-                                    <a href="{{vm.productInfo.Product.ProductLink}}" target="_blank">Link</a>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="well inline-headers">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h2>Book Name</h2>
+                                            <label class="label label-primary">{{vm.productInfo.Product.ProductName}}</label>
+                                            <h2>Book ASIN</h2>
+                                            <label class="label label-primary">{{vm.productInfo.Product.ProductAsin}}</label>
+                                            <h2>Book Link</h2>
+                                            <a href="{{vm.productInfo.Product.ProductLink}}" target="_blank">Link</a>
+                                        </div>
+                                        <div class="col-md-6">
                                             <h2>Review Collect</h2>
                                             <label ng-if="vm.productInfo.NumberOfReviewCollect!=null" class="label label-success">{{vm.productInfo.NumberOfReviewCollect}}</label>
                                             <label ng-if="vm.productInfo.NumberOfReviewCollect==null" class="label label-success">0</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="well inline-headers">
                                             <h2>Review Needed</h2>
                                             <label class="label label-success">{{vm.productInfo.ReviewCollectMargin}}</label>
                                         </div>
                                     </div>
                                 </div>
-                               
                             </div>
                         </div>
-                      
                     </form>
                     <hr />
-                    <form name="vm.itemForm">
+                    <form name="vm.reviewForm">
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label for="itemName" class="custom-label">Swapmeet FB Link</label>
-                                    <input type="text" id="itemName" class="form-control custom-form-control" ng-model="vm.invoiceDetail.itemName" name="itemName" ng-maxlength="250" required />
-                                    <p ng-show="vm.itemForm.itemName.$error.required" class="help-block errormsg">FB link is required</p>
-                                    <p ng-show="vm.itemForm.itemName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                                    <label for="SwapmeetFbProfileLink" class="custom-label">Swapmeet FB Link</label>
+                                    <input type="text" id="SwapmeetFbProfileLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetFbProfileLink" name="SwapmeetFbProfileLink" ng-maxlength="250" required />
+                                    <p ng-show="vm.reviewForm.SwapmeetFbProfileLink.$error.required" class="help-block errormsg">FB link is required</p>
+                                    <p ng-show="vm.reviewForm.SwapmeetFbProfileLink.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label for="quantity" class="custom-label"> Swapmeet Book Link</label>
-                                    <input type="text" id="quantity" class="form-control custom-form-control" ng-model="vm.invoiceDetail.quantity" name="quantity" ng-maxlength="250" required />
-                                    <p ng-show="vm.itemForm.quantity.$error.required" class="help-block errormsg"> Book link is required</p>
-                                    <p ng-show="vm.itemForm.quantity.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                                    <label for="SwapmeetProductLink" class="custom-label"> Swapmeet Book Link</label>
+                                    <input type="text" id="SwapmeetProductLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetProductLink" name="SwapmeetProductLink" ng-maxlength="250" required />
+                                    <p ng-show="vm.reviewForm.SwapmeetProductLink.$error.required" class="help-block errormsg"> Book link is required</p>
+                                    <p ng-show="vm.reviewForm.SwapmeetProductLink.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label for="rate" class="custom-label">Swapmeet Review Link</label>
-                                    <input type="text" id="rate" class="form-control custom-form-control" ng-model="vm.invoiceDetail.rate" name="rate" />
-                                 
+                                    <label for="SwapmeetReviewLink" class="custom-label">Swapmeet Review Link</label>
+                                    <input type="text" id="SwapmeetReviewLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetReviewLink" name="SwapmeetReviewLink" />
+
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label for="rate" class="custom-label">Own Review Link</label>
-                                    <input type="text" id="rate" class="form-control custom-form-control" ng-model="vm.invoiceDetail.rate" name="rate" />                                
+                                    <label for="OwnReviewLink" class="custom-label">Own Review Link</label>
+                                    <input type="text" id="OwnReviewLink" class="form-control custom-form-control" ng-model="vm.review.OwnReviewLink" name="OwnReviewLink" />
                                 </div>
                             </div>
                         </div>
                     </form>
                     <div class="row">
                         <div class="col-xs-12">
-                            <button type="button" class="btn custom-btn btn-info" style="float:right;" ng-click="vm.addNewReview()" ng-disabled="vm.itemForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Add Review</button>
+                            <button type="button" class="btn custom-btn btn-info" style="float:right;" ng-click="vm.addNewReview()" ng-disabled="vm.reviewForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Add Review</button>
                         </div>
                     </div>
-                               
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

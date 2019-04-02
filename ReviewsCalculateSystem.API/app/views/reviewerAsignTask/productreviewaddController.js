@@ -4,16 +4,20 @@
 
     var controllerId = 'productreviewaddController';
     angular.module('app').controller(controllerId, productreviewaddController);
-    productreviewaddController.$inject = ['$routeParams', 'reviewerasigntaskService', 'notificationService', '$location','$rootScope'];
+    productreviewaddController.$inject = ['$routeParams', 'reviewerasigntaskService', 'notificationService', '$location', '$rootScope'];
 
     function productreviewaddController(routeParams, reviewerasigntaskService, notificationService, location, $rootScope) {
 
         /* jshint validthis:true */
         var vm = this;
+        vm.reviewForm = {};
         vm.productId = 0;
         vm.productInfo = [];
-        vm.courses = [];
+        vm.review = {};
         vm.AddReview = AddReview;
+        vm.addNewReview = addNewReview;
+
+
         vm.updateCourse = updateCourse;
         vm.deleteCourse = deleteCourse;
         vm.pageChanged = pageChanged;
@@ -54,6 +58,18 @@
             var url = location.url('/product-review-add/' + Id);
             location.path(url.$$url);
         }
+
+        function addNewReview() {
+            vm.review.productId = 3;
+            vm.review.ReviewerId = 2;
+            reviewerasigntaskService.SubmitProductReview(vm.review).then(function (data) {
+                notificationService.displaySuccess("Review add " + data.Result);
+            },
+                function (errorMessage) {
+                    notificationService.displayError(errorMessage.message);
+                });
+        }
+
         function updateCourse(course) {
             var url = location.url('/course-modify/' + course.courseId);
             location.path(url.$$url);
@@ -78,3 +94,5 @@
     }
 
 })();
+
+

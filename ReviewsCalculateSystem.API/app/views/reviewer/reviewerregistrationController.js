@@ -12,7 +12,6 @@
         var vm = this;
         vm.reviewer = {};
         vm.ReviewerRegistrationForm = {};
-        vm.invoices = [];
         vm.save = save;
         vm.addReview = addReview;
         vm.addProductReview = addProductReview;
@@ -47,7 +46,8 @@
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
                 });
-        }
+        } 
+
         function addReview() {
             var url = "/productreview";
             location.path(url);

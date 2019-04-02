@@ -32,7 +32,7 @@
                 // redirect to login page if not logged in
                 if (restrictedPage && !loggedIn) {
                     $location.path('/login');
-                }               
+                }
             });
         }]);
 
@@ -49,4 +49,3 @@
 
 
 
-    

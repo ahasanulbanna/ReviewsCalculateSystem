@@ -7,7 +7,7 @@
         COURSE_URL: baseAPIUrl + 'api/courses/',
         STUDENT_URL: baseAPIUrl + 'api/students/',
         INVOICE_URL: baseAPIUrl + 'api/invoices/',
-
+        LOGIN: baseAPIUrl + 'token',
         REVIEWER_URL: baseAPIUrl + 'api/reviewer/',
         PRODUCT_URL: baseAPIUrl + 'api/products/',
         REVIEWERTASKASIGN_URL: baseAPIUrl + 'api/ReviewerTaskAsign/',

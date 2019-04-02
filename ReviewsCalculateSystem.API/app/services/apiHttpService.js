@@ -42,7 +42,7 @@
         function postRequest(url, data) {
             var deferred = $q.defer();
 
-            $http.post(url, data).success(function (data) {
+            $http.post(url, data, { headers: { 'Content-Type': 'application/json' }}).success(function (data) {
                 deferred.resolve(data);
             }).error(function (error) {
                 deferred.reject(error);
@@ -55,7 +55,7 @@
             var deferred = $q.defer();
             $http.post(url, "userName=" + username + "&password=" + password + "&grant_type=password",
                 { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-                .success(function (data, status, headers, config) {
+                .success(function (data) {
                     deferred.resolve(data);
                 })
                 .error(function (error) {

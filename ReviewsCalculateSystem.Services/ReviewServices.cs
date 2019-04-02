@@ -1,10 +1,7 @@
 ﻿using ReviewsCalculateSystem.Models;
 using ReviewsCalculateSystem.Models.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ReviewsCalculateSystem.Services
@@ -29,15 +26,15 @@ namespace ReviewsCalculateSystem.Services
             };
         }
 
-        public JsonResult SubmitProductReview(Review productReview)
+        public JsonResult SubmitProductReview(Review review)
         {
             /*
              * When submit the review,
                update NumberOfReviewCollect propety of Products & ReviewerTaskAsigns table's 
             */
-            var getProduct = db.Products.Where(x => x.ProductId == productReview.ProductId).FirstOrDefault();
-            var getCollectReview = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == productReview.ReviewerId && x.ProductId == productReview.ProductId).FirstOrDefault();
-            db.Reviews.Add(productReview);
+            var getProduct = db.Products.Where(x => x.ProductId == review.ProductId).FirstOrDefault();
+            var getCollectReview = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == review.ReviewerId && x.ProductId == review.ProductId).FirstOrDefault();
+            db.Reviews.Add(review);
             if (getProduct.NumberOfReviewCollect == null && getCollectReview.NumberOfReviewCollect == null)
             {
                 getProduct.NumberOfReviewCollect = 0;
@@ -127,3 +124,7 @@ namespace ReviewsCalculateSystem.Services
         JsonResult AdminReviewUpdateByChecking(List<Review> reviewList);
     }
 }
+
+
+
+

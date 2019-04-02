@@ -9,7 +9,8 @@
          INVOICE_URL: baseAPIUrl + 'api/invoices/',
          REVIEWERTASKASIGN_URL: baseAPIUrl + 'api/ReviewerTaskAsign/',
          REVIEWER: baseAPIUrl + 'api/reviewer/',
-         LOGIN: baseAPIUrl +'token'
+         LOGIN: baseAPIUrl + 'token',
+         REVIEW: baseAPIUrl +'api/reviews/'
 
          
 

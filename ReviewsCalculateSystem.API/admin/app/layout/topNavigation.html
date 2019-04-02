@@ -11,16 +11,11 @@
             <div class="col-sm-4 user-wrapper">
                 <ul class="pull-right">
                     <li>
-                        <a href=""><i class="fa fa-user" aria-hidden="true"></i> </a>
+                        <a href=""><i class="fa fa-user" aria-hidden="true"></i>{{vm.loggedIn.username}}</a>
                     </li>
                     <li>
-                        <a href="" ><i class="fa fa-power-off" aria-hidden="true"></i> sign out</a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="images/a2i.png" alt="">
-                        </a>
-                    </li>
+                        <a ng-href="admin/#/login" ><i class="fa fa-power-off" aria-hidden="true"></i> sign out</a>
+                    </li>               
                 </ul>
             </div>
         </div>

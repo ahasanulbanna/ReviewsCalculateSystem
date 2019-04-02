@@ -1,44 +1,72 @@
-﻿<div ng-controller="ShellController as vm">
-    <div id="splash-page" data-ng-show="showSplash" class="dissolve-animation">
-        <div class="page-splash">
-            <!--<div class="page-splash-message">
-               Itolk
-            </div>-->
-            <div class="progress progress-striped active page-progress-bar">
-                <div class="bar"></div>
+﻿<style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    /*.row.content {
+        height: 1500px
+    }*/
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+        background-color: #555;
+        color: white;
+        padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+        .sidenav {
+            height: auto;
+            padding: 15px;
+        }
+
+        .row.content {
+            height: auto;
+        }
+    }
+</style>
+
+
+<work-spinner>
+    <div class="page-splash dissolve-animation">
+        <div data-mp-spinner="{{vm.spinnerOptions}}"></div>
+        <div class="page-splash-message page-splash-message-subtle">{{vm.busyMessage}}</div>
+    </div>
+</work-spinner>
+
+<div class="container-fluid">
+    <div class="row" style="margin-bottom: 63px;">
+        <div ng-include="'app/layout/topNavigation.html'" ng-if="globals.currentUser!=null"></div>
+    </div>
+    <div class="row content">
+        <div ng-include="'app/layout/leftSideBarNavigation.html'" ng-if="globals.currentUser!=null"></div>
+
+        <div class="col-sm-9">
+            <div ng-view id="page-content-wrapper" class="view-animate shuffle-animation">
             </div>
         </div>
     </div>
-
-    <header class="clearfix" ng-if="globals.currentUser!=null">
-        <div ng-include="'app/layout/topNavigation.html'"></div>
-        <!--<a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>-->
-    </header>
-
-    <section class="main-container">
-        
-        <div id="wrapper" ng-class="{'toggled': vm.check}">
-            <!-- Left SideBar Navigation -->
-            <div ng-include="'app/layout/leftSideBarNavigation.html'" ng-if="globals.currentUser!=null"></div>
-            <!-- /Left SideBar Navigation -->
-            <div ng-view id="page-content-wrapper" class="view-animate shuffle-animation">
-
-            </div>
-        </div>
-
-        <footer class="footer-section">
-            <div class="row">
-                <div class="col-xs-12">
-                    <p>
-                        <span class="footer-right-powered">Powered by </span><span class="footer-right-text">                      
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </section>
 </div>
+<footer class="footer-section">
+    <div class="row">
+        <div class="col-xs-12" ng-if="globals.currentUser!=null">
+            <p>
+                <span class="footer-right-powered">Powered by </span><span class="footer-right-text">
+                </span>
+            </p>
+        </div>
+    </div>
+</footer>
 
-<!--SideNavBar Toggle-->
+
+
+
+
+
+
 
 

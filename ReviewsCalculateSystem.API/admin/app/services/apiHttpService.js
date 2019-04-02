@@ -8,7 +8,8 @@
             GET: getRequest,
             PUT: putRequest,
             POST: postRequest,
-            DELETE: deleteRequest
+            DELETE: deleteRequest,
+            LOGIN: loginRequest
         };
 
         return service;
@@ -61,5 +62,21 @@
 
             return deferred.promise;
         }
+
+
+        function loginRequest(url, username, password) {
+            var deferred = $q.defer();
+            $http.post(url, "userName=" + username + "&password=" + password + "&grant_type=password",
+                { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                })
+                .error(function (error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+
     }
 })();

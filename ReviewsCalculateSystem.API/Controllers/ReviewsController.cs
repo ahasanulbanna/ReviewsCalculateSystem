@@ -16,9 +16,9 @@ namespace ReviewsCalculateSystem.API.Controllers
 
         [HttpPost]
         [Route("SubmitProductReview")]
-        public IHttpActionResult SubmitProductReview([FromBody]Review model)
+        public IHttpActionResult SubmitProductReview([FromBody]Review review)
         {
-            return Ok(services.SubmitProductReview(model).Data);
+            return Ok(services.SubmitProductReview(review).Data);
         }
         [HttpGet]
         [Route("GetReviewByProductId/{Id}")]

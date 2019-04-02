@@ -10,7 +10,7 @@
 
         /* jshint validthis:true */
         var vm = this;
-        vm.loggedIn = {};          
+        vm.loggedIn = {};
 
         if (location.search().ps !== undefined && location.search().ps !== null && location.search().ps !== '') {
             vm.pageSize = location.search().ps;
@@ -24,8 +24,8 @@
         }
         Init();
         function Init() {
-            vm.loggedIn = $rootScope.globals.currentUser;
-        }          
+            vm.loggedIn = $rootScope.admin.currentUser;
+        }    
     }
 
 })();

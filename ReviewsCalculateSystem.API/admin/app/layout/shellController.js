@@ -10,6 +10,8 @@
 
         vm.check = false;
 
+        $rootScope.admin = $cookieStore.get('admin') || {};
+
         //vm.showLayout = true;
 
 

@@ -6,7 +6,7 @@
         var service = {
             getCurrentAsingTaskById: getCurrentAsingTaskById,
             reviewerReviewAndProductInfoById: reviewerReviewAndProductInfoById,
-            saveCourse: saveCourse,
+            SubmitProductReview: SubmitProductReview,
             updateCourse: updateCourse,
             deleteCourse: deleteCourse
         };
@@ -22,8 +22,8 @@
             return apiHttpService.GET(url);
         }
 
-        function saveCourse(data) {
-            var url = dataConstants.COURSE_URL + 'save-course';
+        function SubmitProductReview(data) {
+            var url = dataConstants.REVIEW + 'SubmitProductReview';
             return apiHttpService.POST(url, data);
         }
 
