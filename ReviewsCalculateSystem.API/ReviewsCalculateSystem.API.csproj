@@ -1183,6 +1183,8 @@
     <Content Include="app\views\reviewerAsignTask\productreviewaddController.js" />
     <Content Include="app\views\reviewerAsignTask\reviewerasigntask.html" />
     <Content Include="app\views\reviewerAsignTask\reviewerasigntaskController.js" />
+    <Content Include="app\views\reviewerAsignTask\reviewupdate.html" />
+    <Content Include="app\views\reviewerAsignTask\reviewupdateController.js" />
     <Content Include="app\views\reviewer\reviewer-registration-form.html" />
     <Content Include="app\views\reviewer\reviewerregistrationController.js" />
     <Content Include="app\views\review\product.html" />

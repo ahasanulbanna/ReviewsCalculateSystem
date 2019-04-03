@@ -35,9 +35,13 @@ namespace ReviewsCalculateSystem.Services
             var getProduct = db.Products.Where(x => x.ProductId == review.ProductId).FirstOrDefault();
             var getCollectReview = db.ReviewerTaskAsigns.Where(x => x.ReviewerId == review.ReviewerId && x.ProductId == review.ProductId).FirstOrDefault();
             db.Reviews.Add(review);
-            if (getProduct.NumberOfReviewCollect == null && getCollectReview.NumberOfReviewCollect == null)
+            if (getProduct.NumberOfReviewCollect == null)
             {
                 getProduct.NumberOfReviewCollect = 0;
+
+            }
+            if (getCollectReview.NumberOfReviewCollect == null)
+            {
                 getCollectReview.NumberOfReviewCollect = 0;
             }
             getProduct.NumberOfReviewCollect = 1 + getProduct.NumberOfReviewCollect;
@@ -99,6 +103,31 @@ namespace ReviewsCalculateSystem.Services
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
+
+        public JsonResult GetReviewByProductIdAndReviewerId(int productId, int reviewerId)
+        {
+            List<Review> reviews = db.Reviews.Where(x => x.ProductId == productId && x.ReviewerId == reviewerId).ToList();
+            return new JsonResult
+            {
+                Data = reviews,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        public JsonResult UpdateReview(int reviewId, Review review)
+        {
+            Review dbreview = db.Reviews.Find(reviewId);
+            dbreview.SwapmeetFbProfileLink = review.SwapmeetFbProfileLink;
+            dbreview.SwapmeetProductLink = review.SwapmeetProductLink;
+            dbreview.SwapmeetReviewLink = review.SwapmeetReviewLink;
+            dbreview.OwnReviewLink = review.OwnReviewLink;
+            db.SaveChanges();
+            return new JsonResult
+            {
+                Data = "IsOk",
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }   
     }
 
     public class Custom
@@ -119,8 +148,10 @@ namespace ReviewsCalculateSystem.Services
     public interface IReviewServices
     {
         JsonResult SubmitProductReview(Review productReview);
+        JsonResult GetReviewByProductIdAndReviewerId(int productId, int reviewerId);
         JsonResult GetReviewByProductId(int productId);
         JsonResult ReviewHistoryForEachProduct(int productId);
+        JsonResult UpdateReview(int reviewId, Review review);
         JsonResult AdminReviewUpdateByChecking(List<Review> reviewList);
     }
 }

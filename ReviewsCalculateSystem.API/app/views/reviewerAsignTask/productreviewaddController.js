@@ -64,6 +64,7 @@
             vm.review.ReviewerId = 2;
             reviewerasigntaskService.SubmitProductReview(vm.review).then(function (data) {
                 notificationService.displaySuccess("Review add " + data.Result);
+                init();
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);

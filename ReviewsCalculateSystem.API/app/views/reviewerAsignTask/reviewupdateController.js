@@ -2,21 +2,20 @@
 
     'use strict';
 
-    var controllerId = 'reviewerasigntaskController';
-    angular.module('app').controller(controllerId, reviewerasigntaskController);
-    reviewerasigntaskController.$inject = ['$routeParams', 'reviewerasigntaskService', 'notificationService', '$location', '$rootScope'];
+    var controllerId = 'reviewupdateController';
+    angular.module('app').controller(controllerId, reviewupdateController);
+    reviewupdateController.$inject = ['$routeParams', 'reviewerasigntaskService', 'notificationService', '$location', '$rootScope'];
 
-    function reviewerasigntaskController($routeParams, reviewerasigntaskService, notificationService, location, $rootScope) {
+    function reviewupdateController(routeParams, reviewerasigntaskService, notificationService, location, $rootScope) {
 
         /* jshint validthis:true */
         var vm = this;
+        vm.productId = 0;
         vm.loggedIn = {};
-        vm.TaskList = [];
-        vm.courses = [];
-        vm.AddReview = AddReview;
+        vm.reviews = [];
+        vm.review = {};
         vm.UpdateReview = UpdateReview;
         vm.updateCourse = updateCourse;
-        vm.deleteCourse = deleteCourse;
         vm.pageChanged = pageChanged;
         vm.searchText = "";
         vm.pageSize = 3;
@@ -35,37 +34,37 @@
             vm.searchText = location.search().q;
         }
 
+        if (routeParams.productId !== undefined && routeParams.productId !== '') {
+            vm.productId = routeParams.productId;
+        }
         init();
         function init() {
             vm.loggedIn = $rootScope.globals.currentUser;
-            reviewerasigntaskService.getCurrentAsingTaskById
-                (vm.loggedIn.ReviewerId).then(function (data) {
-                    vm.TaskList = data;
+            reviewerasigntaskService.GetReviewByProductIdAndReviewerId
+                (vm.loggedIn.ReviewerId, vm.productId).then(function (data) {
+                    vm.reviews = data;
                 },
                     function (errorMessage) {
                         notificationService.displayError(errorMessage.message);
                     });
         }
 
-        function AddReview(productId) {
-            vm.reviewerId = vm.loggedIn.ReviewerId;
-            var url = location.url('/product-review-add/' + vm.reviewerId + '/' + productId);
-            location.path(url.$$url);
-        }
-        function UpdateReview(productId) {
-            vm.reviewerId = vm.loggedIn.ReviewerId;
-            var url = location.url('/review-update/' + vm.reviewerId + '/' + productId);
-            location.path(url.$$url);
+
+        function UpdateReview(review) {
+            reviewerasigntaskService.updateReview
+                (review.ReviewId, review).then(function (data) {
+                    notificationService.displaySuccess("Review update " + data);
+                    init();
+                },
+                    function (errorMessage) {
+                        notificationService.displayError(errorMessage.message);
+                    });
+
+
         }
         function updateCourse(course) {
             var url = location.url('/course-modify/' + course.courseId);
             location.path(url.$$url);
-        }
-
-        function deleteCourse(course) {
-            courseService.deleteCourse(course.courseId).then(function (data) {
-                init();
-            });
         }
 
         function pageChanged() {

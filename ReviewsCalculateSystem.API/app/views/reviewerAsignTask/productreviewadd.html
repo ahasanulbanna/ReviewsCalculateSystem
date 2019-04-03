@@ -35,30 +35,38 @@
                     <hr />
                     <form name="vm.reviewForm">
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label for="SwapmeetFbProfileLink" class="custom-label">Swapmeet FB Link</label>
+                                    <label for="SwapmeetFbName" class="custom-label">SM FB Name</label>
+                                    <input type="text" id="SwapmeetFbName" class="form-control custom-form-control" ng-model="vm.review.SwapmeetFbName" name="SwapmeetFbName" ng-maxlength="250" required />
+                                    <p ng-show="vm.reviewForm.SwapmeetFbName.$error.required" class="help-block errormsg">FB name is required</p>
+                                    <p ng-show="vm.reviewForm.SwapmeetFbName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="SwapmeetFbProfileLink" class="custom-label">SM FB Link</label>
                                     <input type="text" id="SwapmeetFbProfileLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetFbProfileLink" name="SwapmeetFbProfileLink" ng-maxlength="250" required />
                                     <p ng-show="vm.reviewForm.SwapmeetFbProfileLink.$error.required" class="help-block errormsg">FB link is required</p>
                                     <p ng-show="vm.reviewForm.SwapmeetFbProfileLink.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label for="SwapmeetProductLink" class="custom-label"> Swapmeet Book Link</label>
+                                    <label for="SwapmeetProductLink" class="custom-label"> SM Book Link</label>
                                     <input type="text" id="SwapmeetProductLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetProductLink" name="SwapmeetProductLink" ng-maxlength="250" required />
                                     <p ng-show="vm.reviewForm.SwapmeetProductLink.$error.required" class="help-block errormsg"> Book link is required</p>
                                     <p ng-show="vm.reviewForm.SwapmeetProductLink.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label for="SwapmeetReviewLink" class="custom-label">Swapmeet Review Link</label>
+                                    <label for="SwapmeetReviewLink" class="custom-label">SM Review Link</label>
                                     <input type="text" id="SwapmeetReviewLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetReviewLink" name="SwapmeetReviewLink" />
 
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label for="OwnReviewLink" class="custom-label">Own Review Link</label>
                                     <input type="text" id="OwnReviewLink" class="form-control custom-form-control" ng-model="vm.review.OwnReviewLink" name="OwnReviewLink" />

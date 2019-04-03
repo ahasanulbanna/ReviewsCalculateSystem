@@ -6,8 +6,9 @@
         var service = {
             getCurrentAsingTaskById: getCurrentAsingTaskById,
             reviewerReviewAndProductInfoById: reviewerReviewAndProductInfoById,
+            GetReviewByProductIdAndReviewerId: GetReviewByProductIdAndReviewerId,
             SubmitProductReview: SubmitProductReview,
-            updateCourse: updateCourse,
+            updateReview: updateReview,
             deleteCourse: deleteCourse
         };
 
@@ -21,14 +22,18 @@
             var url = dataConstants.REVIEWERTASKASIGN_URL + 'reviewerReviewForEachProductById?reviewerId=' + reviewerId + '&productId=' + productId;
             return apiHttpService.GET(url);
         }
+        function GetReviewByProductIdAndReviewerId(reviewerId, productId) {
+            var url = dataConstants.REVIEW + 'GetReviewByProductIdAndReviewerId?reviewerId=' + reviewerId + '&productId=' + productId;
+            return apiHttpService.GET(url);
+        }
 
         function SubmitProductReview(data) {
             var url = dataConstants.REVIEW + 'SubmitProductReview';
             return apiHttpService.POST(url, data);
         }
 
-        function updateCourse(courseId, data) {
-            var url = dataConstants.COURSE_URL + 'update-course/' + courseId;
+        function updateReview(reviewId, data) {
+            var url = dataConstants.REVIEW + 'UpdateReview/' + reviewId;
             return apiHttpService.PUT(url, data);
         }
 

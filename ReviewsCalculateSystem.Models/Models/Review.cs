@@ -9,6 +9,7 @@ namespace ReviewsCalculateSystem.Models.Models
     public class Review
     {
         public int ReviewId { get; set; }
+        public string SwapmeetFbName { get; set; }
         public string SwapmeetFbProfileLink { get; set; }
         public string SwapmeetProductLink { get; set; }
         public string SwapmeetReviewLink { get; set; }

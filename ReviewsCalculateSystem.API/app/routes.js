@@ -58,7 +58,8 @@
                     title: 'Review'
                 }
             
-            }, {
+            },
+            {
                 url: '/product-review-add/:reviewerId/:productId',
                 config: {
                     templateUrl: 'app/views/reviewerAsignTask/productreviewadd.html',
@@ -67,7 +68,16 @@
                     title: 'Review'
                 }
             },
+            {
+                url: '/review-update/:reviewerId/:productId',
+                config: {
+                    templateUrl: 'app/views/reviewerAsignTask/reviewupdate.html',
+                    controller: 'reviewupdateController',
+                    controllerAs:'vm',
+                    title: 'Review Update'
+                }
 
+            },
             //-------------Product---------
             {
                 url: '/products',

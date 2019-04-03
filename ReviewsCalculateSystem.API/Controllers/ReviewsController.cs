@@ -20,6 +20,19 @@ namespace ReviewsCalculateSystem.API.Controllers
         {
             return Ok(services.SubmitProductReview(review).Data);
         }
+
+        [HttpPut]
+        [Route("UpdateReview/{reviewId}")]
+        public IHttpActionResult UpdateReview(int reviewId,[FromBody]Review review)
+        {
+            return Ok(services.UpdateReview(reviewId, review).Data);
+        }
+        [HttpGet]
+        [Route("GetReviewByProductIdAndReviewerId")]
+        public IHttpActionResult GetReviewByProductIdAndReviewerId(int productId, int reviewerId)
+        {
+            return Ok(services.GetReviewByProductIdAndReviewerId(productId, reviewerId).Data);
+        }
         [HttpGet]
         [Route("GetReviewByProductId/{Id}")]
         public IHttpActionResult GetReviewByProductId(int Id)
