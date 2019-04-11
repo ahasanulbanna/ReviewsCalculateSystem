@@ -47,6 +47,7 @@
         function init() {
             paymentService.reviewerPayment().then(function (data) {
                 vm.ReviewerPayment = data;
+                console.log(vm.ReviewerPayment);
 
             },
                 function (errorMessage) {

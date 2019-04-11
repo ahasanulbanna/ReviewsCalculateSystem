@@ -28,8 +28,9 @@
                                     <td>{{tl.Product.ProductAsin}}</td>
                                     <td><a target="_blank" href="{{tl.Product.ProductLink}}">Book Link</a></td>
                                     <td>{{tl.ReviewCollectMargin}}</td>
-                                    <td>{{tl.NumberOfReviewCollect}}</td>
-                                    <td>{{tl.ReviewEndDate}}</td>                                   
+                                    <td ng-if="tl.NumberOfReviewCollect==null">0</td>
+                                    <td ng-if="tl.NumberOfReviewCollect!=null">{{tl.NumberOfReviewCollect}}</td>
+                                    <td>{{tl.ReviewEndDate}}</td>
                                     <td class="text-right">
                                         <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.AddReview(tl.Product.ProductId)"><span class="glyphicon glyphicon-plus" aria-hidden="true" title="Add Review"></span></a>
                                         <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.UpdateReview(tl.Product.ProductId)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Update Review"></span></a>

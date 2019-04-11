@@ -36,7 +36,7 @@ namespace ReviewsCalculateSystem.Services
                 foreach (var product in workingProduct)
                 {
                     var productName = Convert.ToString(db.Products.Where(x => x.ProductId == product.ProductId).Select(x => x.ProductName).FirstOrDefault());
-                    var reviewCount = db.Reviews.Where(x => x.ReviewerId == product.ReviewerId && x.ProductId == product.ProductId && x.isPay == false).Count();
+                    var reviewCount = db.Reviews.Where(x => x.ReviewerId == product.ReviewerId && x.ProductId == product.ProductId && x.ReviewStatus==true && x.isPay == false).Count();
                     total = reviewCount * product.PerReviewCost + total;
                     totalLiveReview += reviewCount;
                     paymentModels.Add(new PaymentModel(productName, reviewCount, product.PerReviewCost, reviewCount * product.PerReviewCost));
@@ -66,7 +66,7 @@ namespace ReviewsCalculateSystem.Services
             foreach (var product in workingProduct)
             {
                 var productName = Convert.ToString(db.Products.Where(x => x.ProductId == product.ProductId).Select(x => x.ProductName).FirstOrDefault());
-                var reviewCount = db.Reviews.Where(x => x.ReviewerId == product.ReviewerId && x.ProductId == product.ProductId && x.isPay == false).Count();
+                var reviewCount = db.Reviews.Where(x => x.ReviewerId == product.ReviewerId && x.ProductId == product.ProductId && x.ReviewStatus==true && x.isPay == false).Count();
                 total = reviewCount * product.PerReviewCost + total;
                 totalLiveReview += reviewCount;
                 paymentModels.Add(new PaymentModel(productName, reviewCount, product.PerReviewCost, reviewCount * product.PerReviewCost));

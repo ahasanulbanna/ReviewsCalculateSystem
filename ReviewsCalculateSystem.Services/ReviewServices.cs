@@ -85,18 +85,17 @@ namespace ReviewsCalculateSystem.Services
             };
         }
 
-        public JsonResult AdminReviewUpdateByChecking(List<Review> reviewList)
+        public JsonResult AdminReviewUpdateByChecking(Review review)
         {
             /*
              * Admin check review which are live on for specefic product
              * Only update ReviewStatus property of Reviews table
              */
-            foreach (var review in reviewList)
-            {
-                var dbreview = db.Reviews.Find(review.ReviewId);
-                db.Entry(dbreview).CurrentValues.SetValues(review.ReviewStatus);
-                db.SaveChanges();
-            }
+
+            var dbreview = db.Reviews.Find(review.ReviewId);
+            db.Entry(dbreview).CurrentValues.SetValues(review);
+            db.SaveChanges();
+
             return new JsonResult
             {
                 Data = "IsOk",
@@ -127,7 +126,7 @@ namespace ReviewsCalculateSystem.Services
                 Data = "IsOk",
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
-        }   
+        }
     }
 
     public class Custom
@@ -152,7 +151,7 @@ namespace ReviewsCalculateSystem.Services
         JsonResult GetReviewByProductId(int productId);
         JsonResult ReviewHistoryForEachProduct(int productId);
         JsonResult UpdateReview(int reviewId, Review review);
-        JsonResult AdminReviewUpdateByChecking(List<Review> reviewList);
+        JsonResult AdminReviewUpdateByChecking(Review review);
     }
 }
 

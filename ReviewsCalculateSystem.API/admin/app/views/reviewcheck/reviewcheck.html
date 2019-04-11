@@ -7,17 +7,14 @@
                         <h2 class="warning page-header-item">Review Check Page</h2>
                     </div>
                     <div class="row">
-                        <div class="col-md-4" ng-repeat="reviewer in vm.producReviewtList">
+                        <div class="col-md-3" ng-repeat="review in vm.producReviewtList">
                             <div class="form-group">
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="reviewer.ReviewStatus" ng-checked="reviewer.ReviewStatus==true" ng-click="vm.reviewCheck(reviewer)">
+                                    <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="review.ReviewStatus" ng-checked="review.ReviewStatus==true" ng-click="vm.reviewCheck(review)">
                                     <a href="reviewer.SwapmeetReviewLink" target="_blank">Review Link</a>
                                 </label>
                             </div>
                         </div>
-                    </div>
-                    <div class="text-left" ng-if="vm.producReviewtList.length > 0">
-                        <ul uib-pagination items-per-page="vm.pageSize" total-items="vm.total" ng-change="vm.pageChanged()" ng-model="vm.pageNumber" max-size="5" class="pagination" boundary-link-numbers="true"></ul>
                     </div>
                 </div>
             </div>

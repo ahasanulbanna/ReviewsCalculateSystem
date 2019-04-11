@@ -48,9 +48,9 @@ namespace ReviewsCalculateSystem.API.Controllers
 
         [HttpPost]
         [Route("AdminReviewUpdateByChecking")]
-        public IHttpActionResult AdminReviewUpdateByChecking(List<Review> reviewList)
+        public IHttpActionResult AdminReviewUpdateByChecking(Review review)
         {
-            return Ok(services.AdminReviewUpdateByChecking(reviewList).Data);
+            return Ok(services.AdminReviewUpdateByChecking(review).Data);
         }
 
     }

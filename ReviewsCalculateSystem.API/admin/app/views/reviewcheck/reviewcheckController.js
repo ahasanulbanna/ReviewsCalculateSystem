@@ -50,6 +50,7 @@
         function init() {
             reviewcheckService.GetReviewByProductId(vm.ProductId).then(function (data) {
                 vm.producReviewtList = data;
+                console.log(vm.producReviewtList);
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
@@ -61,21 +62,13 @@
 
         
         function reviewCheck(review) {
-            var idx = vm.producReviewtList.indexOf(review);
-            vm.producReviewtList[idx] = review;
+            reviewcheckService.AdminReviewUpdateByChecking(review).then(function () {
+                
+            },
+                function (errorMessage) {
+                    notificationService.displayError(errorMessage.message);
+                });
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         function productReviewCheck(ProductId) {

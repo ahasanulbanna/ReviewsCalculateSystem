@@ -8,7 +8,8 @@
             reviewerDetailsInfoList: reviewerDetailsInfoList,
             GetReviewByProductId: GetReviewByProductId,
             AddProduct: AddProduct,
-            deleteStudent: deleteStudent
+            AdminReviewUpdateByChecking: AdminReviewUpdateByChecking
+            
         };
 
         return service;
@@ -32,9 +33,9 @@
             return apiHttpService.POST(url, data);
         }
 
-        function deleteStudent(studentId) {
-            var url = dataConstants.STUDENT_URL + 'delete-student/' + studentId;
-            return apiHttpService.DELETE(url);
+        function AdminReviewUpdateByChecking(data) {
+            var url = dataConstants.REVIEW_URL + 'AdminReviewUpdateByChecking';
+            return apiHttpService.POST(url, data);
         }
 
 

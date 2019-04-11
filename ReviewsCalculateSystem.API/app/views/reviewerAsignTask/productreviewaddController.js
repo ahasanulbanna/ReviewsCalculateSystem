@@ -12,12 +12,11 @@
         var vm = this;
         vm.reviewForm = {};
         vm.productId = 0;
+        vm.loggedIn = 0;
         vm.productInfo = [];
         vm.review = {};
         vm.AddReview = AddReview;
         vm.addNewReview = addNewReview;
-
-
         vm.updateCourse = updateCourse;
         vm.deleteCourse = deleteCourse;
         vm.pageChanged = pageChanged;
@@ -60,8 +59,9 @@
         }
 
         function addNewReview() {
-            vm.review.productId = 3;
-            vm.review.ReviewerId = 2;
+            vm.loggedIn = $rootScope.globals.currentUser;
+            vm.review.productId = vm.productId;
+            vm.review.ReviewerId = vm.loggedIn.ReviewerId;
             reviewerasigntaskService.SubmitProductReview(vm.review).then(function (data) {
                 notificationService.displaySuccess("Review add " + data.Result);
                 init();
