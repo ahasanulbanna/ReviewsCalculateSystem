@@ -41,7 +41,7 @@
             if (current.$$route !== undefined) {
                 $rootScope.title = current.$$route.title + ' | BPSC ADMIN';
             } else {
-                $rootScope.title = 'E-Recruitment System';
+                $rootScope.title = 'Review Calculate Sytem';
             }
         });
     }]);

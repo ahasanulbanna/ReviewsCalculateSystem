@@ -32,6 +32,9 @@ namespace ReviewsCalculateSystem.API
                     {
                         {
                             "AdminId", Convert.ToString(admin.AdminId)
+                        },
+                        {
+                             "Role" , "Admin"
                         }
                     });
                 identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
@@ -46,7 +49,11 @@ namespace ReviewsCalculateSystem.API
                     {
                         {
                             "ReviewerId", Convert.ToString(user.ReviewerId)
+                        },
+                        {
+                             "Role" , "User"
                         }
+
                     });
                 identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
                 identity.AddClaim(new Claim("UserName", user.Name));

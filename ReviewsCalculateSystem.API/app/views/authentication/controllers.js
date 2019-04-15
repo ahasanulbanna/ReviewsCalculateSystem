@@ -12,8 +12,13 @@ angular.module('app')
                     $scope.dataLoading = true;
                     reviewerService.reviewerLogin($scope.username, $scope.password).then(function (response) {
                         console.log(response);
-                        AuthenticationService.SetCredentials($scope.username, $scope.password, response);
-                        $location.path('/dashboard');
+                        if (response.Role === "User") {
+                            AuthenticationService.SetCredentials($scope.username, $scope.password, response);
+                            $location.path('/dashboard');
+                        } else {
+                            $scope.dataLoading = false;
+                            $scope.error = "Incorrect username && password";
+                        }
                     },
                         function (errorMessage) {
                             $scope.dataLoading = false;
