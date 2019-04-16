@@ -4,25 +4,21 @@
 
     var controllerId = 'productAddController';
     angular.module('app').controller(controllerId, productAddController);
-    productAddController.$inject = ['$routeParams', 'productService', 'notificationService', '$location', '$scope'];
+    productAddController.$inject = ['$routeParams', 'productService', 'notificationService', '$location', '$scope','$rootScope'];
 
-    function productAddController(routeParams, productService, notificationService, location, $scope) {
+    function productAddController(routeParams, productService, notificationService, location, $scope, $rootScope) {
 
         /* jshint validthis:true */
         var vm = this;
-        vm.AdminId = 3;
         vm.ProductId = 0;
-        vm.totalMargin = 0;
+        vm.loggedIn = {};
         vm.product = {};
         vm.productForm = {};
-        vm.currentReviewerInfo = [];
-        vm.productList = [];
-        vm.selectedReviewer = [];
         vm.save = save;
         vm.addProduct = addProduct;
-        vm.updateInvoice = updateInvoice;
-        vm.deleteInvoice = deleteInvoice;
-        vm.invoiceView = invoiceView;
+        vm.buttonText = "Save";
+        
+
         vm.pageChanged = pageChanged;
         vm.searchText = "";
         vm.pageSize = 5;
@@ -46,10 +42,18 @@
 
         if (routeParams.ProductId !== undefined && routeParams.ProductId !== '') {
             vm.ProductId = routeParams.ProductId;
+            vm.buttonText = "Update";
         }
 
         init();
         function init() {
+            vm.loggedIn = $rootScope.admin.currentUser;
+
+            productService.GetProductById(vm.ProductId).then(function (data) {
+                vm.product = data.productInfo;
+                vm.product.ReviewStartDate = new Date(data.productInfo.ReviewStartDate);
+                vm.product.ReviewEndDate = new Date(data.productInfo.ReviewEndDate);
+            });
            
         }
 
@@ -119,29 +123,22 @@
 
         function save() {
             if (vm.ProductId !== 0 && vm.ProductId !== '') {
-                updateInvoice();
+                ProductUpdate();
             } else {
                 addProduct();
             }
         }
 
         function addProduct() {
+            vm.product.AdminId = vm.loggedIn.AdminId;
             productService.AddProduct(vm.product).then(function (data) {
                 close();
             });
         }
 
-        function updateInvoice(invoice) {
-            var url = location.url('/invoice-modify/' + invoice.invoiceId);
-            location.path(url.$$url);
-        }
-        function invoiceView(invoice) {
-            var url = location.url('/invoice-view/' + invoice.invoiceId);
-            location.path(url.$$url);
-        }
-        function deleteInvoice(invoice) {
-            invoiceService.taskAsign(invoice.invoiceId).then(function (data) {
-                init();
+        function ProductUpdate() {
+            productService.ProductUpdate(vm.product).then(function (data) {
+                close();
             });
         }
 

@@ -24,7 +24,7 @@
         }
         Init();
         function Init() {
-            vm.loggedIn = $rootScope.admin.currentUser;
+            vm.loggedIn = $rootScope.admin;
         }    
     }
 

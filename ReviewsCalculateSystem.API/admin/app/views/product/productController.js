@@ -18,7 +18,7 @@
         vm.productList = [];
         vm.selectedReviewer = [];
         vm.addProduct = addProduct;
-        vm.updateInvoice = updateInvoice;
+        vm.ProductUpdate = ProductUpdate;
         vm.deleteInvoice = deleteInvoice;
         vm.invoiceView = invoiceView;
         vm.pageChanged = pageChanged;
@@ -64,8 +64,8 @@
             location.path(url.$$url);
         }
 
-        function updateInvoice(invoice) {
-            var url = location.url('/invoice-modify/' + invoice.invoiceId);
+        function ProductUpdate(product) {
+            var url = location.url('/product-update/' + product.ProductId);
             location.path(url.$$url);
         }
         function invoiceView(invoice) {

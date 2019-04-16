@@ -67,6 +67,15 @@
                     title: 'Product'
                 }
             },
+            {
+                url: '/product-update/:ProductId',
+                config: {
+                    templateUrl: 'admin/app/views/product/productAdd.html',
+                    controller: 'productAddController',
+                    controllerAs: 'vm',
+                    title: 'Product'
+                }
+            },
             //-------------Task Asign---------
             {
                 url: '/task-asign',

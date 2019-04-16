@@ -8,6 +8,8 @@
             reviewerDetailsInfoList: reviewerDetailsInfoList,
             GetProductById: GetProductById,
             AddProduct: AddProduct,
+            ProductUpdate: ProductUpdate,
+
             deleteStudent: deleteStudent
         };
 
@@ -30,6 +32,11 @@
         function AddProduct(data) {
             var url = dataConstants.PRODUCT_URL + 'AddProduct';
             return apiHttpService.POST(url, data);
+        }
+
+        function ProductUpdate(data) {
+            var url = dataConstants.PRODUCT_URL + 'product-update/' + data.ProductId;
+            return apiHttpService.PUT(url, data);
         }
 
         function deleteStudent(studentId) {

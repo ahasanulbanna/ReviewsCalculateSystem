@@ -28,8 +28,28 @@ namespace ReviewsCalculateSystem.API.Controllers
             DateTime dt2 = end.ToLocalTime();
             product.ReviewStartDate = dt1;
             product.ReviewEndDate = dt2;
-            return Ok(services.AddProduct(product).Data);
+            return Ok(services.AddProduct(product, 0).Data);
         }
+
+        [HttpPut]
+        [Route("product-update/{productId}")]
+        public IHttpActionResult ProductUpdate(Product product,int productId)
+        {
+            DateTime std = DateTime.SpecifyKind(
+                DateTime.Parse(Convert.ToString(product.ReviewStartDate)),
+                DateTimeKind.Utc);
+            DateTime dt1 = std.ToLocalTime();
+            DateTime end = DateTime.SpecifyKind(
+               DateTime.Parse(Convert.ToString(product.ReviewEndDate)),
+               DateTimeKind.Utc);
+            DateTime dt2 = end.ToLocalTime();
+            product.ReviewStartDate = dt1;
+            product.ReviewEndDate = dt2;
+            return Ok(services.AddProduct(product, productId).Data);
+        }
+
+
+
         [HttpGet]
         [Route("GetAllProductList")]
         public IHttpActionResult GetAllProductList(int pageSize, int pageNumber, string searchText)

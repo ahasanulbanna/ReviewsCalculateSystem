@@ -67,7 +67,6 @@
                     notificationService.displayError(errorMessage.message);
                 });
         }
-
         vm.selectedReviewer = [];
         // selected on a given reviewer by name
         function reviewerSelect(reviewer) {

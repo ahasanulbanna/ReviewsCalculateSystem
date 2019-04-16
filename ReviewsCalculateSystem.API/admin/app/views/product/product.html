@@ -1,6 +1,4 @@
-﻿<pre>{{vm.reviewerList | json}}</pre>
-
-<div class="container-fluid">
+﻿<div class="container-fluid">
     <div class="row ">
         <div class="col-md-12">
             <div class="panel">
@@ -21,32 +19,25 @@
                                     <th>Review Need</th>
                                     <th>Review Collect</th>
                                     <th>Current Status</th>
-                                    <th class="text-right">Task Asign</th>
-                                    <th class="text-right">Details</th>
-                                    <th class="text-right">Delete</th>
+                                    <th class="text-right">Action</th>                                
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="cp in  vm.productList">
+                                <tr ng-repeat="product in  vm.productList">
                                     <td>{{$index+1}}</td>
-                                    <td>{{cp.ProductName}}</td>
-                                    <td>{{cp.ProductAsin}}</td>
-                                    <td><a href="{{cp.ProductLink}}" target="_blank">Book Link</a></td>
-                                    <td>{{cp.NumberOfReviewNeed}}</td>
-                                    <td ng-if="cp.NumberOfReviewCollect!=null">{{cp.NumberOfReviewCollect}}</td>
-                                    <td ng-if="cp.NumberOfReviewCollect==null">0</td>
-                                    <td ng-if="cp.CurrentStatus==true">Active</td>
-                                    <td ng-if="cp.CurrentStatus==false">Done</td>
+                                    <td>{{product.ProductName}}</td>
+                                    <td>{{product.ProductAsin}}</td>
+                                    <td><a href="{{product.ProductLink}}" target="_blank">Book Link</a></td>
+                                    <td>{{product.NumberOfReviewNeed}}</td>
+                                    <td ng-if="product.NumberOfReviewCollect!=null">{{product.NumberOfReviewCollect}}</td>
+                                    <td ng-if="product.NumberOfReviewCollect==null">0</td>
+                                    <td ng-if="product.CurrentStatus==true">Active</td>
+                                    <td ng-if="product.CurrentStatus==false">Done</td>
                                     <td class="text-right">
-                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.taskAsign(cp)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Task Asign"></span></a>
-                                    </td>
-                                    <td class="text-right">
-                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.invoiceView(invoice)"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" title="Details"></span></a>
-                                    </td>
-                                    <td class="text-right">
+                                        <a class="btn custom-btn btn-edit custom-btn-primary btn-xs" ng-click="vm.ProductUpdate(product)"><span class="glyphicon glyphicon-edit" aria-hidden="true" title="Product Update"></span></a>
                                         <a class="btn custom-btn btn-delete btn-danger btn-xs" style="cursor:pointer" ng-confirmation-click="vm.deleteDepartment(department)"
-                                           ng-confirmation-message="Do you want to delete Department"
-                                           ng-confirmation-title="Delete Department"
+                                           ng-confirmation-message="Do you want to delete Product"
+                                           ng-confirmation-title="Delete Product"
                                            ng-confirmation-yes-text="Yes"
                                            ng-confirmation-cancel-text="No"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete"></span></a>
                                     </td>

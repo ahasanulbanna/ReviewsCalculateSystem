@@ -21,7 +21,8 @@ angular.module('app')
                         currentUser: {
                             username: username,
                             access_token: response.access_token,
-                            ReviewerId: response.ReviewerId,
+                            AdminId: response.AdminId,
+                            Role: response.Role,
                             authdata: authdata
                         }
                     };

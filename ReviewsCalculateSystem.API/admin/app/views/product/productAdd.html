@@ -20,14 +20,12 @@
                                 <div class="form-group">
                                     <label for="email" class="custom-label">Product ASIN</label>
                                     <input type="text" id="ProductAsin" class="form-control custom-form-control"
-                                           ng-model="vm.product.ProductAsin"
-                                           ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]*\.([a-z]{2,4})$/"
+                                           ng-model="vm.product.ProductAsin"                                     
                                            name="ProductAsin"
                                            ng-maxlength="50"
                                            required />
                                     <p ng-show="vm.productForm.ProductAsin.$error.required" class="help-block errormsg">Product ASIN is required</p>
                                     <p ng-show="vm.productForm.ProductAsin.$error.maxlength" class="help-block errormsg">Maximum character 50</p>
-                                    <p ng-show="vm.productForm.ProductAsin.$error.pattern" class="help-block errormsg">Wrong email address</p>
                                 </div>
                             </div>
                         </div>
@@ -36,9 +34,8 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="ProductLink" class="custom-label">Product Link</label>
-                                    <input type="text" id="ProductLink" class="form-control custom-form-control" ng-model="vm.product.ProductLink" name="ProductLink" ng-maxlength="16" required />
+                                    <input type="text" id="ProductLink" class="form-control custom-form-control" ng-model="vm.product.ProductLink" name="ProductLink" required />
                                     <p ng-show="vm.productForm.ProductLink.$error.required" class="help-block errormsg">Product link  is required</p>
-                                    <p ng-show="vm.productForm.ProductLink.$error.maxlength" class="help-block errormsg">Maximum Character 16</p>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -80,10 +77,9 @@
                     </form>
                   
                     <hr />
-                    <pre>{{vm.product | json}}</pre>
                     <div class="row">
                         <div class="col-xs-12">
-                            <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.invoiceForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+                            <button type="button" class="btn custom-btn btn-info" ng-click="vm.save()" ng-disabled="vm.productForm.$invalid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.buttonText}}</button>
                             <button type="button" class="btn custom-btn btn-warning" ng-click="vm.close()"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
                         </div>
                     </div>

@@ -17,12 +17,30 @@ namespace ReviewsCalculateSystem.Services
             db = new ReviewDbContext();
         }
 
-        public JsonResult AddProduct(Product product)
+        public JsonResult AddProduct(Product product, int productId)
         {
-            product.Reviews = null;
-            product.CurrentStatus = true;
-            db.Products.Add(product);
-            db.SaveChanges();
+            var ExistProduct = db.Products.Any(x=>x.ProductId==product.ProductId);
+            if (productId > 0)
+            {            
+                Product dbproduct = db.Products.Find(productId);
+                if (!db.ReviewerTaskAsigns.Any(x => x.ProductId == productId))
+                {
+                    dbproduct.ReviewStartDate = product.ReviewStartDate;
+                }
+                dbproduct.ReviewEndDate = product.ReviewEndDate;
+                dbproduct.ProductName = product.ProductName;
+                dbproduct.ProductLink = product.ProductLink;
+                dbproduct.ProductAsin = product.ProductAsin;
+                dbproduct.NumberOfReviewNeed = product.NumberOfReviewNeed;
+                db.SaveChanges();
+            }
+            if (!ExistProduct)
+            {
+                product.Reviews = null;
+                product.CurrentStatus = true;
+                db.Products.Add(product);
+                db.SaveChanges();
+            }
             return new JsonResult
             {
                 Data = new { Result = "IsOk" },
@@ -70,7 +88,7 @@ namespace ReviewsCalculateSystem.Services
     }
     public interface IProductServices
     {
-        JsonResult AddProduct(Product product);
+        JsonResult AddProduct(Product product, int productId);
         JsonResult GetAllProductList(int pageSize, int pageNumber, string searchText);
         JsonResult GetAllCurrentProductList();
         JsonResult GetProductById(int productId);

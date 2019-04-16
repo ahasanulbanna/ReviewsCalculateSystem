@@ -6,25 +6,26 @@ angular.module('app')
         ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
             function (Base64, $http, $cookieStore, $rootScope, $timeout) {
                 var service = {};
-                service.SetCredentials = function (username, password,response) {
+                service.SetCredentials = function (username, password, response) {
                     var authdata = Base64.encode(username + ':' + password);
 
-                    $rootScope.globals = {
+                    $rootScope.admin = {
                         currentUser: {
                             username: username,
                             access_token: response.access_token,
-                            ReviewerId: response.ReviewerId,
+                            AdminId: response.AdminId,
+                            Role: response.Role,
                             authdata: authdata
                         }
                     };
 
                     $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-                    $cookieStore.put('globals', $rootScope.globals);
+                    $cookieStore.put('admin', $rootScope.admin);
                 };
 
                 service.ClearCredentials = function () {
                     $rootScope.globals = {};
-                    $cookieStore.remove('globals');
+                    $cookieStore.remove('admin');
                     $http.defaults.headers.common.Authorization = 'Basic ';
                 };
 
