@@ -58,9 +58,9 @@ namespace ReviewsCalculateSystem.API.Controllers
         }
         [HttpGet]
         [Route("GetAllCurrentProductList")]
-        public IHttpActionResult GetAllCurrentProductList()
+        public IHttpActionResult GetAllCurrentProductList(int pageSize, int pageNumber, string searchText)
         {
-            return Ok(services.GetAllCurrentProductList().Data);
+            return Ok(services.GetAllCurrentProductList(pageSize, pageNumber, searchText).Data);
         }
 
         [HttpGet]

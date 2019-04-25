@@ -7,16 +7,12 @@
             reviewerPayment: reviewerPayment,
             reviewerDetails: unpaidReviewCalculateByReviewerId,
             GetProductById: GetProductById,
-            AddProduct: AddProduct,
-            deleteStudent: deleteStudent
+            paymentLog: paymentLog,
+            paymentDetalsByReviewerId: paymentDetalsByReviewerId
         };
 
         return service;
-        //function reviewerPayment(pageSize, pageNumber, searchText) {
-        //    var url = dataConstants.PRODUCT_URL + 'GetAllProductList?pageSize=' + pageSize + "&pageNumber=" + pageNumber + "&searchText=" + searchText;
-        //    return apiHttpService.GET(url);
-        //}
-
+       
         function reviewerPayment() {
             var url = dataConstants.PAYMENT_URL + 'reviewerPayment';
             return apiHttpService.GET(url);
@@ -31,17 +27,14 @@
             var url = dataConstants.PRODUCT_URL + 'GetProductById/' + ProductId;
             return apiHttpService.GET(url);
         }
-
-        function AddProduct(data) {
-            var url = dataConstants.PRODUCT_URL + 'AddProduct';
-            return apiHttpService.POST(url, data);
+        function paymentLog(Data) {
+            var url = dataConstants.PAYMENT_URL +'payAmountLog';
+            return apiHttpService.POST(url, Data);
         }
 
-        function deleteStudent(studentId) {
-            var url = dataConstants.STUDENT_URL + 'delete-student/' + studentId;
-            return apiHttpService.DELETE(url);
+        function paymentDetalsByReviewerId(reviewerId) {
+            var url = dataConstants.PAYMENT_URL + 'payment-details-by-reviewer-id?reviewerId=' + reviewerId;
+            return apiHttpService.GET(url);
         }
-
-
     }
 })();

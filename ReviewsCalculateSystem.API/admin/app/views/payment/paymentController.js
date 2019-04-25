@@ -4,23 +4,22 @@
 
     var controllerId = 'paymentController';
     angular.module('app').controller(controllerId, paymentController);
-    paymentController.$inject = ['$routeParams', 'paymentService', 'notificationService', '$location', '$scope'];
+    paymentController.$inject = ['$routeParams', 'paymentService', 'notificationService', '$location', '$scope','$rootScope'];
 
-    function paymentController(routeParams, paymentService, notificationService, location, $scope) {
+    function paymentController(routeParams, paymentService, notificationService, location, $scope, $rootScope) {
 
         /* jshint validthis:true */
         var vm = this;
         vm.ReviewerId = 0;
+        vm.loggedIn = {};
+        vm.PaymentLog = {};
         vm.ReviewerPayment = [];
         vm.ReviewerPaymentDetails = [];
+        vm.Payment = Payment;
         vm.reviewerDetails = reviewerDetails;
-        vm.addProduct = addProduct;
-        vm.updateInvoice = updateInvoice;
-        vm.deleteInvoice = deleteInvoice;
-        vm.invoiceView = invoiceView;
         vm.pageChanged = pageChanged;
         vm.searchText = "";
-        vm.pageSize = 5;
+        vm.pageSize = 10;
         vm.onSearch = onSearch;
         vm.close = close;
         vm.pageNumber = 1;
@@ -45,10 +44,10 @@
 
         init();
         function init() {
+            vm.loggedIn = $rootScope.admin.currentUser;
             paymentService.reviewerPayment().then(function (data) {
                 vm.ReviewerPayment = data;
                 console.log(vm.ReviewerPayment);
-
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
@@ -73,23 +72,20 @@
             location.path(url.$$url);
         }
 
-        function addProduct() {
-            var url = location.url('/product-add');
-            location.path(url.$$url);
-        }
-
-        function updateInvoice(invoice) {
-            var url = location.url('/invoice-modify/' + invoice.invoiceId);
-            location.path(url.$$url);
-        }
-        function invoiceView(invoice) {
-            var url = location.url('/invoice-view/' + invoice.invoiceId);
-            location.path(url.$$url);
-        }
-        function deleteInvoice(invoice) {
-            invoiceService.taskAsign(invoice.invoiceId).then(function (data) {
+        function Payment(rp) {
+            vm.PaymentLog.ReviewerId = rp.ReviewerId;
+            vm.PaymentLog.ReviewerName = rp.ReviewerName;
+            vm.PaymentLog.TotalPaymentAmount = rp.TotalPaymentAmount;
+            vm.PaymentLog.AdminId = vm.loggedIn.AdminId;
+            paymentService.paymentLog(vm.PaymentLog).then(function (data) {
+                notificationService.displaySuccess("Payment Ok");
                 init();
-            });
+            },
+                function (errorMessage) {
+                    notificationService.displayError(errorMessage.message);
+
+                });
+
         }
 
         function close() {

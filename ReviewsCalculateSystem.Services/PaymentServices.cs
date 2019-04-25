@@ -1,4 +1,5 @@
 ﻿using ReviewsCalculateSystem.Models;
+using ReviewsCalculateSystem.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,37 @@ namespace ReviewsCalculateSystem.Services
             db = new ReviewDbContext();
         }
 
-        public JsonResult Advance(int reviewerId)
+        public JsonResult payAmountLog(PaymentLogViewModel payment)
         {
-            throw new NotImplementedException();
+            List<Review> reviewList = new List<Review>();
+            reviewList = db.Reviews.Where(x=>x.ReviewerId==payment.ReviewerId && x.isPay==false && x.ReviewStatus==true).ToList();
+            foreach (var review in reviewList)
+            {
+                review.isPay = true;
+                db.SaveChanges();
+            }
+            Payment paymodel = new Payment();
+            paymodel.AdminId = payment.AdminId;
+            paymodel.ReviewerId = payment.ReviewerId;
+            paymodel.PaymentAmount = payment.TotalPaymentAmount;
+            paymodel.PaymentDate = DateTime.Now;
+            db.Payments.Add(paymodel);
+            db.SaveChanges();
+            return new JsonResult
+            {
+                Data = "IsOk",
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        public JsonResult paymentDetailsByReviewerId(int reviewerId)
+        {
+            Payment payment = db.Payments.Where(x => x.ReviewerId == reviewerId).FirstOrDefault();
+            return new JsonResult
+            {
+                Data = payment,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
         }
 
         public JsonResult reviewerPayment()
@@ -35,7 +64,7 @@ namespace ReviewsCalculateSystem.Services
                 List<PaymentModel> paymentModels = new List<PaymentModel>();
                 foreach (var product in workingProduct)
                 {
-                    var productName = Convert.ToString(db.Products.Where(x => x.ProductId == product.ProductId).Select(x => x.ProductName).FirstOrDefault());
+                    var productName = db.Products.Where(x => x.ProductId == product.ProductId).Select(x => x.ProductName).FirstOrDefault();
                     var reviewCount = db.Reviews.Where(x => x.ReviewerId == product.ReviewerId && x.ProductId == product.ProductId && x.ReviewStatus==true && x.isPay == false).Count();
                     total = reviewCount * product.PerReviewCost + total;
                     totalLiveReview += reviewCount;
@@ -45,7 +74,7 @@ namespace ReviewsCalculateSystem.Services
             }
             return new JsonResult
             {
-                Data = paymentViewModel,
+                Data = paymentViewModel.OrderByDescending(x=>x.TotalPaymentAmount),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -131,7 +160,8 @@ namespace ReviewsCalculateSystem.Services
         JsonResult reviewerPayment();
         JsonResult unpaidReviewCalculateByReviewerId(int reviewerId);
         JsonResult unpaidReviewForEachProductById(int reviewerId, int productId);
-        JsonResult Advance(int reviewerId);
+        JsonResult payAmountLog(PaymentLogViewModel payment);
+        JsonResult paymentDetailsByReviewerId(int reviewerId);
     }
 
 

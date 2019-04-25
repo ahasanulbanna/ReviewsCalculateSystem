@@ -1,4 +1,5 @@
-﻿using ReviewsCalculateSystem.Services;
+﻿using ReviewsCalculateSystem.Models.Models;
+using ReviewsCalculateSystem.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,19 @@ namespace ReviewsCalculateSystem.API.Controllers
         {
             return Ok(services.unpaidReviewForEachProductById(reviewerId, productId).Data);
         }
-
+        
+        [HttpPost]
+        [Route("payAmountLog")]
+        public IHttpActionResult PayAmountLog(PaymentLogViewModel payment)
+        {
+            return Ok(services.payAmountLog(payment).Data);
+        }
+        [HttpGet]
+        [Route("payment-details-by-reviewer-id")]
+        public IHttpActionResult paymentDetailsByReviewerId(int reviewerId)
+        {
+            return Ok(services.paymentDetailsByReviewerId(reviewerId).Data);
+        }
+        
     }
 }

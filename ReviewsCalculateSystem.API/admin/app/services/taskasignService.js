@@ -12,8 +12,8 @@
         };
 
         return service;
-        function GetAllCurrentProductList() {
-            var url = dataConstants.PRODUCT_URL + 'GetAllCurrentProductList';
+        function GetAllCurrentProductList(pageSize, pageNumber, searchText) {
+            var url = dataConstants.PRODUCT_URL + 'GetAllCurrentProductList?pageSize=' + pageSize + "&pageNumber=" + pageNumber + "&searchText=" + searchText;
             return apiHttpService.GET(url);
         }
 

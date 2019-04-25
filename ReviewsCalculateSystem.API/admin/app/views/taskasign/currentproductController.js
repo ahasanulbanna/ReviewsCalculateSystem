@@ -17,7 +17,7 @@
         vm.invoiceView = invoiceView;
         vm.pageChanged = pageChanged;
         vm.searchText = "";
-        vm.pageSize = 10;
+        vm.pageSize = 4;
         vm.onSearch = onSearch;
         vm.pageNumber = 1;
         vm.total = 0;
@@ -34,8 +34,9 @@
         }
         init();
         function init() {
-            taskasignService.GetAllCurrentProductList().then(function (data) {
-                vm.currentProductList = data;
+            taskasignService.GetAllCurrentProductList(vm.pageSize, vm.pageNumber, vm.searchText).then(function (data) {
+                vm.currentProductList = data.CurrentProducts;
+                vm.total = data.Total;
             },
                 function (errorMessage) {
                     notificationService.displayError(errorMessage.message);
@@ -62,7 +63,7 @@
         }
 
         function pageChanged() {
-            var url = location.url('/invoices');
+            var url = location.url('/task-asign');
             location.path(url.$$url).search('pn', vm.pageNumber).search('ps', vm.pageSize).search('q', vm.searchText);
         }
 

@@ -56,6 +56,10 @@
     <Compile Include="Migrations\201904030820047_Update_Review_Model.Designer.cs">
       <DependentUpon>201904030820047_Update_Review_Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904181012120_UpdatePaymentModel.cs" />
+    <Compile Include="Migrations\201904181012120_UpdatePaymentModel.Designer.cs">
+      <DependentUpon>201904181012120_UpdatePaymentModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -77,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904030820047_Update_Review_Model.resx">
       <DependentUpon>201904030820047_Update_Review_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181012120_UpdatePaymentModel.resx">
+      <DependentUpon>201904181012120_UpdatePaymentModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

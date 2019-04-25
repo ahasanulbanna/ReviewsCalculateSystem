@@ -1,10 +1,6 @@
 ﻿using ReviewsCalculateSystem.Models;
 using ReviewsCalculateSystem.Models.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ReviewsCalculateSystem.Services
@@ -19,9 +15,9 @@ namespace ReviewsCalculateSystem.Services
 
         public JsonResult AddProduct(Product product, int productId)
         {
-            var ExistProduct = db.Products.Any(x=>x.ProductId==product.ProductId);
+            var ExistProduct = db.Products.Any(x => x.ProductId == product.ProductId);
             if (productId > 0)
-            {            
+            {
                 Product dbproduct = db.Products.Find(productId);
                 if (!db.ReviewerTaskAsigns.Any(x => x.ProductId == productId))
                 {
@@ -48,12 +44,12 @@ namespace ReviewsCalculateSystem.Services
             };
         }
 
-        public JsonResult GetAllCurrentProductList()
+        public JsonResult GetAllCurrentProductList(int pageSize, int pageNumber, string searchText)
         {
-            var getCurrentProducts = db.Products.Where(x => x.CurrentStatus == true).Select(x => x).ToList();
+            var getCurrentProducts = db.Products.Where(x => x.CurrentStatus == true).Select(x => x).ToList().OrderByDescending(x=>x.NumberOfReviewNeed);
             return new JsonResult
             {
-                Data = getCurrentProducts,
+                Data = new { CurrentProducts=getCurrentProducts.Skip((pageNumber - 1) * pageSize).Take(pageSize), Total = getCurrentProducts.Count() },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -90,7 +86,7 @@ namespace ReviewsCalculateSystem.Services
     {
         JsonResult AddProduct(Product product, int productId);
         JsonResult GetAllProductList(int pageSize, int pageNumber, string searchText);
-        JsonResult GetAllCurrentProductList();
+        JsonResult GetAllCurrentProductList(int pageSize, int pageNumber, string searchText);
         JsonResult GetProductById(int productId);
 
     }

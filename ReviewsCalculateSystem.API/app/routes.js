@@ -115,8 +115,17 @@
                     controllerAs: 'vm',
                     title: 'Reviewer'
                 }
+            },
+             //-------------Payment Details---------
+            {
+                url: '/payment-details',
+                config: {
+                    templateUrl: 'app/views/payment/payment.html',
+                    controller: 'paymentController',
+                    controllerAs: 'vm',
+                    title: 'Payment'
+                }
             }
-
         ];
     }
 

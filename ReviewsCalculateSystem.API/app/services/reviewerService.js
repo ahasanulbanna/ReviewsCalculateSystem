@@ -6,9 +6,6 @@
         var service = {
             CreateReviewer: CreateReviewer,
             reviewerReviewAndProductInfoById: reviewerReviewAndProductInfoById,
-            saveCourse: saveCourse,
-            updateCourse: updateCourse,
-            deleteCourse: deleteCourse,
             reviewerLogin: reviewerLogin
         };
 
@@ -28,22 +25,5 @@
             var url = dataConstants.REVIEWERTASKASIGN_URL + 'reviewerReviewForEachProductById?reviewerId=' + reviewerId + '&productId=' + productId;
             return apiHttpService.GET(url);
         }
-
-        function saveCourse(data) {
-            var url = dataConstants.COURSE_URL + 'save-course';
-            return apiHttpService.POST(url, data);
-        }
-
-        function updateCourse(courseId, data) {
-            var url = dataConstants.COURSE_URL + 'update-course/' + courseId;
-            return apiHttpService.PUT(url, data);
-        }
-
-        function deleteCourse(courseId) {
-            var url = dataConstants.COURSE_URL + 'delete-course/' + courseId;
-            return apiHttpService.DELETE(url);
-        }
-
-
     }
 })();

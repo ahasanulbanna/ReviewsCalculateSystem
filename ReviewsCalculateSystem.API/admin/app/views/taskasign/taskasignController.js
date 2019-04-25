@@ -24,7 +24,7 @@
         vm.invoiceView = invoiceView;
         vm.pageChanged = pageChanged;
         vm.searchText = "";
-        vm.pageSize = 5;
+        vm.pageSize = 10;
         vm.onSearch = onSearch;
         vm.close = close;
         vm.pageNumber = 1;

@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminServices.cs" />
+    <Compile Include="PaymentLogViewModel.cs" />
     <Compile Include="PaymentServices.cs" />
     <Compile Include="ProductServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
