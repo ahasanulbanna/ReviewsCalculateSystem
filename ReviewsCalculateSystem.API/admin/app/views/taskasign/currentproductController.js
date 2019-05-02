@@ -12,9 +12,7 @@
         var vm = this;
         vm.currentProductList = [];
         vm.taskAsign = taskAsign;
-        vm.updateInvoice = updateInvoice;
-        vm.deleteInvoice = deleteInvoice;
-        vm.invoiceView = invoiceView;
+        vm.addProduct = addProduct;
         vm.pageChanged = pageChanged;
         vm.searchText = "";
         vm.pageSize = 4;
@@ -48,19 +46,11 @@
             location.path(url.$$url);
         }
 
-        function updateInvoice(invoice) {
-            var url = location.url('/invoice-modify/' + invoice.invoiceId);
+        function addProduct() {
+            var url = location.url('/product-add');
             location.path(url.$$url);
         }
-        function invoiceView(invoice) {
-            var url = location.url('/invoice-view/' + invoice.invoiceId);
-            location.path(url.$$url);
-        }
-        function deleteInvoice(invoice) {
-            invoiceService.deleteInvoice(invoice.invoiceId).then(function (data) {
-                init();
-            });
-        }
+   
 
         function pageChanged() {
             var url = location.url('/task-asign');
