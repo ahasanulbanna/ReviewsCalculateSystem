@@ -29,22 +29,7 @@ namespace ReviewsCalculateSystem.API.Controllers
             registrationService = new RegistrationService();
         }
 
-        [HttpPost]
-        [Route("Login")]
-        public HttpResponseMessage Login(Admin admin)
-        {         
-            string role = "Admin";
-            var token = TokenManager.CreateJwtToken(admin.Name, role);
-            return new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new ObjectContent<object>(new
-                {
-                    UserName = admin.Name,
-                    Roles = role,
-                    AccessToken = token
-                }, Configuration.Formatters.JsonFormatter)
-            };
-        }
+       
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
@@ -60,6 +45,14 @@ namespace ReviewsCalculateSystem.API.Controllers
         {
             return Ok(service.GetAllAdminList().Data);
         }
+
+        [HttpGet]
+        [Route("admin-dashbord")]
+        public IHttpActionResult AdminDashbord()
+        {
+            return Ok(service.AdminDashbord().Data);
+        }
+
 
         [HttpGet]
         [Route("DatabaseBackUp")]

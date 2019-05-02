@@ -39,10 +39,24 @@ namespace ReviewsCalculateSystem.Services
             };
 
         }
+        public JsonResult AdminDashbord()
+        {
+            var totalReviewer = db.Reviewers.Where(x => x.AdminApprove == true).Count();
+            var totalPendingReviewer = db.Reviewers.Where(x => x.AdminApprove == false).Count();
+            var totalProject = db.Products.Count();
+            var totalProjectDone = db.Products.Where(x => x.CurrentStatus == false).Count();
+            
+            return new JsonResult
+            {
+                Data = new {totalReviewer,totalPendingReviewer,totalProject,totalProjectDone },
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
     }
     public interface IAdminServices
     {
         JsonResult CreateAdmin(Admin admin);
         JsonResult GetAllAdminList();
+        JsonResult AdminDashbord();
     }
 }

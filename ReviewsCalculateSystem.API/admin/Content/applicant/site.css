@@ -289,7 +289,7 @@ select {
     left: 0;
     top: 0;
     z-index: 100;
-    background: #ffffff url('../../Images/bg.png');
+    background: #4267B2;
     border-bottom: 1px solid #e9e9e9;
 }
 
@@ -302,7 +302,7 @@ select {
 
 .header-wrapper .logo-text {
     margin: 0;
-    color: #77787a;
+    color: #fff;
 }
 
 .header-wrapper .user-wrapper {
@@ -321,7 +321,7 @@ select {
 
             .header-wrapper .user-wrapper ul li a {
                 display: block;
-                color: #8b8b8b;
+                color: #fff;
                 font-weight: 600;
                 text-decoration: none;
                 text-transform: capitalize;

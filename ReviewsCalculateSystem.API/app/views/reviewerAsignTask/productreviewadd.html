@@ -35,7 +35,7 @@
                     <hr />
                     <form name="vm.reviewForm">
                         <div class="row">
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-md-2 col-xs-2">
                                 <div class="form-group">
                                     <label for="SwapmeetFbName" class="custom-label">SM FB Name</label>
                                     <input type="text" id="SwapmeetFbName" class="form-control custom-form-control" ng-model="vm.review.SwapmeetFbName" name="SwapmeetFbName" ng-maxlength="250" required />
@@ -43,7 +43,7 @@
                                     <p ng-show="vm.reviewForm.SwapmeetFbName.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-md-2 col-xs-2">
                                 <div class="form-group">
                                     <label for="SwapmeetFbProfileLink" class="custom-label">SM FB Link</label>
                                     <input type="text" id="SwapmeetFbProfileLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetFbProfileLink" name="SwapmeetFbProfileLink" ng-maxlength="250" required />
@@ -51,7 +51,7 @@
                                     <p ng-show="vm.reviewForm.SwapmeetFbProfileLink.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-md-2 col-xs-2">
                                 <div class="form-group">
                                     <label for="SwapmeetProductLink" class="custom-label"> SM Book Link</label>
                                     <input type="text" id="SwapmeetProductLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetProductLink" name="SwapmeetProductLink" ng-maxlength="250" required />
@@ -59,27 +59,27 @@
                                     <p ng-show="vm.reviewForm.SwapmeetProductLink.$error.maxlength" class="help-block errormsg">Maximum character 250</p>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-md-2 col-xs-2">
                                 <div class="form-group">
                                     <label for="SwapmeetReviewLink" class="custom-label">SM Review Link</label>
                                     <input type="text" id="SwapmeetReviewLink" class="form-control custom-form-control" ng-model="vm.review.SwapmeetReviewLink" name="SwapmeetReviewLink" />
 
                                 </div>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-md-2 col-xs-2">
                                 <div class="form-group">
                                     <label for="OwnReviewLink" class="custom-label">Own Review Link</label>
                                     <input type="text" id="OwnReviewLink" class="form-control custom-form-control" ng-model="vm.review.OwnReviewLink" name="OwnReviewLink" />
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-sm-2 col-md-2 col-xs-2">
+                                <div class="form-group">
+                                    <button type="button" class="btn custom-btn btn-info" style="float:left; margin-top:19px;" ng-click="vm.addNewReview()" ng-disabled="vm.reviewForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Add Review</button>
+                                </div>
+                                </div>
+                            </div>
                     </form>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <button type="button" class="btn custom-btn btn-info" style="float:right;" ng-click="vm.addNewReview()" ng-disabled="vm.reviewForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Add Review</button>
-                        </div>
-                    </div>
-
+               
                 </div>
             </div>
         </div>

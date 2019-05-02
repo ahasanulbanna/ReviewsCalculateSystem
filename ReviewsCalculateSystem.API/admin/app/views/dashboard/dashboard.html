@@ -1,2 +1,43 @@
-﻿<p>Dashboard Page</p>
-<pre>{{vm.loggedIn | json}}</pre>
+﻿<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: #444;
+        color: white;
+        margin-bottom:10px;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-xs-12">
+        <div class="card" style="background:#FFFFFF;">
+            <p style="font-size:-webkit-xxx-large;"><i class="fa fa-users"></i></p>
+            <h3 style="font:bold;">{{vm.DashbordData.totalReviewer}}</h3>
+            <p style="font-size:20px;">Reviewers</p>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-xs-12">
+        <div class="card" style="background:#14397E;">
+            <p style="font-size:-webkit-xxx-large; color:yellow;"><i class="fa fa-smile-o"></i></p>         
+            <h3 style="color:#fff;">{{vm.DashbordData.totalProject}}</h3>
+            <p style="font-size:20px; color:#fff;">Projects</p>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-xs-12">
+        <div class="card" style="background:#3B5999;">
+            <p style="font-size:-webkit-xxx-large; color:green;"><i class="fa fa-check"></i></p>
+            <h3 style="color:#fff;">{{vm.DashbordData.totalProjectDone}}</h3>
+            <p style="font-size:20px; color:#fff;">Projects Done</p>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-xs-12">
+        <div class="card" style="background:#00B0ED;">
+            <p style="font-size:-webkit-xxx-large;"><i class="fa fa-lock"></i></p>
+            <h3 style="color:#fff;">{{vm.DashbordData.totalPendingReviewer}}</h3>
+            <p style="font-size:20px; color:#fff;">Reviewer Request Pending</p>
+        </div>
+    </div>
+</div>

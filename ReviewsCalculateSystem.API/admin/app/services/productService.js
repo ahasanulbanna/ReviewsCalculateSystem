@@ -9,8 +9,8 @@
             GetProductById: GetProductById,
             AddProduct: AddProduct,
             ProductUpdate: ProductUpdate,
+            AdminDashbord: AdminDashbord
 
-            deleteStudent: deleteStudent
         };
 
         return service;
@@ -39,11 +39,10 @@
             return apiHttpService.PUT(url, data);
         }
 
-        function deleteStudent(studentId) {
-            var url = dataConstants.STUDENT_URL + 'delete-student/' + studentId;
-            return apiHttpService.DELETE(url);
+        function AdminDashbord() {
+            var url = dataConstants.ADMIN_URL + 'admin-dashbord';
+            return apiHttpService.GET(url);
         }
-
 
     }
 })();

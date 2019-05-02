@@ -4,13 +4,14 @@
 
     var controllerId = 'dashboardController';
     angular.module('app').controller(controllerId, dashboardController);
-    dashboardController.$inject = ['$routeParams', 'notificationService', '$location', '$rootScope'];
+    dashboardController.$inject = ['$routeParams', 'notificationService','productService', '$location', '$rootScope'];
 
-    function dashboardController($routeParams, notificationService, location, $rootScope) {
+    function dashboardController($routeParams, notificationService, productService, location, $rootScope) {
 
         /* jshint validthis:true */
         var vm = this;
         vm.loggedIn = {};
+        vm.DashbordData = {};
 
         if (location.search().ps !== undefined && location.search().ps !== null && location.search().ps !== '') {
             vm.pageSize = location.search().ps;
@@ -25,6 +26,12 @@
         Init();
         function Init() {
             vm.loggedIn = $rootScope.admin;
+            productService.AdminDashbord().then(function (data) {
+                vm.DashbordData = data;             
+            },
+                function (errorMessage) {
+                    notificationService.displayError(errorMessage.message);
+                });
         }    
     }
 

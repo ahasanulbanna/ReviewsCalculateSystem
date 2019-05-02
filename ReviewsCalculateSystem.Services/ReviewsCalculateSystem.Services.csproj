@@ -125,7 +125,6 @@
     <Compile Include="ReviewerServices.cs" />
     <Compile Include="ReviewServices.cs" />
     <Compile Include="TaskAsignServices.cs" />
-    <Compile Include="TokenManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
